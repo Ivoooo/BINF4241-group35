@@ -10,11 +10,16 @@ public class Player {
         return this.player;
     }
 
-    public int getPosition(){
+    public int setPosition(){
 
         return 0;
     }
-    public int leaveSquare(){
+    public int moveFwd(int i){
+        Square.leave(this.player);
+        Square.MoveandLand(i);
+        return 0;
+
+
 
         return 0;
     }

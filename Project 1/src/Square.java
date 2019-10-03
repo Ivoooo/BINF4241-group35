@@ -4,6 +4,7 @@ public class Square {
     int type = 3;
     boolean occupied = False;
 
+
     public int squareType(int square){
         return type;
     }
