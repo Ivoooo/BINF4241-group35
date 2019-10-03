@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.HashMap;
 
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello World!");
@@ -22,6 +23,9 @@ public class Main {
         Game test = new Game();
         test.setSize(5);
         System.out.println(test.gamesize());
+
+        Die test2 = new Die();
+        System.out.println(test2.rollDie());
     }
 
 
