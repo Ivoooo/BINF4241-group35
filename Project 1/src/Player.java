@@ -9,4 +9,15 @@ public class Player {
     public int getName(){
         return this.player;
     }
+
+    public int getPosition(){
+
+        return 0;
+    }
+    public int leaveSquare(){
+
+        return 0;
+    }
+
+
 }

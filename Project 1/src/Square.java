@@ -1,4 +1,4 @@
-import java.util.Random;
+
 
 public class Square {
     int type;
