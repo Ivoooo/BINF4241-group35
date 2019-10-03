@@ -1,13 +1,13 @@
 public class Player {
-    private int player;
+    private String name;
 
-    public int setName(int i) {
-        this.player = i;
-        return 0;
+    public String setName(String i) {
+        this.name = i;
+        return this.name;
 
     }
-    public int getName(){
-        return this.player;
+    public String getName(){
+        return this.name;
     }
 
     public int getPosition(){

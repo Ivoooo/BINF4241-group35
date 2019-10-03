@@ -3,6 +3,7 @@
 public class Square {
     int type = 3;
     boolean occupied = false;
+    Square nextSquare = new Square();
 
     public void setOccupied(int square){
         occupied = true;
