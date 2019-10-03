@@ -1,4 +1,5 @@
 public class Square {
+
     int type;
     boolean occupied;
 
@@ -6,6 +7,7 @@ public class Square {
         type=3;
         occupied = false;
     }
+
 
     public void setOccupied(int square){
         occupied = true;
