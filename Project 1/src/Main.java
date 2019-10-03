@@ -22,13 +22,6 @@ public class Main {
             System.out.println(i);
         }
 
-        Game test = new Game();
-        test.setSize(5);
-        System.out.println(test.getSize());
-
-        Die test2 = new Die();
-        System.out.println(test2.rollDie());
+        System.out.println(ourGame.roll());
     }
-
-
 }
