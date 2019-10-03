@@ -9,7 +9,10 @@ public class Square {
         occupied = false;
     }
 
-
+    public void leave(){
+        occupied = false;
+        return;
+    }
     public void setOccupied(int square){
         occupied = true;
         return;
@@ -19,7 +22,7 @@ public class Square {
         return occupied;
     }
 
-    public void sendHome(Player p){
+    public void MoveandLand(Player p){
         if (occupied == true) {
            // p.setPosition(1);
         }
