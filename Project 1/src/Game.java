@@ -1,9 +1,7 @@
 public class Game {
     private int size;
-    private int currentPlayer = 0;
     private Die myDie = new Die();
-    //private Squares[] squareArray;
-    //private Player[] playerArray; = new Player[amount];
+    private Players players = new Players();
 
     public int setSize(int i) {
         this.size = i;
@@ -25,5 +23,22 @@ public class Game {
         //prevPlayer = currentPlayer;
         //if game not over:
         return "prevPlayer.name rolled a " + randInt;
+    }
+
+    public void movePlayer(int i) {
+        //remove player from Players
+        Player Jack = new Player(); //sött nöd si
+        //Jack.moveFwd(i);
+    }
+
+    public void addPlayer(String name) {
+        Player player = new Player();
+        player.setName(name);
+        players.add(player);
+    }
+
+    public String removePlayer() {
+        Player x = players.remove();
+        return x.getName();
     }
 }
