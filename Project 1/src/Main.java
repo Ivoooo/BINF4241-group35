@@ -23,5 +23,9 @@ public class Main {
         }
 
         System.out.println(ourGame.roll());
+
+        ourGame.addPlayer("Fred");
+        String x = ourGame.removePlayer();
+        System.out.println(x);
     }
 }

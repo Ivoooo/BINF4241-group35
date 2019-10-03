@@ -35,6 +35,10 @@ public class Game {
         Player player = new Player();
         player.setName(name);
         players.add(player);
+    }
 
+    public String removePlayer() {
+        Player x = players.remove();
+        return x.getName();
     }
 }
