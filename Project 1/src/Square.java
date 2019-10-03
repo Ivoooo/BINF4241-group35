@@ -3,7 +3,7 @@ public class Square {
     int type;
     boolean occupied;
 
-    public void newSquare(int i){
+    public void newSquare(){
         type=3;
         occupied = false;
     }
