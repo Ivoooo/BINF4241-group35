@@ -1,5 +1,6 @@
 public class Player {
     private String name;
+    private int position;
 
     public String setName(String i) {
         this.name = i;
@@ -8,6 +9,9 @@ public class Player {
     }
     public String getName(){
         return this.name;
+    }
+    public int getPosition(int i ){
+        return i;
     }
 
     public int setPosition(){
