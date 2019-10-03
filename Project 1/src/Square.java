@@ -3,30 +3,30 @@ public class Square {
     int type;
     boolean occupied;
 
+
     public void newSquare(){
         type=3;
         occupied = false;
     }
 
 
-
-    public int squareType(int square){
-        return type;
-
     public void setOccupied(int square){
         occupied = true;
         return;
 
     }
+    public boolean isOccupied(int square){
+        return occupied;
+    }
 
     public void sendHome(Player p){
         if (occupied == true) {
-          //  p.setPosition(1);
+           // p.setPosition(1);
         }
         return;
     }
 
-/*    public int makeSnake(int square,int gamesize){
+    public int makeSnake(int square,int gamesize){
         int length = getRandomNumberInRange(-1,-6);
         type = -1;
         return length;
@@ -46,12 +46,13 @@ public class Square {
 
         return (int)(Math.random() * ((max - min) + 1)) + min;
     }
- }
 
- */
+
+
 
     public void setStart(int square) {
         type = 0;
+        occupied = false;
         return;
     }
 
@@ -65,6 +66,3 @@ public class Square {
     }
 
 }
-
-
-
