@@ -1,5 +1,3 @@
-
-
 public class Square {
     int type = 3;
     boolean occupied = false;
@@ -10,9 +8,9 @@ public class Square {
         return;
     }
 
-    public void sendHome(int square) {
+    public void sendHome(Player p){
         if (occupied == true) {
-            // setPlayer(1);
+          //  p.setPosition(1);
         }
         return;
     }
