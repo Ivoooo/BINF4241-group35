@@ -3,11 +3,13 @@ import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-        System.out.println(" Gamesize: ");
+        System.out.println(" Choose your game size: ");
         Scanner keyboard = new Scanner(System.in);
-        int gamesize = keyboard.nextInt();
-        System.out.println("Your Game is of Size: " + gamesize);
+        int size = keyboard.nextInt();
+        Game ourGame = new Game();
+        ourGame.setSize(size);
+        System.out.println("Your Game is of Size: " + ourGame.getSize());
+
         System.out.println("How many players want to play? ");
         int numplayers = keyboard.nextInt();
 
@@ -18,10 +20,6 @@ public class Main {
         for (String i : Players.keySet()) {
             System.out.println(i);
         }
-
-        Game test = new Game();
-        test.setSize(5);
-        System.out.println(test.gamesize());
     }
 
 
