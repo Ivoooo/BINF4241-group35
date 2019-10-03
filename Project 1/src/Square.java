@@ -1,7 +1,7 @@
 public class Square {
     int type;
     boolean occupied;
-    
+
     public void newSquare(int i){
         type=3;
         occupied = false;
