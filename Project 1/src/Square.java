@@ -1,7 +1,8 @@
 
 
 public class Square {
-    int type;
+    int type = 3;
+    boolean occupied = False;
 
     public int squareType(int square){
         return type;
@@ -9,12 +10,12 @@ public class Square {
 
     public void sendHome(int square) {
         // if (occupied == True) {
-        // Player( back to origin square)
+        // Player( back to 1)
         // }
         return;
     }
 
-    public int makeSnake(int square,int gamesize){
+/*    public int makeSnake(int square,int gamesize){
         int length = getRandomNumberInRange(-1,-6);
         type = -1;
         return length;
@@ -25,6 +26,8 @@ public class Square {
         type = 1;
         return length;
     }
+
+ */
     public void setStart(int square){
         type = 0;
         return;
