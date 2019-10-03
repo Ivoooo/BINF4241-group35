@@ -13,10 +13,12 @@ public class Square {
         occupied = false;
         return;
     }
-    public void setOccupied(int square){
+    public void setOccupiedtrue(int square){
         occupied = true;
         return;
-
+    }
+    public  void setOccupiedfalse(int square){
+        occupied = false;
     }
     public boolean isOccupied(){
         return occupied;

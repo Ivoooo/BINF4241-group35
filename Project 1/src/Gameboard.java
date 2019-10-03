@@ -1,5 +1,6 @@
 public class Gameboard {
     Square GameboardArray[];
+    Square square = new Square();
 
     public void setSize(int j) {
         GameboardArray = new Square[j];
@@ -15,17 +16,17 @@ public class Gameboard {
         }
             return false;
     }
-    public void move(int current, int steps){
-        if(current = 0){
-            GameboardArray[0] += steps;
+    public int move(int current, int step){
+        //square ist oben benannt worden
+        square.setOccupiedfalse(current);
+        int newposition = current + step;
+        square.setOccupiedtrue(newposition);
+        if(newposition > GameboardArray.length){
+            newposition = GameboardArray.length - (newposition-GameboardArray.length);
+            return newposition;
         }
         else{
-            GameboardArray[current] += steps;
+        return newposition;
         }
-        //current wird unoccuptied
-        //evaluete where to go next
-        //next occupied setzte
-        //return new position
-        // falls nur noch 1 feld und 3 gewürfelt 2 zürück
     }
 }
