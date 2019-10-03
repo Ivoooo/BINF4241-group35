@@ -5,17 +5,7 @@ public class Game {
 
     public int setSize(int i) {
         this.gameboard.setSize(i);
-        //SquareArray[0].setStart;
-        //SquareArray[SquareArray.length() - 1].setEnd;
-        // ... define Ladders and Snackes
-
         return 1;
-    }
-
-    public void movePlayer(int i) {
-        //remove player from Players
-        Player Jack = new Player(); //sött nöd si
-        //Jack.moveFwd(i);
     }
 
     public void addPlayer(String name) {
@@ -24,13 +14,14 @@ public class Game {
         players.add(player);
     }
 
-    public Player removePlayer() {
-        return players.remove();
-    }
-
     public void nextTurn() {
-        int randInt = myDie.rollDie();
-        Player nextPlayer = removePlayer();
 
+        while(!gameboard.isGameOver()) {
+            int randInt = myDie.rollDie();
+            Player nextPlayer = players.remove();
+            int newPositon = gameboard.move(nextPlayer.getPosition(), randInt);
+            nextPlayer.setPosition(newPositon);
+            players.add(nextPlayer);
+        }
     }
 }

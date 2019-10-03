@@ -4,22 +4,23 @@ import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(" Choose your game size: ");
         Scanner keyboard = new Scanner(System.in);
-        int size = keyboard.nextInt();
         Game ourGame = new Game();
+
+        System.out.println(" Choose your game size: ");
+        int size = keyboard.nextInt();
         ourGame.setSize(size);
-        System.out.println("Your Game is of Size: " + ourGame.getSize());
 
-        System.out.println("How many players want to play? ");
-        int numplayers = keyboard.nextInt();
-
-        HashMap<String, String> Players = new HashMap<String, String>();
-        for (int i = 1 ; i <= numplayers;++i){
-            Players.put("Player"+i ,"currentsquare");
+        System.out.println("How many players want to play? (Between 2 and 4");
+        int numPlayers = keyboard.nextInt();
+        if (numPlayers < 2 || numPlayers > 4) {
+            System.out.println("Wrong number of players.");
         }
-        for (String i : Players.keySet()) {
-            System.out.println(i);
+
+        for (int i = 1 ; i <= numPlayers;++i){
+            System.out.println("How should your new player be named?");
+            //get String
+            ourGame.addPlayer("Fred");
         }
     }
 }
