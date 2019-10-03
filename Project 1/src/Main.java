@@ -12,14 +12,17 @@ public class Main {
         int numplayers = keyboard.nextInt();
 
         HashMap<String, String> Players = new HashMap<String, String>();
-        for (int i = 1 ; i <= numplayers;){
+        for (int i = 1 ; i <= numplayers;++i){
             Players.put("Player"+i ,"currentsquare");
-            i++;
         }
         for (String i : Players.keySet()) {
             System.out.println(i);
         }
 
-
+        Game test = new Game();
+        test.setSize(5);
+        System.out.println(test.gamesize());
     }
+
+
 }
