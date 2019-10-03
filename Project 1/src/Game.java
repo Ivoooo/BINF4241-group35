@@ -26,4 +26,10 @@ public class Game {
         //if game not over:
         return "prevPlayer.name rolled a " + randInt;
     }
+
+    public void movePlayer(int i) {
+        //remove player from Players
+        Player Jack = new Player(); //sött nöd si
+        //Jack.moveFwd(i);
+    }
 }
