@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b6e4d10-b292-4847-a9e9-9f6ece6980bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Project 1/src/Square.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project 1/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project 1/src/Player.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,7 +84,7 @@
       <workItem from="1570024392698" duration="54000" />
       <workItem from="1570040335606" duration="1263000" />
       <workItem from="1570104018936" duration="68000" />
-      <workItem from="1570104362559" duration="2245000" />
+      <workItem from="1570104362559" duration="3211000" />
     </task>
     <servers />
   </component>

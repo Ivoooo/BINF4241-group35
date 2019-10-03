@@ -1,12 +1,12 @@
 public class Player {
-    private int players;
+    private int player;
 
-    public int getName(int i) {
-        this.players = i;
+    public int setName(int i) {
+        this.player = i;
         return 0;
 
     }
-    public int getPosition(){
-        return 0;
+    public int getName(){
+        return this.player;
     }
 }
