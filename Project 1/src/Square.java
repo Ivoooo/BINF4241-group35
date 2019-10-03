@@ -15,7 +15,7 @@ public class Square {
         return;
 
     }
-    public boolean isOccupied(int square){
+    public boolean isOccupied(){
         return occupied;
     }
 
