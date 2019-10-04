@@ -11,10 +11,17 @@ public class GameBoard {
 
         //this.gameB
         //TODO set Ladders & Snakes
-        int numsnake = Randomizer.generate(-1, -(size % 5));
-        int numladder = Randomizer.generate(1, (size % 5));
-        int eventS = 2 ;//Randomizer.generate(2,gameBoard.length-2);
-        int eventL= 4 ;//Randomizer.generate(2,gameBoard.length-1);
+        int numsnake =0;
+        int numladder=0;
+        int eventS=0;
+        int eventL=0;
+
+        while (eventL + numsnake < 1 | eventL +numladder > gameBoard.length-1 ){
+             numsnake = Randomizer.generate(-2, -(size-size/2));
+             numladder = Randomizer.generate(2, (size-size/2));
+             eventS = Randomizer.generate(3,gameBoard.length-2);
+             eventL= Randomizer.generate(2,gameBoard.length-1);
+        }
 
         for (int j = 0; j<2; j++) {
             this.gameBoard[eventS].makeShortcut(eventS + numsnake, "SNAKE");
@@ -46,7 +53,10 @@ public class GameBoard {
             newPosition = gameBoard[newPosition].getDestination();
             gameBoard[newPosition].tryMove(current.getName());
         }
-
+        if(gameBoard[newPosition].getDestination() > gameBoard.length-1){
+            int overstep = step+1 - (gameBoard.length-1 - current.getPosition());
+            newPosition = getNextPosition(gameBoard.length-1,-overstep);
+        }
         current.setPosition(newPosition);
         return current;
     }

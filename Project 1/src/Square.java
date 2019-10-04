@@ -64,7 +64,7 @@ public class Square {
             return str + "]";
         }
         else if (type == SquareTypes.SNAKE) {
-            return str + "<-" + dest + ']';
+            return "[" + dest + "<-" + position + ']';
         }
         return str + "->" + dest + ']';
     }
