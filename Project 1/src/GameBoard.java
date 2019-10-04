@@ -16,17 +16,19 @@ public class GameBoard {
         int eventS=0;
         int eventL=0;
 
-        while (eventL + numsnake < 1 | eventL +numladder > gameBoard.length-1 ){
-             numsnake = Randomizer.generate(-2, -(size-size/2));
-             numladder = Randomizer.generate(2, (size-size/2));
-             eventS = Randomizer.generate(3,gameBoard.length-2);
-             eventL= Randomizer.generate(2,gameBoard.length-1);
-        }
 
-        for (int j = 0; j<2; j++) {
-            this.gameBoard[eventS].makeShortcut(eventS + numsnake, "SNAKE");
-            this.gameBoard[eventL].makeShortcut(eventL + numladder, "LADDER");
+
+        while ((eventL + numsnake) < 1 | eventL +numladder > (gameBoard.length-1) ){
+            numsnake = Randomizer.generate(-1, -(size-size/2));
+            numladder = Randomizer.generate(2, (size-size/2));
+            eventS = Randomizer.generate(3,gameBoard.length-2);
+            eventL= Randomizer.generate(2,gameBoard.length-1);
         }
+                this.gameBoard[eventS].makeShortcut(eventS + numsnake, "SNAKE");
+                this.gameBoard[eventL].makeShortcut(eventL + numladder, "LADDER");
+
+
+
     }
 
     public boolean isGameOver() {
@@ -46,17 +48,20 @@ public class GameBoard {
 
     public Player move(Player current, int step){
         gameBoard[current.getPosition()].leave(current.getName());
+
         int newPosition = getNextPosition(current.getPosition(), step);
 
+        if(gameBoard[newPosition].getDestination() > gameBoard.length-1){
+            newPosition = step - (gameBoard.length-1 - current.getPosition());
+            gameBoard[newPosition].tryMove(current.getName());
+           }
         Boolean unoccupied = gameBoard[newPosition].tryMove(current.getName());
         if (!unoccupied) {
             newPosition = gameBoard[newPosition].getDestination();
             gameBoard[newPosition].tryMove(current.getName());
         }
-        if(gameBoard[newPosition].getDestination() > gameBoard.length-1){
-            int overstep = step+1 - (gameBoard.length-1 - current.getPosition());
-            newPosition = getNextPosition(gameBoard.length-1,-overstep);
-        }
+
+
         current.setPosition(newPosition);
         return current;
     }
