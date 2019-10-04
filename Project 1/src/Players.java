@@ -1,16 +1,16 @@
-import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
 
 public class Players {
-    Stack players = new Stack();
+    private Queue<Player> players = new LinkedList<>();
 
-    public boolean add(Player player) {
-        players.push(player);
-        return true;
+    public void add(Player player) {
+        players.add(player);
     }
 
     public Player remove() {
-        if (!players.empty()) {
-            return (Player) players.pop();
+        if (players.size() > 0) {
+            return players.remove();
         }
         else {
             return null;

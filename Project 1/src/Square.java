@@ -1,73 +1,71 @@
+import java.util.Vector;
+
 public class Square {
-
-    int type;
-    boolean occupied;
-
-
-    public void newSquare(){
-        type=3;
-        occupied = false;
+    private enum SquareTypes {
+        START,
+        FINISH,
+        SNAKE,
+        LADDER,
+        NORMAL,
     }
 
-    public void leave(){
-        occupied = false;
-        return;
-    }
-    public void setOccupiedtrue(int square){
-        occupied = true;
-        return;
-    }
-    public  void setOccupiedfalse(int square){
-        occupied = false;
-    }
-    public boolean isOccupied(){
-        return occupied;
+    private SquareTypes type = SquareTypes.NORMAL;
+    private Vector<String> occupants = new Vector<>();
+    private int destination = 0; //either destination of Snake/Ladder or start tile.
+
+    public void leave(String name){
+        int i = occupants.indexOf(name);
+        occupants.remove(i);
     }
 
-    public void MoveandLand(Player p){
-        if (occupied == true) {
-           // p.setPosition(1);
+    public Boolean tryMove (String name){
+        if (type != SquareTypes.SNAKE && type != SquareTypes.LADDER && !isOccupied()) {
+            occupants.add(name);
+            return true;
         }
-        return;
+        return false;
     }
 
-    public int makeSnake(int square,int gamesize){
-        int length = getRandomNumberInRange(-1,-6);
-        type = -1;
-        return length;
-    }
-
-    public int makeLadder(int square, int gamesize){
-        int length = getRandomNumberInRange(1,6);
-        type = 1;
-        return length;
-    }
-
-        private static int getRandomNumberInRange(int min, int max) {
-
-        if (min >= max) {
-            throw new IllegalArgumentException("max must be greater than min");
+    public void makeShortcut(int destination, String type) {
+        this.destination = destination;
+        if (type.equals("SNAKE")) {
+            this.type = SquareTypes.SNAKE;
         }
-
-        return (int)(Math.random() * ((max - min) + 1)) + min;
+        else {
+            this.type = SquareTypes.LADDER;
+        }
     }
 
-
-
-
-    public void setStart(int square) {
-        type = 0;
-        occupied = false;
-        return;
+    public int getDestination() {
+        return this.destination;
     }
 
-    public void setFinish(int square) {
-        type = 2;
-        return;
+    public void setStart() {
+        type = SquareTypes.START;
     }
 
-    public int squareType(int square) {
-        return type;
+    public void setFinish() {
+        type = SquareTypes.FINISH;
     }
 
+    public Boolean isOccupied() {
+        return (occupants.size() > 0 && type != SquareTypes.START);
+    }
+
+    public String repr(int position) {
+        position++; //because in real life it starts at 1
+        int dest = destination + 1;
+        String str = "[" + position;
+
+        if (type != SquareTypes.SNAKE && type != SquareTypes.LADDER) {
+            for(int i=0; i < occupants.size(); ++i) {
+                str += '<' + occupants.get(i) + '>';
+            }
+            return str + "]";
+        }
+        else if (type == SquareTypes.SNAKE) {
+            return str + "<-" + dest + ']';
+        }
+        return str + "->" + dest + ']';
+    }
 }

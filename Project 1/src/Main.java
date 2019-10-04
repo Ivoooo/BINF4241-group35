@@ -1,26 +1,39 @@
 import java.util.Scanner;
-import java.util.HashMap;
-
 
 public class Main {
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
-        Game ourGame = new Game();
 
+        //get size
         System.out.println(" Choose your game size: ");
         int size = keyboard.nextInt();
-        ourGame.setSize(size);
+        if (size < 2) {
+            System.out.println("Too few tiles.");
+            size = 15;
+            System.out.println("You now play with 15 tiles instead!");
+        }
+        Game ourGame = new Game(size);
 
-        System.out.println("How many players want to play? (Between 2 and 4");
+        //get players
+        System.out.println("How many players want to play? (Between 2 and 4)");
         int numPlayers = keyboard.nextInt();
         if (numPlayers < 2 || numPlayers > 4) {
             System.out.println("Wrong number of players.");
+            numPlayers = 2;
+            System.out.println("You now play with 2 players instead!");
         }
 
-        for (int i = 1 ; i <= numPlayers;++i){
+        String name;
+        for (int i=1 ; i <= numPlayers; ++i){
             System.out.println("How should your new player be named?");
-            //get String
-            ourGame.addPlayer("Fred");
+            name = keyboard.next();
+            ourGame.addPlayer(name);
+        }
+
+        //play game
+        System.out.println("Initial state:" + ourGame.getGameBoard());
+        while (!ourGame.isFinished()) {
+            ourGame.nextTurn();
         }
     }
 }

@@ -1,27 +1,35 @@
 public class Game {
     private Die myDie = new Die();
     private Players players = new Players();
-    private Gameboard gameboard = new Gameboard();
+    private GameBoard gameboard;
 
-    public int setSize(int i) {
-        this.gameboard.setSize(i);
-        return 1;
+    public Game(int size) {
+        this.gameboard = new GameBoard(size);
     }
 
     public void addPlayer(String name) {
-        Player player = new Player();
-        player.setName(name);
+        Player player = new Player(name);
+        gameboard.place(name);
         players.add(player);
     }
 
-    public void nextTurn() {
+    public boolean isFinished() {
+        return gameboard.isGameOver();
+    }
 
-        while(!gameboard.isGameOver()) {
-            int randInt = myDie.rollDie();
-            Player nextPlayer = players.remove();
-            int newPositon = gameboard.move(nextPlayer.getPosition(), randInt);
-            nextPlayer.setPosition(newPositon);
-            players.add(nextPlayer);
+    public String getGameBoard() {
+        return gameboard.repr();
+    }
+
+    public void nextTurn() {
+        if(!isFinished()) {
+            int roll = myDie.rollDie();
+            Player currPlayer = players.remove();
+            currPlayer = gameboard.move(currPlayer, roll);
+
+            System.out.println(currPlayer.getName() + " rolls " + roll + ": " + this.getGameBoard());
+
+            players.add(currPlayer);
         }
     }
 }
