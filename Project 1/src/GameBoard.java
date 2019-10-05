@@ -39,7 +39,7 @@ public class GameBoard {
         if (current + step < gameBoard.length) {
             return current + step;
         }
-        return current + (current + step - gameBoard.length);
+        return current + (current + step - gameBoard.length-1);
     }
 
     public void place(String name) {
