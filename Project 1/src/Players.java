@@ -12,8 +12,6 @@ public class Players {
         if (players.size() > 0) {
             return players.remove();
         }
-        else {
-            return null;
-        }
+        return null;
     }
 }
