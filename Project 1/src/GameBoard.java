@@ -39,7 +39,7 @@ public class GameBoard {
         if (current + step < gameBoard.length) {
             return current + step;
         }
-        return current + (current + step - gameBoard.length-1);
+        return 2*gameBoard.length - (current + step + 2);
     }
 
     public void place(String name) {
@@ -47,20 +47,14 @@ public class GameBoard {
     }
 
     public Player move(Player current, int step){
+        //leave position
         gameBoard[current.getPosition()].leave(current.getName());
 
+        //find new place to go
         int newPosition = getNextPosition(current.getPosition(), step);
-
-        if(gameBoard[newPosition].getDestination() > gameBoard.length-1){
-            newPosition = step - (gameBoard.length-1 - current.getPosition());
-            gameBoard[newPosition].tryMove(current.getName());
-           }
-        Boolean unoccupied = gameBoard[newPosition].tryMove(current.getName());
-        if (!unoccupied) {
+        while (!gameBoard[newPosition].tryMove(current.getName())) {
             newPosition = gameBoard[newPosition].getDestination();
-            gameBoard[newPosition].tryMove(current.getName());
         }
-
 
         current.setPosition(newPosition);
         return current;

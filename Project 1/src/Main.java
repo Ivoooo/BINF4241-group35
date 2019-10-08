@@ -5,9 +5,9 @@ public class Main {
         Scanner keyboard = new Scanner(System.in);
 
         //get size
-        System.out.println(" Choose your game size: ");
+        System.out.println(" Choose your game size: (more than 5)");
         int size = keyboard.nextInt();
-        if (size < 2) {
+        if (size <= 5) {
             System.out.println("Too few tiles.");
             size = 15;
             System.out.println("You now play with 15 tiles instead!");

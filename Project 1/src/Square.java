@@ -19,7 +19,7 @@ public class Square {
     }
 
     public Boolean tryMove (String name){
-        if (type != SquareTypes.SNAKE && type != SquareTypes.LADDER && !isOccupied()) {
+        if (type != SquareTypes.SNAKE && type != SquareTypes.LADDER) {
             occupants.add(name);
             return true;
         }
