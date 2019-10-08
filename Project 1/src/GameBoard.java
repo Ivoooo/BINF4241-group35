@@ -9,14 +9,10 @@ public class GameBoard {
         this.gameBoard[0].setStart();
         this.gameBoard[gameBoard.length - 1].setFinish();
 
-        //this.gameB
-        //TODO set Ladders & Snakes
         int numsnake =0;
         int numladder=0;
         int eventS=0;
         int eventL=0;
-
-
 
         while ((eventL + numsnake) < 1 | eventL +numladder > (gameBoard.length-1) ){
             numsnake = Randomizer.generate(-1, -(size-size/2));
@@ -24,11 +20,12 @@ public class GameBoard {
             eventS = Randomizer.generate(3,gameBoard.length-2);
             eventL= Randomizer.generate(2,gameBoard.length-1);
         }
-                this.gameBoard[eventS].makeShortcut(eventS + numsnake, "SNAKE");
-                this.gameBoard[eventL].makeShortcut(eventL + numladder, "LADDER");
 
-
-
+        this.gameBoard[eventL].makeShortcut(eventL + numladder, "LADDER");
+        //so they can't loop to each other
+        if (eventS != eventL + numladder || eventL != eventS + numsnake) {
+            this.gameBoard[eventS].makeShortcut(eventS + numsnake, "SNAKE");
+        }
     }
 
     public boolean isGameOver() {
