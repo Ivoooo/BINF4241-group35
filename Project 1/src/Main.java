@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -6,23 +7,38 @@ public class Main {
 
         //get size
         System.out.println(" Choose your game size: (more than 5)");
-        int size = keyboard.nextInt();
-        if (size <= 5) {
-            System.out.println("Too few tiles.");
+        int size;
+        try {
+            size = Integer.parseInt(keyboard.next());
+        }
+        catch(NumberFormatException e)
+        {
+            System.out.println("Since you failed to give a proper number you'll now play with 15 tiles.");
             size = 15;
-            System.out.println("You now play with 15 tiles instead!");
+        }
+        if (size <= 5) {
+            System.out.println("Too few tiles. You now play with 15 tiles instead!");
+            size = 15;
         }
         Game ourGame = new Game(size);
 
         //get players
         System.out.println("How many players want to play? (Between 2 and 4)");
-        int numPlayers = keyboard.nextInt();
+        int numPlayers;
+        try {
+            numPlayers = Integer.parseInt(keyboard.next());
+        }
+        catch(NumberFormatException e)
+        {
+            System.out.println("Since you failed to give a proper number you'll now play with 3 players.");
+            numPlayers = 3;
+        }
         if (numPlayers < 2 || numPlayers > 4) {
-            System.out.println("Wrong number of players.");
+            System.out.println("Wrong number of players. You now play with 2 players instead!");
             numPlayers = 2;
-            System.out.println("You now play with 2 players instead!");
         }
 
+        //get player's names
         String name;
         for (int i=1 ; i <= numPlayers; ++i){
             System.out.println("How should your new player be named?");
