@@ -1,8 +1,8 @@
-public class Queen extends Figur {
-    private types type = types.queen;
+public class Pawn extends Figur {
+    private types type = types.pawn;
     private colors col;
 
-    public Queen(String color) {
+    public Pawn(String color) {
         if(color.equals("white"))col = colors.white;
         else col = colors.black;
     }
