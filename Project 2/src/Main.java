@@ -3,19 +3,25 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
-        // Get Player Name
         Game ourGame = new Game();
         String name;
+        String color;
+
+        // Get Player Names: initialize Players
         for (int i= 1; i<3;i++) {
             System.out.println(" Please enter the name of Player "+i+": ");
             name = keyboard.next();
-            ourGame.addPlayer();
+            if (i==1) color = "white";
+            else color ="black";
+            ourGame.addPlayer(name,color);
         }
+
+
+        //Play Game
         while (true) {
-            System.out.println("Please enter your next move:  ");
-            String move = keyboard.next();
-            ourGame.tryMove(move);
-            ourGame.checkMate();
+            Game.nextRound();
+        }
+
 
             // get String of next move
             //
