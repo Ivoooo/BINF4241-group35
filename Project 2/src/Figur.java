@@ -1,7 +1,12 @@
 public class Figur {
-    private enum Figur_attributes{
-        type,
-        color,
+    public enum types {
+        king,
+        queen,
+
+    }
+    public enum colors{
+        black,
+        white,
     }
 
 }
