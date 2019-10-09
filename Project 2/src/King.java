@@ -1,11 +1,9 @@
 public class King extends Figur {
     private types type = types.king;
-    private colors color;
-    public class colorcheck(color) {
-        if(color == 'white'){
-            color = colors.white;
-        }
-        else{ color = colors.black;
-        }
+    private colors col;
+
+    public King(String color) {
+        if(color.equals("white"))col = colors.white;
+        else col = colors.black;
     }
 }
