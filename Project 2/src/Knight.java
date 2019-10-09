@@ -6,8 +6,11 @@ public class Knight extends Figur {
         if(color.equals("white"))col = colors.white;
         else col = colors.black;
     }
-    public class checkmove(){
-        int coordinates;
-        // coordinates = cordinate.getnumber();
+    public class boolean checkmove(){
+        int x;
+        int y;
+        x = coordinate.getX();
+        y = coordinate.getY();
+        
     }
 }
