@@ -3,10 +3,18 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
+        // Get Player Name
+        Game ourGame = new Game();
+        String name;
+        for (int i= 1; i<3;i++) {
+            System.out.println(" Please enter the name of Player "+i": ");
+            name = keyboard.next();
+            ourGame.addPlayer(name);
+        }
+        System.out.println("  ");
 
-        //get size
-        System.out.println(" Choose your game size: (more than 5)");
-        int size;
+
+       /* int size;
         try {
             size = Integer.parseInt(keyboard.next());
         }
@@ -50,5 +58,5 @@ public class Main {
         while (!ourGame.isFinished()) {
             ourGame.nextTurn();
         }
-    }
+    }*/
 }
