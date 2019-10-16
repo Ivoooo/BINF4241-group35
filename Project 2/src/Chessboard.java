@@ -25,6 +25,19 @@ public class Chessboard {
         }
     }
 
+    Coordinates findFigure(Figur.types type, Figur.colors col) {
+        for(int i=0; i < 8; ++i) {
+            for(int j=0; j < 8; ++j) {
+                if (board[i][j] != null) {
+                    if (board[i][j].getType() == type && board[i][j].getCol() == col) {
+                        return new Coordinates(i, j);
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
     boolean gameOver() {
         return false;
     }
