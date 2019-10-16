@@ -1,20 +1,10 @@
 public class Rook extends Figur {
-    private types type = types.rook;
-    private colors col;
-    private Coordinates coordinate;
     public Rook(String color) {
-        if(color.equals("white"))col = colors.white;
-        else col = colors.black;
+        super(color, types.rook);
     }
-    public boolean checkmove(){
-        int x;
-        int y;
-        x = coordinate.getX();
-        y = coordinate.getY();
-        // x2 = coordinate.movingX();
-        // y2 = coordinate.movingY();
-        if(x2 - x = 0 && y2 -y != 0) return true;
-        if(y2 - y = 0 && x2- x != 0) return true;
+    public boolean checkmove(int current_x, int current_y, int new_x, int new_y){
+        if(new_x - current_x == 0 && new_y - current_y != 0) return true;
+        if(new_y - current_y == 0 && new_x- current_x != 0) return true;
         else return false;
 
     }
