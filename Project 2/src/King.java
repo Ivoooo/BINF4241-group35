@@ -14,6 +14,6 @@ public class King extends Figur {
         // y2 = coordinate.movingY();
         if((x2-x > 1 || x2-x <-1) && (y2-y > 1 || y2-y < -1)) return false;
         else return true;
-
+    
     }
 }
