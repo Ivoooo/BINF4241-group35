@@ -10,23 +10,19 @@ public class Game {
 
     public void nextRound(String move){
         Figur currFigure = new Figur();
-        Coordinates end = new Coordinates();
+        int x = 0;
+        int y = 0 ;
+        Coordinates end = new Coordinates(x,y);
         //Resolve String:
         //set currFigure type: and color
         //Pass Information: Figur and Position: end to move
-        chessboard.isCheck;
-        Move.move(figur,end);
+        if(ChessBoard.isCheck == True){
+            //next move has to resolve check.
+            //else : Check mate.
+        }
+        Move.move(currFigure,end);
 
     }
 
-
-    public void tryMove(String move){
-        ChessBoardoard.checkMove(move);
-
-    }
-    public boolean checkMate(){
-         // check both Kings ?
-        //Game Over ; Winner is:
-    }
 
 }

@@ -6,7 +6,9 @@ public class Move {
      //   currY = Figur.Coordinates.getY();
      //   if(Chessboard.move((currX,currY),end) == true){
      //       Figur.Coordinates = end;
+        // Chessboard.newPosition(figure,x,y)
     //    }
+        //
 
 
     }
