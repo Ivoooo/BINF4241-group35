@@ -55,4 +55,12 @@ public class Chessboard {
     boolean move(Figur.types type, Figur.colors col, int x, int y, boolean capture) {
         return true;
     }
+
+    public static void boardoutput(){
+        for(int i=0; i < 8; ++i){
+            for(int j=0; j < 8; ++j){
+                System.out.println(Figur.figurOutPut());
+            }
+        }
+    }
 }
