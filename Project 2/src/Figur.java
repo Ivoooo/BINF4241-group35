@@ -14,13 +14,19 @@ public class Figur {
     }
 
     private colors col;
+    private types type;
 
-    public Figur(String color) {
+    public Figur(String color, types type) {
         if(color.equals("white")) col = colors.white;
         else col = colors.black;
+        this.type = type;
     }
 
     public colors getCol() {
         return col;
+    }
+
+    public types getType() {
+        return type;
     }
 }
