@@ -31,7 +31,7 @@ public class Chessboard {
         }
     }
 
-    Coordinates findFigure(attributes.types type, attributes.colors col) {
+    private Coordinates findFigure(attributes.types type, attributes.colors col) {
         for(int i=0; i < 8; ++i) {
             for(int j=0; j < 8; ++j) {
                 if (board[i][j] != null) {
