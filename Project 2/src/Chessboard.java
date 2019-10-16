@@ -27,7 +27,7 @@ public class Chessboard {
 
         col = "black";
         for(int i = 0; i < 8; ++i) {
-            board[7][i] = new Pawn(col);
+            board[6][i] = new Pawn(col);
         }
     }
 
@@ -60,11 +60,15 @@ public class Chessboard {
         return board[coord.getX()][coord.getY()].checkmove(coord.getX(), coord.getY(), x, y);
     }
 
-    public static void boardoutput(){
+    public void boardoutput(){
+        String x;
         for(int i=0; i < 8; ++i){
+            x = "";
             for(int j=0; j < 8; ++j){
-                System.out.println(Figur.figurOutPut());
+                if (board[i][j] == null) x += "[]";
+                else x += board[i][j].figureOutput();
             }
+            System.out.println(x);
         }
     }
 }
