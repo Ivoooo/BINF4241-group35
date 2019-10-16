@@ -1,6 +1,6 @@
 
 public class Game {
-    Chessboard ChessBoard = new Chessboard();
+    Chessboard ourChessBoard = new Chessboard();
 
   /*  public void addPlayer(String name,String color){
 
@@ -16,11 +16,8 @@ public class Game {
         //Resolve String:
         //set currFigure type: and color
         //Pass Information: Figur and Position: end to move
-        if(ChessBoard.isCheck == True){
-            //next move has to resolve check.
-            //else : Check mate.
-        }
-        Move.move(currFigure,end);
+
+        ourChessBoard.move(type,color,x,y, capture);
 
     }
 
