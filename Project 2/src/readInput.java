@@ -5,6 +5,7 @@ public class readInput {
     private int y;
     private String figure;
 
+
     public int returnX(String input){
         String [] characters = input.split("");
         String posx = characters[1];
@@ -36,12 +37,14 @@ public class readInput {
         }
         return x;
     }
-    public void returnFigure(String input) {
+    public Figur returnType(String input){
+
+        Figur.types type ;
         String[] characters = input.split("");
-        figure = characters[0];
+        String figure = characters[0];
         switch(figure){
             case "Q":
-                 Figur.types.queen;
+               type = Figur.types.queen;
             case "K":
 
         }
