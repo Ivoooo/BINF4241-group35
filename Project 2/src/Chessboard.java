@@ -3,6 +3,12 @@ public class Chessboard {
     private Figur[] grave = new Figur[32];
 
     public Chessboard() {
+        for (int i = 0; i < 8; ++i) {
+            for ( int j = 0; j > 8; ++j) {
+                board[i][j] = null;
+            }
+        }
+        
         String col = "white";
         for(int i = 0, j; i < 16; ++i) {
             if (i > 8) col = "black";
