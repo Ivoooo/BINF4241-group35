@@ -10,24 +10,28 @@ public class Chessboard {
         }
         
         String col = "white";
+        int x = 0;
         for(int i = 0, j; i < 16; ++i) {
-            if (i > 8) col = "black";
+            if (i >= 8) {
+                col = "black";
+                x = 7;
+            }
             j = i % 8;
-            if (j == 0 || j == 7) board[0][j] = new Rook(col);
-            else if (j == 1 || j == 6) board[0][j] = new Knight(col);
-            else if (j == 2 || j == 5) board[0][j] = new Bishop(col);
-            else if (j == 3) board[0][j] = new Queen(col);
-            else board[0][j] = new King(col);
+            if (j == 0 || j == 7) board[x][j] = new Rook(col);
+            else if (j == 1 || j == 6) board[x][j] = new Knight(col);
+            else if (j == 2 || j == 5) board[x][j] = new Bishop(col);
+            else if (j == 3) board[x][j] = new Queen(col);
+            else board[x][j] = new King(col);
         }
 
         col = "white";
-        for(int i = 0; i < 8; ++i) {
-            board[1][i] = new Pawn(col);
-        }
-
-        col = "black";
-        for(int i = 0; i < 8; ++i) {
-            board[6][i] = new Pawn(col);
+        x = 1;
+        for(int i = 0; i < 16; ++i) {
+            if (i >= 8) {
+                col = "black";
+                x = 6;
+            }
+            board[x][i % 8] = new Pawn(col);
         }
     }
 
@@ -62,7 +66,7 @@ public class Chessboard {
 
     public void boardoutput(){
         String x;
-        for(int i=0; i < 8; ++i){
+        for(int i=7; i >= 0; --i){
             x = "";
             for(int j=0; j < 8; ++j){
                 if (board[i][j] == null) x += "[]";
