@@ -1,6 +1,4 @@
 public class Figur {
-
-
     private attributes.colors col;
     private attributes.types type;
 
@@ -16,5 +14,9 @@ public class Figur {
 
     public attributes.types getType() {
         return type;
+    }
+
+    public boolean checkmove(int current_x, int current_y, int new_x, int new_y) {
+        return false;
     }
 }
