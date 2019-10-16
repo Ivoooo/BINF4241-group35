@@ -52,7 +52,7 @@ public class Chessboard {
         return false;
     }
 
-    boolean move(int x, int y, int newX, int newY) {
+    boolean move(Figur.types type, Figur.colors col, int x, int y, boolean capture) {
         return true;
     }
 }
