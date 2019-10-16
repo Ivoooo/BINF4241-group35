@@ -1,4 +1,5 @@
 import java.lang.*;
+import java.security.KeyStore;
 
 public class readInput {
     private int x;
@@ -37,21 +38,44 @@ public class readInput {
         }
         return x;
     }
-    public Figur returnType(String input){
+    public attributes.types returnType(String input){
 
-        Figur.types type ;
         String[] characters = input.split("");
         String figure = characters[0];
         switch(figure){
             case "Q":
-               type = Figur.types.queen;
-            case "K":
+               return attributes.types.queen;
 
+            case "K":
+                return attributes.types.king;
+
+            case "N":
+                return attributes.types.knight;
+
+            case "R":
+                return attributes.types.rook;
+
+            case "B":
+                return attributes.types.bishop;
+
+            case "P":
+                return attributes.types.pawn;
+                break;
         }
+
+        return null;
     }
     public int returnY(String input){
         String[] characters = input.split("");
         y = Integer.parseInt(characters[2]);
+        return y;
     }
 
+    public boolean capture(String input){
+        if (input.contains("x") || input.contains("X") || input.contains(":")) {
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
