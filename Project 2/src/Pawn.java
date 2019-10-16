@@ -1,6 +1,6 @@
 public class Pawn extends Figur {
     public Pawn(String color) {
-        super(color, types.pawn);
+        super(color, attributes.types.pawn);
     }
     public boolean checkmove(int current_x, int current_y, int new_x, int new_y){
         // how do we know if it's the first move or not

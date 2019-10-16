@@ -1,32 +1,20 @@
 public class Figur {
-    public enum types {
-        king,
-        queen,
-        knight,
-        pawn,
-        rook,
-        bishop,
 
-    }
-    public enum colors{
-        black,
-        white,
-    }
 
-    private colors col;
-    private types type;
+    private attributes.colors col;
+    private attributes.types type;
 
-    public Figur(String color, types type) {
-        if(color.equals("white")) col = colors.white;
-        else col = colors.black;
+    public Figur(String color, attributes.  types type) {
+        if(color.equals("white")) col = attributes.colors.white;
+        else col = attributes.colors.black;
         this.type = type;
     }
 
-    public colors getCol() {
+    public attributes.colors getCol() {
         return col;
     }
 
-    public types getType() {
+    public attributes.types getType() {
         return type;
     }
 }

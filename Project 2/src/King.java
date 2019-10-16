@@ -1,7 +1,7 @@
 public class King extends Figur {
 
     public King(String color) {
-        super(color, types.king);
+        super(color, attributes.types.king);
     }
     public boolean checkmove(int current_x, int current_y, int new_x, int new_y) {
 
