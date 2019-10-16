@@ -1,6 +1,6 @@
 
 public class Game {
-    Chessboard ChessBoard = new Chessboard;
+    Chessboard ChessBoard = new Chessboard();
 
   /*  public void addPlayer(String name,String color){
 
