@@ -31,7 +31,7 @@ public class Chessboard {
         }
     }
 
-    Coordinates findFigure(Figur.types type, Figur.colors col) {
+    private Coordinates findFigure(attributes.types type, attributes.colors col) {
         for(int i=0; i < 8; ++i) {
             for(int j=0; j < 8; ++j) {
                 if (board[i][j] != null) {
@@ -52,8 +52,12 @@ public class Chessboard {
         return false;
     }
 
-    boolean move(Figur.types type, Figur.colors col, int x, int y, boolean capture) {
-        return true;
+    boolean move(attributes.types type, attributes.colors col, int x, int y, boolean capture) {
+        Coordinates coord = findFigure(type, col);
+        if (coord == null) return false;
+        if (capture && board[x][y] == null || !capture && board[x][y] != null) return false; //todo check if killing the same color
+
+        return board[coord.getX()][coord.getY()].checkmove(coord.getX(), coord.getY(), x, y);
     }
 
     public static void boardoutput(){
