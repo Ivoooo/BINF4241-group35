@@ -13,4 +13,14 @@ public class Figur {
         white,
     }
 
+    private colors col;
+
+    public Figur(String color) {
+        if(color.equals("white")) col = colors.white;
+        else col = colors.black;
+    }
+
+    public colors getCol() {
+        return col;
+    }
 }
