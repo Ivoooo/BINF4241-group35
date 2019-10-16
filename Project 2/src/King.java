@@ -1,5 +1,4 @@
 public class King extends Figur {
-    private types type = types.king;
     private Coordinates coordinate;
 
     public King(String color) {
