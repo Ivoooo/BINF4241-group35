@@ -6,7 +6,7 @@ public class Knight extends Figur {
         if(color.equals("white"))col = colors.white;
         else col = colors.black;
     }
-    public class boolean checkmove(){
+    public boolean checkmove(){
         int x;
         int y;
         x = coordinate.getX();
