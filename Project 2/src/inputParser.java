@@ -1,8 +1,20 @@
 import java.lang.*;
 
 abstract public class inputParser {
+
+    private static String checkPawn(String input){
+        if (input.length() == 2){
+            StringBuilder newString = new StringBuilder(input);
+            newString.insert(0, "P");
+            return newString.toString();
+        }
+        else return input;
+    }
+
+
     public static int returnX(String input){
-        String [] characters = input.split("");
+        String checkedInput = checkPawn(input);
+        String [] characters = checkedInput.split("");
         String posx = characters[1];
         switch (posx) {
             case "a":
@@ -27,9 +39,10 @@ abstract public class inputParser {
     }
 
     public static Attributes.types returnType(String input){
-
-        String[] characters = input.split("");
+        String checkedInput = checkPawn(input);
+        String[] characters = checkedInput.split("");
         String figure = characters[0];
+
         switch(figure){
             case "Q":
                return Attributes.types.queen;
@@ -53,7 +66,8 @@ abstract public class inputParser {
         return null;
     }
     public static int returnY(String input){
-        String[] characters = input.split("");
+        String checkedInput = checkPawn(input);
+        String[] characters = checkedInput.split("");
         return Integer.parseInt(characters[2]) - 1;
     }
 
