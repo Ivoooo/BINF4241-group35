@@ -1,44 +1,32 @@
 import java.lang.*;
-import java.security.KeyStore;
 
-public class readInput {
-    private int x;
-    private int y;
-    private String figure;
-
-
-    public int returnX(String input){
+public class inputParser {
+    public static int returnX(String input){
         String [] characters = input.split("");
         String posx = characters[1];
         switch (posx) {
             case "a":
-                x = 0;
-                break;
+                return 0;
             case "b":
-                x =1;
-                break;
+                return 1;
             case "c":
-                x =2;
-                break;
+                return 2;
             case "d":
-                x =3;
-                break;
+                return 3;
             case "e":
-                x =4;
-                break;
+                return 4;
             case "f":
-                x =5;
-                break;
+                return 5;
             case "g":
-                x =6;
-                break;
+                return 6;
             case "h":
-                x =7;
-                break;
+                return 7;
+            default:
+                return -1;
         }
-        return x;
     }
-    public attributes.types returnType(String input){
+
+    public static attributes.types returnType(String input){
 
         String[] characters = input.split("");
         String figure = characters[0];
@@ -60,22 +48,16 @@ public class readInput {
 
             case "P":
                 return attributes.types.pawn;
-                break;
         }
 
         return null;
     }
-    public int returnY(String input){
+    public static int returnY(String input){
         String[] characters = input.split("");
-        y = Integer.parseInt(characters[2]);
-        return y;
+        return Integer.parseInt(characters[2]) - 1;
     }
 
-    public boolean capture(String input){
-        if (input.contains("x") || input.contains("X") || input.contains(":")) {
-            return true;
-        }else{
-            return false;
-        }
+    public static boolean capture(String input){
+        return (input.contains("x") || input.contains("X") || input.contains(":"));
     }
 }

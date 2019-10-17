@@ -12,6 +12,4 @@ public interface attributes {
         black,
         white,
     }
-
-
 }
