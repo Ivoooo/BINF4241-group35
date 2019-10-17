@@ -1,6 +1,6 @@
-public class Knight extends Figur {
+public class Knight extends Figure {
     public Knight(String color) {
-        super(color, attributes.types.knight);
+        super(color, Attributes.types.knight);
     }
     public boolean checkmove(int current_x, int current_y, int new_x, int new_y){
 

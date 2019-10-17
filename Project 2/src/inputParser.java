@@ -1,6 +1,6 @@
 import java.lang.*;
 
-public class inputParser {
+abstract public class inputParser {
     public static int returnX(String input){
         String [] characters = input.split("");
         String posx = characters[1];
@@ -26,28 +26,28 @@ public class inputParser {
         }
     }
 
-    public static attributes.types returnType(String input){
+    public static Attributes.types returnType(String input){
 
         String[] characters = input.split("");
         String figure = characters[0];
         switch(figure){
             case "Q":
-               return attributes.types.queen;
+               return Attributes.types.queen;
 
             case "K":
-                return attributes.types.king;
+                return Attributes.types.king;
 
             case "N":
-                return attributes.types.knight;
+                return Attributes.types.knight;
 
             case "R":
-                return attributes.types.rook;
+                return Attributes.types.rook;
 
             case "B":
-                return attributes.types.bishop;
+                return Attributes.types.bishop;
 
             case "P":
-                return attributes.types.pawn;
+                return Attributes.types.pawn;
         }
 
         return null;

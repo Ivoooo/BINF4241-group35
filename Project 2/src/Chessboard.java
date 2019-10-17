@@ -1,6 +1,6 @@
 public class Chessboard {
-    private Figur[][] board = new Figur[8][8];
-    private Figur[] grave = new Figur[32];
+    private Figure[][] board = new Figure[8][8];
+    private Figure[] grave = new Figure[32];
 
     public Chessboard() {
         for (int i = 0; i < 8; ++i) {
@@ -35,7 +35,7 @@ public class Chessboard {
         }
     }
 
-    private Coordinates findFigure(attributes.types type, attributes.colors col) {
+    private Coordinates findFigure(Attributes.types type, Attributes.colors col) {
         for(int i=0; i < 8; ++i) {
             for(int j=0; j < 8; ++j) {
                 if (board[i][j] != null) {
@@ -56,7 +56,7 @@ public class Chessboard {
         return false;
     }
 
-    boolean move(attributes.types type, attributes.colors col, int x, int y, boolean capture) {
+    boolean move(Attributes.types type, Attributes.colors col, int x, int y, boolean capture) {
         Coordinates coord = findFigure(type, col);
         if (coord == null) return false;
         if (capture && board[x][y] == null || !capture && board[x][y] != null) return false; //todo check if killing the same color
@@ -64,7 +64,7 @@ public class Chessboard {
         return board[coord.getX()][coord.getY()].checkmove(coord.getX(), coord.getY(), x, y);
     }
 
-    public void boardoutput(){
+    public void boardOutput(){
         String x;
         for(int i=7; i >= 0; --i){
             x = "";
