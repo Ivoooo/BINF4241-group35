@@ -1,6 +1,33 @@
 import java.lang.*;
 
-abstract public class inputParser {
+public class parsedInput {
+    private int x;
+    private int y;
+    private Attributes.types type;
+    private boolean capture;
+
+    public parsedInput(String i) {
+        x = returnX(i);
+        y = returnY(i);
+        type = returnType(i);
+        capture = returnCapture(i);
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public Attributes.types getType() {
+        return type;
+    }
+
+    public boolean getCapture() {
+        return capture;
+    }
 
     private static String checkPawn(String input){
         if (input.length() == 2){
@@ -11,8 +38,7 @@ abstract public class inputParser {
         else return input;
     }
 
-
-    public static int returnX(String input){
+    private static int returnX(String input){
         String checkedInput = checkPawn(input);
         String [] characters = checkedInput.split("");
         String posx = characters[1];
@@ -38,7 +64,7 @@ abstract public class inputParser {
         }
     }
 
-    public static Attributes.types returnType(String input){
+    private static Attributes.types returnType(String input){
         String checkedInput = checkPawn(input);
         String[] characters = checkedInput.split("");
         String figure = characters[0];
@@ -65,13 +91,14 @@ abstract public class inputParser {
 
         return null;
     }
-    public static int returnY(String input){
+
+    private static int returnY(String input){
         String checkedInput = checkPawn(input);
         String[] characters = checkedInput.split("");
         return Integer.parseInt(characters[2]) - 1;
     }
 
-    public static boolean capture(String input){
+    private static boolean returnCapture(String input){
         return (input.contains("x") || input.contains("X") || input.contains(":"));
     }
 }

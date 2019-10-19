@@ -56,12 +56,16 @@ public class Chessboard {
         return false;
     }
 
-    boolean move(Attributes.types type, Attributes.colors col, int x, int y, boolean capture) {
-        Coordinates coord = findFigure(type, col);
+    boolean move(parsedInput input, Attributes.colors col) {
+        Coordinates coord = findFigure(input.getType(), col); //todo several figures might be possible
         if (coord == null) return false;
-        if (capture && board[x][y] == null || !capture && board[x][y] != null) return false; //todo check if killing the same color
+        if (input.getCapture() && board[input.getX()][input.getY()] == null ||
+                !input.getCapture() && board[input.getX()][input.getY()] != null) return false; //todo check if killing the same color
 
-        return board[coord.getX()][coord.getY()].checkmove(coord.getX(), coord.getY(), x, y);
+        System.out.println(coord.getX());
+        System.out.println(coord.getY());
+
+        return board[coord.getX()][coord.getY()].checkmove(coord.getX(), coord.getY(), input.getX(), input.getY());
     }
 
     public void boardOutput(){
