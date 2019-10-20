@@ -35,17 +35,23 @@ public class Chessboard {
         }
     }
 
-    private Coordinates findFigure(Attributes.types type, Attributes.colors col) {
+    private Coordinates[] findFigure(Attributes.types type, Attributes.colors col) {
+        Coordinates[] c = new Coordinates[8];
+        for(int i=0; i < 8; ++i) {
+            c[i] = null;
+        }
+
+        int amount = 0;
         for(int i=0; i < 8; ++i) {
             for(int j=0; j < 8; ++j) {
                 if (board[i][j] != null) {
                     if (board[i][j].getType() == type && board[i][j].getCol() == col) {
-                        return new Coordinates(i, j);
+                        c[amount] =  new Coordinates(i, j);
                     }
                 }
             }
         }
-        return null;
+        return c;
     }
 
     boolean gameOver() {
@@ -56,16 +62,23 @@ public class Chessboard {
         return false;
     }
 
+    //todo Qe4 works but many don't.
     boolean move(parsedInput input, Attributes.colors col) {
-        Coordinates coord = findFigure(input.getType(), col); //todo several figures might be possible
-        if (coord == null) return false;
         if (input.getCapture() && board[input.getX()][input.getY()] == null ||
                 !input.getCapture() && board[input.getX()][input.getY()] != null) return false; //todo check if killing the same color
 
-        System.out.println(coord.getX());
-        System.out.println(coord.getY());
+        Coordinates[] coords = findFigure(input.getType(), col);
+        if (coords[0] == null) return false;
 
-        return board[coord.getX()][coord.getY()].checkmove(coord.getX(), coord.getY(), input.getX(), input.getY());
+        for(int i = 0; i < coords.length && coords[i] != null; ++i) {
+            if (board[coords[i].getX()][coords[i].getY()].checkmove(coords[i].getX(), coords[i].getY(),
+                    input.getX(), input.getY())) {
+                board[input.getX()][input.getY()] = board[coords[i].getX()][coords[i].getY()];
+                board[coords[i].getX()][coords[i].getY()] = null;
+                return true;
+            }
+        }
+        return false;
     }
 
     public void boardOutput(){
