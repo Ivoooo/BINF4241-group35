@@ -10,6 +10,7 @@ public class parsedInput {
     private boolean qscasteling;
     private boolean isCheck;
     private int oldposition;
+    private String pawnPromo;
 
     public parsedInput(String i) {
         capture = returnCapture(i);
@@ -18,10 +19,15 @@ public class parsedInput {
         isCheck = returnCheck(i);
         isCheckmate = returnCheckmate(i);
         oldposition = Disambiguation(i);
+        pawnPromo = returnPawnPromo(i);
 
         x = returnX(i);
         y = returnY(i);
         type = returnType(i);
+    }
+
+    public String getPawnPromo() {
+        return pawnPromo;
     }
 
     public boolean getQscasteling(){return qscasteling;}
@@ -186,6 +192,15 @@ public class parsedInput {
         }
         else return false;
     }
+
+    private static String returnPawnPromo(String input){
+        String[] characters = input.split("");
+        if(input.length() == 3 & characters[1] == "8"){
+            return characters[2];
+        }
+        else return "";
+    }
+
 
 
 
