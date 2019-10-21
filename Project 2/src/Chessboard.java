@@ -5,7 +5,7 @@ public class Chessboard {
     public Chessboard() {
         for (int i = 0; i < 8; ++i) {
             for ( int j = 0; j < 8; ++j) {
-                board[i][j] = null;
+                board[j][i] = null;
             }
         }
         
@@ -17,11 +17,12 @@ public class Chessboard {
                 x = 7;
             }
             j = i % 8;
-            if (j == 0 || j == 7) board[x][j] = new Rook(col);
-            else if (j == 1 || j == 6) board[x][j] = new Knight(col);
-            else if (j == 2 || j == 5) board[x][j] = new Bishop(col);
-            else if (j == 3) board[x][j] = new Queen(col);
             else board[x][j] = new King(col);
+            if (j == 0 || j == 7) board[j][x] = new Rook(col);
+            else if (j == 1 || j == 6) board[j][x] = new Knight(col);
+            else if (j == 2 || j == 5) board[j][x] = new Bishop(col);
+            else if (j == 3) board[j][x] = new Queen(col);
+            else board[j][x] = new King(col);
         }
 
         col = "white";
@@ -31,7 +32,7 @@ public class Chessboard {
                 col = "black";
                 x = 6;
             }
-            board[x][i % 8] = new Pawn(col);
+            board[i % 8][x] = new Pawn(col);
         }
     }
 
@@ -47,6 +48,7 @@ public class Chessboard {
                 if (board[i][j] != null) {
                     if (board[i][j].getType() == type && board[i][j].getCol() == col) {
                         c[amount] =  new Coordinates(i, j);
+                        ++amount;
                     }
                 }
             }
@@ -86,8 +88,8 @@ public class Chessboard {
         for(int i=7; i >= 0; --i){
             x = "";
             for(int j=0; j < 8; ++j){
-                if (board[i][j] == null) x += "[]";
-                else x += board[i][j].figureOutput();
+                if (board[j][i] == null) x += "[]";
+                else x += board[j][i].figureOutput();
             }
             System.out.println(x);
         }
