@@ -5,12 +5,37 @@ public class parsedInput {
     private int y;
     private Attributes.types type;
     private boolean capture;
+    private boolean isCheckmate;
+    private boolean kscasteling;
+    private boolean qscasteling;
+    private boolean isCheck;
+    private int oldposition;
 
     public parsedInput(String i) {
+        capture = returnCapture(i);
+        kscasteling = returnKingsidecasteling(i);
+        qscasteling = returnQueensidecasteling(i);
+        isCheck = returnCheck(i);
+        isCheckmate = returnCheckmate(i);
+        oldposition = Disambiguation(i);
+
         x = returnX(i);
         y = returnY(i);
         type = returnType(i);
-        capture = returnCapture(i);
+    }
+
+    public boolean getQscasteling(){return qscasteling;}
+
+    public boolean getKscasteling(){return kscasteling;}
+
+    public boolean getCheckmate() {
+        return isCheckmate;
+    }
+
+    public boolean getisCheck(){return isCheck;}
+
+    public int getOldposition() {
+        return oldposition;
     }
 
     public int getX() {
@@ -29,6 +54,7 @@ public class parsedInput {
         return capture;
     }
 
+
     private static String checkPawn(String input){
         if (input.length() == 2){
             StringBuilder newString = new StringBuilder(input);
@@ -38,8 +64,35 @@ public class parsedInput {
         else return input;
     }
 
+    private static int Disambiguation(String input){
+        String [] characters = input.split("");
+      if (input.length() == 4 | input.length() == 5 ){
+            if (input.length() == 4){
+                String alt = characters[1];
+                if (alt.matches(".*\\d.*")) {
+                    int yoldposition = Integer.parseInt(alt);
+                    return yoldposition;
+                }
+                else {
+                    int xoldposition = returnX(alt);
+                    return xoldposition;
+                     }
+                }
+            if (input.length() == 5){
+                int yoldposition = Integer.parseInt(characters[2]);
+                int xoldposition = returnX(characters[1]);
+                return xoldposition;
+            }
+        }
+
+    }
+
     private static int returnX(String input){
         String checkedInput = checkPawn(input);
+        if (returnCheck(input)) input = input.replace("+", "");
+        if(returnCheckmate(input)) input = input.replace("#", "");
+        if(input.length() == 4) input = input.substring(0,0) + input.substring(2,3);
+        if(input.length() == 4) input = input.substring(0,0) + input.substring(3,4);
         String [] characters = checkedInput.split("");
         String posx = characters[1];
         switch (posx) {
@@ -94,6 +147,10 @@ public class parsedInput {
 
     private static int returnY(String input){
         String checkedInput = checkPawn(input);
+        if (returnCheck(input)) input = input.replace("+", "");
+        if(returnCheckmate(input)) input = input.replace("#", "");
+        if(input.length() == 4) input = input.substring(0,0) + input.substring(2,3);
+        if(input.length() == 4) input = input.substring(0,0) + input.substring(3,4);
         String[] characters = checkedInput.split("");
         return Integer.parseInt(characters[2]) - 1;
     }
@@ -101,4 +158,34 @@ public class parsedInput {
     private static boolean returnCapture(String input){
         return (input.contains("x") || input.contains("X") || input.contains(":"));
     }
+    private static boolean returnKingsidecasteling(String input){
+        if (input == ("0-0")) {
+            return true;
+        }
+        else return false;
+    }
+    private static boolean returnQueensidecasteling(String input){
+        if (input == ("0-0-0")) {
+            return true;
+        }
+
+        else return false;
+    }
+    private static boolean returnCheck(String input){
+        if (input.contains("+")) {
+            return true;
+        }
+        else return false;
+    }
+
+    private static boolean returnCheckmate(String input){
+        if (input.contains("#")) {
+            return true;
+        }
+        else return false;
+    }
+
+
+
+
 }
