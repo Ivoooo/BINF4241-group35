@@ -9,9 +9,9 @@ public class Main {
         String color;
         String move;
         Players player = Players.PLAYER1;
-
+        Players player2 = Players.PLAYER2;
         // Get Player Names: initialize Players
-        for (int i= 1; i<1;i++) {
+        for (int i= 1; i<3;i++) {
             System.out.println(" Please enter the name of Player "+i+": ");
             name = keyboard.next();
             if (i==1){
