@@ -6,6 +6,9 @@ public class Chessboard {
     private Figure[][] board = new Figure[8][8];
     private Figure[] grave = new Figure[32];
 
+    boolean blackCastlePossible = true;
+    boolean whiteCastlePossible = false;
+
     public Chessboard() {
         for (int i = 0; i < 8; ++i) {
             for ( int j = 0; j < 8; ++j) {
@@ -93,7 +96,18 @@ public class Chessboard {
         }
     }
 
+    private boolean checkCastle(parsedInput i, Attributes.colors c) {
+        //todo complete for both colors and both sides (king and queen side)
+        if (i.getType() != Attributes.types.king) return false;
+        if (c == Attributes.colors.white && !whiteCastlePossible ||
+            c == Attributes.colors.black && !blackCastlePossible) return false;
+
+        return false;
+    }
+
     boolean move(parsedInput input, Attributes.colors col) {
+        //todo you can't move past units with queen/rook/bishop
+
         //if killing mode enabled but there is no-one to kill and vise versa.
         if (input.getCapture() && board[input.getX()][input.getY()] == null ||
                 !input.getCapture() && board[input.getX()][input.getY()] != null) return false; //todo check if killing the same color
@@ -107,15 +121,15 @@ public class Chessboard {
         if (coords[0] == null) return false;
 
         for(int i = 0; i < coords.length && coords[i] != null; ++i) {
-            if (board[coords[i].getX()][coords[i].getY()].checkmove(coords[i].getX(), coords[i].getY(),
-                    input.getX(), input.getY())) {
+            if (board[coords[i].getX()][coords[i].getY()].checkmove(coords[i].getX(), coords[i].getY(), input.getX(), input.getY())) {
+                //todo when moving possibly disable Castle Booleans
                 board[input.getX()][input.getY()] = board[coords[i].getX()][coords[i].getY()];
                 board[coords[i].getX()][coords[i].getY()] = null;
                 checkPromotion(coords[i], col);
                 return true;
             }
         }
-        return false;
+        return checkCastle(input, col);
     }
 
     public void boardOutput(){
