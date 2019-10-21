@@ -1,5 +1,5 @@
 public class Bishop extends Figure {
-    public Bishop(String color) {
+    public Bishop(Attributes.colors color) {
         super(color, Attributes.types.bishop);
     }
     public boolean checkmove(int current_x, int current_y, int new_x, int new_y){

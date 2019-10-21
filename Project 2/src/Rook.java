@@ -1,5 +1,5 @@
 public class Rook extends Figure {
-    public Rook(String color) {
+    public Rook(Attributes.colors color) {
         super(color, Attributes.types.rook);
     }
     public boolean checkmove(int current_x, int current_y, int new_x, int new_y){

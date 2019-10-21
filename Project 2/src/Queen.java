@@ -1,5 +1,5 @@
 public class Queen extends Figure {
-    public Queen(String color) {
+    public Queen(Attributes.colors color) {
         super(color, Attributes.types.queen);
     }
     public boolean checkmove(int current_x, int current_y, int new_x, int new_y) {
