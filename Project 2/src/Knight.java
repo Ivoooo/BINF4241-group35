@@ -1,5 +1,5 @@
 public class Knight extends Figure {
-    public Knight(String color) {
+    public Knight(Attributes.colors color) {
         super(color, Attributes.types.knight);
     }
     public boolean checkmove(int current_x, int current_y, int new_x, int new_y){

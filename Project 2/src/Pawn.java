@@ -1,5 +1,5 @@
 public class Pawn extends Figure {
-    public Pawn(String color) {
+    public Pawn(Attributes.colors color) {
         super(color, Attributes.types.pawn);
     }
     public boolean checkmove(int current_x, int current_y, int new_x, int new_y){

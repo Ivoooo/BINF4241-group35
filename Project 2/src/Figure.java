@@ -2,9 +2,8 @@ public class Figure {
     private Attributes.colors col;
     private Attributes.types type;
 
-    public Figure(String color, Attributes.  types type) {
-        if(color.equals("white")) col = Attributes.colors.white;
-        else col = Attributes.colors.black;
+    public Figure(Attributes.colors c, Attributes.types type) {
+        this.col = c;
         this.type = type;
     }
 

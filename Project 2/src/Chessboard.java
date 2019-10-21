@@ -1,3 +1,5 @@
+import org.w3c.dom.Attr;
+
 import java.util.Scanner;
 
 public class Chessboard {
@@ -11,11 +13,11 @@ public class Chessboard {
             }
         }
         
-        String col = "white";
+        Attributes.colors col = Attributes.colors.white;
         int x = 0;
         for(int i = 0, j; i < 16; ++i) {
             if (i >= 8) {
-                col = "black";
+                col = Attributes.colors.black;
                 x = 7;
             }
             j = i % 8;
@@ -26,11 +28,11 @@ public class Chessboard {
             else board[j][x] = new King(col);
         }
 
-        col = "white";
+        col = Attributes.colors.white;
         x = 1;
         for(int i = 0; i < 16; ++i) {
             if (i >= 8) {
-                col = "black";
+                col = Attributes.colors.black;
                 x = 6;
             }
             board[i % 8][x] = new Pawn(col);
@@ -65,9 +67,30 @@ public class Chessboard {
         return false;
     }
 
-    private void promotion(Coordinates c) {
-        System.out.println("You managed to get a Pawn to the other side! What role do you want him to be? R / N / B / Q");
-        //todo add new scanner.
+    private void checkPromotion(Coordinates c, Attributes.colors col) {
+        if(board[c.getX()][c.getY()].getType() == Attributes.types.pawn) {
+            if (c.getY() == 7 && col == Attributes.colors.white ||
+                c.getY() == 0 && col == Attributes.colors.black) {
+                promotion(c, col);
+            }
+        }
+    }
+
+    private void promotion(Coordinates c, Attributes.colors col) {
+        Scanner keyboard = new Scanner(System.in);
+
+        String a = "";
+        while(! (a.equals("R") || a.equals("N") || a.equals("B") || a.equals("Q"))) {
+            System.out.println("You managed to get a Pawn to the other side! What role do you want him to be? R / N / B / Q");
+            a = keyboard.next();
+        }
+
+        switch (a) {
+            case "R": board[c.getX()][c.getY()] = new Rook(col);
+            case "N": board[c.getX()][c.getY()] = new Knight(col);
+            case "B": board[c.getX()][c.getY()] = new Bishop(col);
+            default: board[c.getX()][c.getY()] = new Queen(col);
+        }
     }
 
     boolean move(parsedInput input, Attributes.colors col) {
@@ -79,6 +102,7 @@ public class Chessboard {
             if(board[input.getX()][input.getY()].getCol() == col) return false;
         }
 
+        //find all figures that are still in the game
         Coordinates[] coords = findFigure(input.getType(), col);
         if (coords[0] == null) return false;
 
@@ -87,6 +111,7 @@ public class Chessboard {
                     input.getX(), input.getY())) {
                 board[input.getX()][input.getY()] = board[coords[i].getX()][coords[i].getY()];
                 board[coords[i].getX()][coords[i].getY()] = null;
+                checkPromotion(coords[i], col);
                 return true;
             }
         }
