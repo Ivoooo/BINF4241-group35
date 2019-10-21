@@ -4,10 +4,9 @@ import java.util.Scanner;
 
 public class Chessboard {
     private Figure[][] board = new Figure[8][8];
-    private Figure[] grave = new Figure[32];
-
-    boolean blackCastlePossible = true;
-    boolean whiteCastlePossible = false;
+    private Figure[] grave = new Figure[32]; //todo grave
+    private boolean blackCastlePossible = true;
+    private boolean whiteCastlePossible = false;
 
     public Chessboard() {
         for (int i = 0; i < 8; ++i) {
@@ -110,7 +109,7 @@ public class Chessboard {
 
         //if killing mode enabled but there is no-one to kill and vise versa.
         if (input.getCapture() && board[input.getX()][input.getY()] == null ||
-                !input.getCapture() && board[input.getX()][input.getY()] != null) return false; //todo check if killing the same color
+                !input.getCapture() && board[input.getX()][input.getY()] != null) return false;
         //check if killing teammate
         if (input.getCapture()) {
             if(board[input.getX()][input.getY()].getCol() == col) return false;

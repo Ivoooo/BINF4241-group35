@@ -16,7 +16,7 @@ public class Pawn extends Figure {
             }
         }
 
-        //todo check killing someone
+        //todo check killing someone (going left / right)
 
         //general movement
         return new_x - current_x == 0 && new_y - current_y == step;
