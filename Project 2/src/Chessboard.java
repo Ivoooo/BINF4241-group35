@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Chessboard {
     private Figure[][] board = new Figure[8][8];
     private Figure[] grave = new Figure[32];
@@ -63,10 +65,19 @@ public class Chessboard {
         return false;
     }
 
-    //todo Qe4 works but many don't.
+    private void promotion(Coordinates c) {
+        System.out.println("You managed to get a Pawn to the other side! What role do you want him to be? R / N / B / Q");
+        //todo add new scanner.
+    }
+
     boolean move(parsedInput input, Attributes.colors col) {
+        //if killing mode enabled but there is no-one to kill and vise versa.
         if (input.getCapture() && board[input.getX()][input.getY()] == null ||
                 !input.getCapture() && board[input.getX()][input.getY()] != null) return false; //todo check if killing the same color
+        //check if killing teammate
+        if (input.getCapture()) {
+            if(board[input.getX()][input.getY()].getCol() == col) return false;
+        }
 
         Coordinates[] coords = findFigure(input.getType(), col);
         if (coords[0] == null) return false;
