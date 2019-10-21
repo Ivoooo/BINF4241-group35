@@ -1,4 +1,4 @@
-public interface Attributes {
+public abstract class Attributes {
     enum types {
         king,
         queen,
