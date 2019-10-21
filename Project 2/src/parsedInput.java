@@ -87,12 +87,18 @@ public class parsedInput {
         return 0;
     }
 
-    private static int returnX(String input){
+    private static String stripSpecialCases(String input) {
         String checkedInput = checkPawn(input);
         if (returnCheck(input)) input = input.replace("+", "");
         if(returnCheckmate(input)) input = input.replace("#", "");
         if(input.length() == 4) input = input.substring(0,0) + input.substring(2,3);
         if(input.length() == 4) input = input.substring(0,0) + input.substring(3,4);
+
+        return checkedInput;
+    }
+
+    private static int returnX(String input){
+        String checkedInput = stripSpecialCases(input);
         String [] characters = checkedInput.split("");
         String posx = characters[1];
         switch (posx) {
@@ -146,11 +152,7 @@ public class parsedInput {
     }
 
     private static int returnY(String input){
-        String checkedInput = checkPawn(input);
-        if (returnCheck(input)) input = input.replace("+", "");
-        if(returnCheckmate(input)) input = input.replace("#", "");
-        if(input.length() == 4) input = input.substring(0,0) + input.substring(2,3);
-        if(input.length() == 4) input = input.substring(0,0) + input.substring(3,4);
+        String checkedInput = stripSpecialCases(input);
         String[] characters = checkedInput.split("");
         return Integer.parseInt(characters[2]) - 1;
     }
