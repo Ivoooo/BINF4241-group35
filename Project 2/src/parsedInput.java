@@ -84,7 +84,7 @@ public class parsedInput {
                 return xoldposition;
             }
         }
-
+        return 0;
     }
 
     private static int returnX(String input){
