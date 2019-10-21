@@ -17,7 +17,6 @@ public class Chessboard {
                 x = 7;
             }
             j = i % 8;
-            else board[x][j] = new King(col);
             if (j == 0 || j == 7) board[j][x] = new Rook(col);
             else if (j == 1 || j == 6) board[j][x] = new Knight(col);
             else if (j == 2 || j == 5) board[j][x] = new Bishop(col);
