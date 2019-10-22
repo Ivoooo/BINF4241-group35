@@ -1,0 +1,21 @@
+READ ME:
+
+Naming: 
+P-Pawn
+R-Rook (following Wikipedia, not Tower as in the Assignment description) 
+N-Knight
+B-Bishop
+Q-Queen
+K-King 
+
+White Figures have a W added, Black Figures a B. 
+
+For our Chessgame we used the following annotation rules: 
+
+Standard Moves e.g Be5
+Capture: Bxe5 or B:e5
+Pawn promotion: e8Q
+Castling: 0-0 , 0-0-0
+Check: Be5+
+Checkmate: X , x
+ 
