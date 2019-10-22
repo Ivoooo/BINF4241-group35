@@ -82,7 +82,7 @@ public class Chessboard {
                         }
                     }
 
-                    //if possible move is not check:
+                    //if possible tryMove is not check:
                     Coordinates tmp = new Coordinates(c.getX()+i, c.getY()+j);
                     if(!isCheck(tmp, col)) return false;
                 }
@@ -95,7 +95,7 @@ public class Chessboard {
         for(int i=0; i < 8; ++i) {
             for(int j=0; j < 8; ++j) {
                 if (board[i][j] != null) {
-                    if (board[i][j].getCol() != col && board[i][j].checkmove(i, j, coord.getX(), coord.getY())) {
+                    if (board[i][j].getCol() != col && board[i][j].checkmove(i, j, coord.getX(), coord.getY(), board)) {
                         return true;
                     }
                 }
@@ -139,8 +139,16 @@ public class Chessboard {
         return false;
     }
 
-    boolean move(parsedInput input, Attributes.colors col) {
-        //todo you can't move past units with queen/rook/bishop
+    //todo when moving possibly disable Castle Booleans
+    void move(parsedInput input, Coordinates coords, Attributes.colors col) {
+        board[input.getX()][input.getY()] = board[coords.getX()][coords.getY()];
+        board[coords.getX()][coords.getY()] = null;
+        Coordinates tmp = new Coordinates(input.getX(), input.getY());
+        checkPromotion(tmp, col);
+    }
+
+    boolean tryMove(parsedInput input, Attributes.colors col) {
+        //todo you can't tryMove past units with queen/rook/bishop
         //check if getCapture was done properly.
         if(board[input.getX()][input.getY()] != null) {
             if (!input.getCapture() || board[input.getX()][input.getY()].getCol() == col) return false;
@@ -153,14 +161,12 @@ public class Chessboard {
         Coordinates[] coords = findFigure(input.getType(), col);
         if (coords[0] == null) return false;
 
-        Coordinates tmp;
         for(int i = 0; i < coords.length && coords[i] != null; ++i) {
-            if (board[coords[i].getX()][coords[i].getY()].checkmove(coords[i].getX(), coords[i].getY(), input.getX(), input.getY())) {
-                //todo when moving possibly disable Castle Booleans
-                board[input.getX()][input.getY()] = board[coords[i].getX()][coords[i].getY()];
-                board[coords[i].getX()][coords[i].getY()] = null;
-                tmp = new Coordinates(input.getX(), input.getY());
-                checkPromotion(tmp, col);
+            if(board[coords[i].getX()][coords[i].getY()].getType() == Attributes.types.bishop) {
+                board[coords[i].getX()][coords[i].getY()].checkmove(coords[i].getX(), coords[i].getY(), input.getX(), input.getY(), board);
+            }
+            else if (board[coords[i].getX()][coords[i].getY()].checkmove(coords[i].getX(), coords[i].getY(), input.getX(), input.getY(), board)) {
+                move(input, coords[i], col);
                 return true;
             }
         }
