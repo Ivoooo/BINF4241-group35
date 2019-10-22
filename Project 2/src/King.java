@@ -3,7 +3,7 @@ public class King extends Figure {
     public King(Attributes.colors color) {
         super(color, Attributes.types.king);
     }
-    public boolean checkmove(int current_x, int current_y, int new_x, int new_y) {
+    public boolean checkmove(int current_x, int current_y, int new_x, int new_y, Figure[][] board) {
 
         //todo check where he even can go (because of check)
         //todo start new game -> Kd5 -> works?

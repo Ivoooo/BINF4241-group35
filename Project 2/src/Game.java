@@ -14,7 +14,7 @@ public class Game {
 
     public boolean nextRound(String move){
         parsedInput input = new parsedInput(move);
-        boolean success = ourChessBoard.move(input, Attributes.colors.white);
+        boolean success = ourChessBoard.tryMove(input, Attributes.colors.white);
 
         if (success) ourChessBoard.boardOutput();
 

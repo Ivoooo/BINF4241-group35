@@ -2,8 +2,7 @@ public class Pawn extends Figure {
     public Pawn(Attributes.colors color) {
         super(color, Attributes.types.pawn);
     }
-    public boolean checkmove(int current_x, int current_y, int new_x, int new_y){
-
+    public boolean checkmove(int current_x, int current_y, int new_x, int new_y, Figure[][] board){
         //decide which direction to go
         int step = 1;
         if(super.getCol() == Attributes.colors.black) step = -1;

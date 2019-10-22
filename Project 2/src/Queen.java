@@ -3,6 +3,7 @@ public class Queen extends Figure {
         super(color, Attributes.types.queen);
     }
     public boolean checkmove(int current_x, int current_y, int new_x, int new_y, Figure[][] board) {
+
         if (new_x - current_x > 0) {
             for (; current_x < new_x; ++current_x) {
                 if (new_y - current_y > 0) {
@@ -39,6 +40,7 @@ public class Queen extends Figure {
         if (new_x - current_x == 0 && new_y - current_y != 0) return true;
         if (new_y - current_y == 0 && new_x - current_x != 0) return true;
         return true;
+
 
     }
 }
