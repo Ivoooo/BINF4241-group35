@@ -12,6 +12,7 @@ public class Game {
 */
 
 
+  //todo change color , abort when game is over
     public boolean nextRound(String move){
         parsedInput input = new parsedInput(move);
         boolean success = ourChessBoard.tryMove(input, Attributes.colors.white);

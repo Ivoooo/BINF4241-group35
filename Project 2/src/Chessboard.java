@@ -162,8 +162,10 @@ public class Chessboard {
     }
 
     boolean tryMove(parsedInput input, Attributes.colors col) {
-        //todo you can't move past units with queen/rook/bishop
+        //todo you can't move past units with rook
         //todo basic analysis of correct input.
+        //todo en passant
+        //todo check if game over
         //check if getCapture was done properly.
         if(board[input.getX()][input.getY()] != null) {
             if (!input.getCapture() || board[input.getX()][input.getY()].getCol() == col) return false;
