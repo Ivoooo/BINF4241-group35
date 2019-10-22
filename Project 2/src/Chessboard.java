@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Chessboard {
     private Figure[][] board = new Figure[8][8];
-    private Figure[] grave = new Figure[32]; //todo grave
+    private Figure[] grave = new Figure[32];
     private boolean blackCastlePossible = true;
     private boolean whiteCastlePossible = false;
 
@@ -139,8 +139,18 @@ public class Chessboard {
         return false;
     }
 
+    void addGrave(Figure a) {
+        int i = 0;
+        while(grave[i] != null) ++i;
+        grave[i] = a;
+    }
+
     //todo when moving possibly disable Castle Booleans
     void move(parsedInput input, Coordinates coords, Attributes.colors col) {
+        if (input.getCapture()) {
+            addGrave(board[input.getX()][input.getY()]);
+        }
+
         board[input.getX()][input.getY()] = board[coords.getX()][coords.getY()];
         board[coords.getX()][coords.getY()] = null;
         Coordinates tmp = new Coordinates(input.getX(), input.getY());
@@ -148,7 +158,7 @@ public class Chessboard {
     }
 
     boolean tryMove(parsedInput input, Attributes.colors col) {
-        //todo you can't tryMove past units with queen/rook/bishop
+        //todo you can't move past units with queen/rook/bishop
         //check if getCapture was done properly.
         if(board[input.getX()][input.getY()] != null) {
             if (!input.getCapture() || board[input.getX()][input.getY()].getCol() == col) return false;
@@ -162,10 +172,7 @@ public class Chessboard {
         if (coords[0] == null) return false;
 
         for(int i = 0; i < coords.length && coords[i] != null; ++i) {
-            if(board[coords[i].getX()][coords[i].getY()].getType() == Attributes.types.bishop) {
-                board[coords[i].getX()][coords[i].getY()].checkmove(coords[i].getX(), coords[i].getY(), input.getX(), input.getY(), board);
-            }
-            else if (board[coords[i].getX()][coords[i].getY()].checkmove(coords[i].getX(), coords[i].getY(), input.getX(), input.getY(), board)) {
+            if (board[coords[i].getX()][coords[i].getY()].checkmove(coords[i].getX(), coords[i].getY(), input.getX(), input.getY(), board)) {
                 move(input, coords[i], col);
                 return true;
             }
