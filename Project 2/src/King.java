@@ -9,6 +9,5 @@ public class King extends Figure {
         //todo start new game -> Kd5 -> works?
         if((new_x-current_x > 1 || new_x-current_x <-1) && (new_y-current_y > 1 || new_y-current_y < -1)) return false;
         else return true;
-    
     }
 }

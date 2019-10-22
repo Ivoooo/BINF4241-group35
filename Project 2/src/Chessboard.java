@@ -61,11 +61,48 @@ public class Chessboard {
         return c;
     }
 
-    boolean gameOver() {
-        return false;
+    private Coordinates getKing(Attributes.colors col) {
+        Coordinates[] tmp = findFigure(Attributes.types.king, col);
+        return tmp[0];
     }
 
-    boolean isCheck(String color) {
+    //returns true if game over, false if not.
+    private boolean isGameOver(Attributes.colors col) {
+        //if not check
+        Coordinates c = getKing(col);
+        if (!isCheck(c, col)) return false;
+
+        //iterate through possibles moves for the King:
+        for(int i = -1; i <= 1; ++i) {
+            for(int j= -1; j <= 1; ++j) {
+                if (i == 0 && j == 0) continue;
+                if(0 <= c.getX() + i && c.getX() + i < 8 && 0 <= c.getY() + j && c.getY() + j < 8) {
+                    //if occupied and by the same color:
+                    if (board[c.getX()+i][c.getY()+j] != null) {
+                        if(board[c.getX()+i][c.getY()+j].getCol() == col) {
+                            continue;
+                        }
+                    }
+
+                    //if possible move is not check:
+                    Coordinates tmp = new Coordinates(c.getX()+i, c.getY()+j);
+                    if(!isCheck(tmp, col)) return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private boolean isCheck(Coordinates coord, Attributes.colors col) {
+        for(int i=0; i < 8; ++i) {
+            for(int j=0; j < 8; ++j) {
+                if (board[i][j] != null) {
+                    if (board[i][j].getCol() != col && board[i][j].checkmove(i, j, coord.getX(), coord.getY())) {
+                        return true;
+                    }
+                }
+            }
+        }
         return false;
     }
 
