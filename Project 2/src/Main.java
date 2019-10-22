@@ -23,6 +23,7 @@ public class Main {
 
         }
 
+
         Game ourGame = new Game();
 
         String command;
@@ -31,8 +32,10 @@ public class Main {
             System.out.println("Next command please: (0 to stop)");
             command = keyboard.next();
             if (command.equals("0")) break;
-            success = ourGame.nextRound(command);
-            if (!success) System.out.println("Wrong command");
+            else {
+                success = ourGame.nextRound(command);
+                if (!success) System.out.println("Wrong command");
+            }
         }
     }
 }

@@ -160,7 +160,9 @@ public class parsedInput {
     private static int returnY(String input){
         String checkedInput = stripSpecialCases(input);
         String[] characters = checkedInput.split("");
+        if (Integer.parseInt(characters[2]) < 1 | Integer.parseInt(characters[2]) > 8) return -1;
         return Integer.parseInt(characters[2]) - 1;
+
     }
 
     private static boolean returnCapture(String input){
@@ -200,9 +202,6 @@ public class parsedInput {
         }
         else return "";
     }
-
-
-
 
 
 }

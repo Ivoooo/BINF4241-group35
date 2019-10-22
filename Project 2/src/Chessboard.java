@@ -163,7 +163,6 @@ public class Chessboard {
 
     boolean tryMove(parsedInput input, Attributes.colors col) {
         //todo you can't move past units with rook
-        //todo basic analysis of correct input.
         //todo en passant
         //todo check if game over
         //check if getCapture was done properly.
