@@ -1,5 +1,3 @@
-import org.w3c.dom.Attr;
-
 import java.util.Scanner;
 
 public class Chessboard {
@@ -143,25 +141,26 @@ public class Chessboard {
 
     boolean move(parsedInput input, Attributes.colors col) {
         //todo you can't move past units with queen/rook/bishop
-
-        //if killing mode enabled but there is no-one to kill and vise versa.
-        if (input.getCapture() && board[input.getX()][input.getY()] == null ||
-                !input.getCapture() && board[input.getX()][input.getY()] != null) return false;
-        //check if killing teammate
-        if (input.getCapture()) {
-            if(board[input.getX()][input.getY()].getCol() == col) return false;
+        //check if getCapture was done properly.
+        if(board[input.getX()][input.getY()] != null) {
+            if (!input.getCapture() || board[input.getX()][input.getY()].getCol() == col) return false;
+        }
+        else {
+            if(input.getCapture()) return false;
         }
 
         //find all figures that are still in the game
         Coordinates[] coords = findFigure(input.getType(), col);
         if (coords[0] == null) return false;
 
+        Coordinates tmp;
         for(int i = 0; i < coords.length && coords[i] != null; ++i) {
             if (board[coords[i].getX()][coords[i].getY()].checkmove(coords[i].getX(), coords[i].getY(), input.getX(), input.getY())) {
                 //todo when moving possibly disable Castle Booleans
                 board[input.getX()][input.getY()] = board[coords[i].getX()][coords[i].getY()];
                 board[coords[i].getX()][coords[i].getY()] = null;
-                checkPromotion(coords[i], col);
+                tmp = new Coordinates(input.getX(), input.getY());
+                checkPromotion(tmp, col);
                 return true;
             }
         }
