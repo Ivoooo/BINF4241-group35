@@ -4,11 +4,7 @@
     <list default="true" id="9b6e4d10-b292-4847-a9e9-9f6ece6980bb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project 2/src/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project 2/src/Bishop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project 2/src/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project 2/src/King.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project 2/src/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project 2/src/Knight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project 2/src/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project 2/src/Pawn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project 2/src/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project 2/src/Queen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project 2/src/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project 2/src/Rook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project 2/src/Chessboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project 2/src/Chessboard.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -98,6 +94,7 @@
       <workItem from="1571138274677" duration="64000" />
       <workItem from="1571140934077" duration="2586000" />
       <workItem from="1571222808423" duration="5912000" />
+      <workItem from="1571731471203" duration="6312000" />
     </task>
     <servers />
   </component>

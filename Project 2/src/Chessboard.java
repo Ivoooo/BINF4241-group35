@@ -142,4 +142,5 @@ public class Chessboard {
             System.out.println(x);
         }
     }
+
 }
