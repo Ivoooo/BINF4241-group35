@@ -139,14 +139,18 @@ public class Chessboard {
         return false;
     }
 
-    void addGrave(Figure a) {
+    private void addGrave(Figure a) {
         int i = 0;
         while(grave[i] != null) ++i;
         grave[i] = a;
     }
 
     //todo when moving possibly disable Castle Booleans
-    void move(parsedInput input, Coordinates coords, Attributes.colors col) {
+    private void move(parsedInput input, Coordinates coords, Attributes.colors col) {
+        /*if (col == Attributes.colors.white && whiteCastlePossible) {
+            if(input.getType() == Attributes.types.king) return;
+        }*/
+
         if (input.getCapture()) {
             addGrave(board[input.getX()][input.getY()]);
         }
@@ -159,6 +163,7 @@ public class Chessboard {
 
     boolean tryMove(parsedInput input, Attributes.colors col) {
         //todo you can't move past units with queen/rook/bishop
+        //todo basic analysis of correct input.
         //check if getCapture was done properly.
         if(board[input.getX()][input.getY()] != null) {
             if (!input.getCapture() || board[input.getX()][input.getY()].getCol() == col) return false;
@@ -171,8 +176,9 @@ public class Chessboard {
         Coordinates[] coords = findFigure(input.getType(), col);
         if (coords[0] == null) return false;
 
+        Figure[][] copy = board.clone();
         for(int i = 0; i < coords.length && coords[i] != null; ++i) {
-            if (board[coords[i].getX()][coords[i].getY()].checkmove(coords[i].getX(), coords[i].getY(), input.getX(), input.getY(), board)) {
+            if (board[coords[i].getX()][coords[i].getY()].checkmove(coords[i].getX(), coords[i].getY(), input.getX(), input.getY(), copy)) {
                 move(input, coords[i], col);
                 return true;
             }
