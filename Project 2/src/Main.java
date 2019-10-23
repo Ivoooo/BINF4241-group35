@@ -25,7 +25,7 @@ public class Main {
         Player p1 = new Player(name,"white");
         System.out.println(" Please enter the name of Player2: ");
         name = keyboard.next();
-        Player p2 = new Player(name,"white");
+        Player p2 = new Player(name,"black");
 
 
         Game ourGame = new Game();
