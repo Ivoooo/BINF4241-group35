@@ -132,6 +132,7 @@ public class Chessboard {
 
     private boolean checkCastle(parsedInput i, Attributes.colors c) {
         //todo complete for both colors and both sides (king and queen side)
+
         if (i.getType() != Attributes.types.king) return false;
         if (c == Attributes.colors.white && !whiteCastlePossible ||
             c == Attributes.colors.black && !blackCastlePossible) return false;
@@ -165,6 +166,7 @@ public class Chessboard {
         //todo you can't move past units with rook
         //todo en passant
         //todo check if game over
+
         //check if getCapture was done properly.
         if(board[input.getX()][input.getY()] != null) {
             if (!input.getCapture() || board[input.getX()][input.getY()].getCol() == col) return false;

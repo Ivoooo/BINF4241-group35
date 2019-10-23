@@ -8,4 +8,11 @@ public class Player {
         else col = Attributes.colors.black;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Attributes.colors getCol() {
+        return col;
+    }
 }

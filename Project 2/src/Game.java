@@ -15,10 +15,10 @@ public class Game {
   //todo change color , abort when game is over
 
 
-    public boolean nextRound(String move){
+    public boolean nextRound(String move, Player currentPlayer){
         if(validInput(move)== false) return false;
             parsedInput input = new parsedInput(move);
-            boolean success = ourChessBoard.tryMove(input, Attributes.colors.white);
+            boolean success = ourChessBoard.tryMove(input, currentPlayer.getCol());
 
             if (success) ourChessBoard.boardOutput();
 
