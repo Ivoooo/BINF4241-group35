@@ -9,17 +9,7 @@ public class Main {
         String move;
 
         // Get Player Names: initialize Players
-  /*      for (int i= 1; i<3;i++) {
-            System.out.println(" Please enter the name of Player "+i+": ");
-            name = keyboard.next();
-            if (i==1){
-               Player p1 = new Player(name,"white");
-            }
-            else {
-                Player p2 = new Player(name,"black") ;
-            }
 
-        }*/
         System.out.println(" Please enter the name of Player1: ");
         name = keyboard.next();
         Player p1 = new Player(name,"white");
@@ -41,7 +31,9 @@ public class Main {
                 success = ourGame.nextRound(command, currentPlayer);
                 if (!success) System.out.println("Wrong command");
             }
-            if (currentPlayer == p1 && success){
+            if(ourGame.GameOver(currentPlayer)){ System.out.println("Checkmate!"); break;}
+
+                if (currentPlayer == p1 && success){
                 currentPlayer = p2;
             }
             else if(currentPlayer == p2 && success){currentPlayer = p1;}
@@ -49,3 +41,7 @@ public class Main {
         }
     }
 }
+
+//TODO Black pawn first "double step" doesnt work
+//TODO Nc3 works as first move for Black Knight but shoudn't...
+//

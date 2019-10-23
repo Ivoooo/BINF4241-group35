@@ -18,7 +18,8 @@ public class parsedInput {
         qscasteling = returnQueensidecasteling(i);
         isCheck = returnCheck(i);
         isCheckmate = returnCheckmate(i);
-        oldposition = Disambiguation(i);
+       // oldposition = Disambiguation(i);
+       // oldposition = Disambiguation(i);
         pawnPromo = returnPawnPromo(i);
 
         x = returnX(i);
@@ -40,9 +41,9 @@ public class parsedInput {
 
     public boolean getisCheck(){return isCheck;}
 
-    public int getOldposition() {
+  /*  public int getOldposition() {
         return oldposition;
-    }
+    }*/
 
     public int getX() {
         return x;
@@ -70,7 +71,7 @@ public class parsedInput {
         else return input;
     }
 
-    private static int Disambiguation(String input){
+ /*   private static int Disambiguation(String input){
         String [] characters = input.split("");
       if (input.length() == 4 | input.length() == 5 ){
             if (input.length() == 4){
@@ -91,15 +92,16 @@ public class parsedInput {
             }
         }
         return 0;
-    }
+    }*/
 
     private static String stripSpecialCases(String input) {
         String checkedInput = checkPawn(input);
+
         if (returnCheck(input)) input = input.replace("+", "");
         if(returnCheckmate(input)) input = input.replace("#", "");
         if(input.length() == 4) input = input.substring(0,0) + input.substring(2,3);
         if(input.length() == 4) input = input.substring(0,0) + input.substring(3,4);
-
+        if(returnCapture(input)) input = input.replace("x", "");
         return checkedInput;
     }
 

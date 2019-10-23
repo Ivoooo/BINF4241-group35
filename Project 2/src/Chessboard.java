@@ -65,7 +65,7 @@ public class Chessboard {
     }
 
     //returns true if game over, false if not.
-    private boolean isGameOver(Attributes.colors col) {
+     boolean isGameOver(Attributes.colors col) {
         //if not check
         Coordinates c = getKing(col);
         if (!isCheck(c, col)) return false;
