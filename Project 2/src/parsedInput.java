@@ -61,6 +61,13 @@ public class parsedInput {
         return capture;
     }
 
+    public boolean possibleInput() {
+        if ( x < 0 || x > 7 || y < 0 || y > 7) return false;
+        if ( pawnPromo.length() != 0 && x != 0 && x != 7) return false;
+        if (kscasteling == qscasteling && kscasteling) return false;
+
+        return true;
+    }
 
     private static String checkPawn(String input){
         if (input.length() == 2){

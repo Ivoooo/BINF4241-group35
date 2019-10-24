@@ -3,45 +3,29 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        // Get Player Names: initialize Players
         Scanner keyboard = new Scanner(System.in);
         String name;
-        String color;
-        String move;
-
-        // Get Player Names: initialize Players
-
-        System.out.println(" Please enter the name of Player1: ");
-        name = keyboard.next();
-        Player p1 = new Player(name,"white");
-        System.out.println(" Please enter the name of Player2: ");
-        name = keyboard.next();
-        Player p2 = new Player(name,"black");
-
-
         Game ourGame = new Game();
-        Player currentPlayer = p1;
+        System.out.println(" Please enter the name of the white Player: ");
+        name = keyboard.next();
+        ourGame.addPlayer(name);
+        System.out.println(" Please enter the name of the black Player: ");
+        name = keyboard.next();
+        ourGame.addPlayer(name);
+
+        //playing the game
         String command;
         boolean success;
 
-        while(true) {
-            System.out.println(currentPlayer.getName() + " Next command please: (0 to stop)");
+        while(ourGame.isGameOver()) {
+            System.out.println("Next command please: (0 to stop)");
             command = keyboard.next();
             if (command.equals("0")) break;
             else {
-                success = ourGame.nextRound(command, currentPlayer);
+                success = ourGame.nextRound(command);
                 if (!success) System.out.println("Wrong command");
             }
-
-            if(ourGame.GameOver(currentPlayer)){
-                System.out.println("Checkmate!");
-                break;
-            }
-
-            if (currentPlayer == p1 && success){
-                currentPlayer = p2;
-            }
-            else if(currentPlayer == p2 && success){currentPlayer = p1;}
-
         }
     }
 }

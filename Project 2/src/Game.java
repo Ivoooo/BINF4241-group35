@@ -1,34 +1,52 @@
 public class Game {
     private Chessboard ourChessBoard = new Chessboard();
+    private Player p1 = null;
+    private Player p2 = null;
+    private Player currentPlayer;
 
     public Game() {
         ourChessBoard.boardOutput();
     }
 
-  /*  public void addPlayer(String name,String color){
-
-        Player player = new Player(name,color) ;
+    public void addPlayer(String name){
+        if(p1 == null) {
+            p1 = new Player(name, "white");
+            currentPlayer = p1;
+        }
+        else if(p2 == null) {
+            p2 = new Player(name, "black");
+        }
+        else {
+            System.out.println("Players are already defined.");
+        }
     }
-*/
+
+    private void swapCurrentPlayer() {
+        if (currentPlayer.getCol() == p1.getCol()) currentPlayer = p2;
+        else currentPlayer = p1;
+    }
 
 
   //todo change color , abort when game is over
 
-    public boolean GameOver(Player currentPlayer){
+    public boolean isGameOver(){
         if(ourChessBoard.isGameOver(currentPlayer.getCol())){ return true;}
 
         return false;
     }
 
-    public boolean nextRound(String move, Player currentPlayer){
-        if(validInput(move)== false) return false;
-            parsedInput input = new parsedInput(move);
-            boolean success = ourChessBoard.tryMove(input, currentPlayer.getCol());
-            if (success) ourChessBoard.boardOutput();
+    public boolean nextRound(String move){
+        if(!validInput(move)) return false;
+        parsedInput input = new parsedInput(move);
+        if (!input.possibleInput()) return false;
 
-            return success;
+        boolean success = ourChessBoard.tryMove(input, currentPlayer.getCol());
+        if (success) {
+            ourChessBoard.boardOutput();
+            swapCurrentPlayer();
+        }
 
-
+        return success;
     }
 
     private static Boolean validInput(String input) {
