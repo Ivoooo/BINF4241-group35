@@ -12,23 +12,15 @@ public class Pawn extends Figure {
         //check for special case (starting point)
         if (super.getCol() == Attributes.colors.white && current_y == 1 ||
                 super.getCol() == Attributes.colors.black && current_y == 6) {
-            if (new_x - current_x == 0 && new_y - current_y == 2*step) {
-                return true;
-            }
+            if (new_x - current_x == 0 && new_y - current_y == 2*step &&
+                    board[new_x][new_y] == null) return true;
         }
 
-        //todo test if killing with pawn, diagonal move possible
-        if(abs(new_x - current_x) == 1 && abs(new_y - current_y) == 1){
-            if(board[current_x+1][current_y+1] == null) return false;
-            if(board[current_x+1][current_y-1] == null)return false;
-            if(board[current_x-1][current_y+1] == null) return false;
-            if(board[current_x-1][current_y-1] == null) return false;
-            return true;
+        if (new_y - current_y == step) {
+            if(new_x - current_x == 0 && board[new_x][new_y] == null) return true;
+            return abs(new_x - current_x) == 1 && board[new_x][new_y] != null;
         }
 
-
-        //general movement
-        return new_x - current_x == 0 && new_y - current_y == step;
-
+        return false;
     }
 }

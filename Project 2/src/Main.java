@@ -31,9 +31,13 @@ public class Main {
                 success = ourGame.nextRound(command, currentPlayer);
                 if (!success) System.out.println("Wrong command");
             }
-            if(ourGame.GameOver(currentPlayer)==true){ System.out.println("Checkmate!"); break;}
 
-                if (currentPlayer == p1 && success){
+            if(ourGame.GameOver(currentPlayer)){
+                System.out.println("Checkmate!");
+                break;
+            }
+
+            if (currentPlayer == p1 && success){
                 currentPlayer = p2;
             }
             else if(currentPlayer == p2 && success){currentPlayer = p1;}
