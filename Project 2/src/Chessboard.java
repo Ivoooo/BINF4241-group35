@@ -132,8 +132,15 @@ public class Chessboard {
 
     private boolean checkCastle(parsedInput i, Attributes.colors c) {
         //todo complete for both colors and both sides (king and queen side)
+        if(c == Attributes.colors.white){
+            if (i.getKscasteling() == true | i.getQscasteling() == true) whiteCastlePossible = true;
+        }
+        if(c == Attributes.colors.black){
+            if (i.getKscasteling() == true | i.getQscasteling() == true) blackCastlePossible = true;
+        }
+        //rook moved already??
 
-        if (i.getType() != Attributes.types.king) return false;
+        //if (i.getType() != Attributes.types.king) return false;
         if (c == Attributes.colors.white && !whiteCastlePossible ||
             c == Attributes.colors.black && !blackCastlePossible) return false;
 

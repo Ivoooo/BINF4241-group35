@@ -16,7 +16,7 @@ public class Game {
 
     public boolean GameOver(Player currentPlayer){
         if(ourChessBoard.isGameOver(currentPlayer.getCol())) return true;
-        return false;
+        else{return false;}
     }
 
     public boolean nextRound(String move, Player currentPlayer){
@@ -35,7 +35,8 @@ public class Game {
         boolean state2 = false;
         boolean state3 = false;
 
-        if (input.length() < 1 | input.length() > 5) return false;
+
+        if (input.length() < 1 | input.length() > 5 ) return false;
         if (input == "x" | input == "X" | input == "0-0" | input == "0-0-0") { return true;}
         char ch;
         for (int i = 0; i < input.length(); i++) {

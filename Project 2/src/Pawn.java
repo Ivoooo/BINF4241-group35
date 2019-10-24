@@ -11,7 +11,7 @@ public class Pawn extends Figure {
 
         //check for special case (starting point)
         if (super.getCol() == Attributes.colors.white && current_y == 1 ||
-                super.getCol() == Attributes.colors.black && current_y == 7) {
+                super.getCol() == Attributes.colors.black && current_y == 6) {
             if (new_x - current_x == 0 && new_y - current_y == 2*step) {
                 return true;
             }

@@ -31,7 +31,7 @@ public class Main {
                 success = ourGame.nextRound(command, currentPlayer);
                 if (!success) System.out.println("Wrong command");
             }
-            if(ourGame.GameOver(currentPlayer)){ System.out.println("Checkmate!"); break;}
+            //if(ourGame.GameOver(currentPlayer)==true){ System.out.println("Checkmate!"); break;}
 
                 if (currentPlayer == p1 && success){
                 currentPlayer = p2;
@@ -42,6 +42,5 @@ public class Main {
     }
 }
 
-//TODO Black pawn first "double step" doesnt work
 //TODO Nc3 works as first move for Black Knight but shoudn't...
 //
