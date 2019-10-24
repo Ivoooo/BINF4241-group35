@@ -18,8 +18,8 @@ public class parsedInput {
         qscasteling = returnQueensidecasteling(i);
         isCheck = returnCheck(i);
         isCheckmate = returnCheckmate(i);
-       // oldposition = Disambiguation(i);
-       // oldposition = Disambiguation(i);
+       oldposition = Disambiguation(i);
+       oldposition = Disambiguation(i);
         pawnPromo = returnPawnPromo(i);
 
         x = returnX(i);
@@ -71,28 +71,27 @@ public class parsedInput {
         else return input;
     }
 
- /*   private static int Disambiguation(String input){
-        String [] characters = input.split("");
-      if (input.length() == 4 | input.length() == 5 ){
-            if (input.length() == 4){
+    private static int Disambiguation(String input) {
+        String[] characters = input.split("");
+        if (input.length() == 4 | input.length() == 5) {
+            if (input.length() == 4) {
                 String alt = characters[1];
                 if (alt.matches(".*\\d.*")) {
                     int yoldposition = Integer.parseInt(alt);
                     return yoldposition;
-                }
-                else {
+                } else {
                     int xoldposition = returnX(alt);
                     return xoldposition;
-                     }
                 }
-            if (input.length() == 5){
+            }
+            if (input.length() == 5) {
                 int yoldposition = Integer.parseInt(characters[2]);
                 int xoldposition = returnX(characters[1]);
                 return xoldposition;
             }
         }
         return 0;
-    }*/
+    }
 
     private static String stripSpecialCases(String input) {
         String checkedInput = checkPawn(input);

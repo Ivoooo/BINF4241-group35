@@ -134,18 +134,32 @@ public class Chessboard {
         //todo complete for both colors and both sides (king and queen side)
         if(c == Attributes.colors.white){
             if (i.getKscasteling() == true | i.getQscasteling() == true) whiteCastlePossible = true;
+            if(board[5][1].getType() == Attributes.types.king && board[5][1].getCol() == Attributes.colors.white )
+            {
+               if( board[1][1].getType() == Attributes.types.rook && board[1][1].getCol() == Attributes.colors.white|
+                       board[8][1].getType() == Attributes.types.rook && board[8][1].getCol() == Attributes.colors.white){
+                return true;
+               }
+            }
         }
         if(c == Attributes.colors.black){
             if (i.getKscasteling() == true | i.getQscasteling() == true) blackCastlePossible = true;
+            if(board[5][8].getType() == Attributes.types.king && board[5][8].getCol() == Attributes.colors.black )
+            {
+                if( board[1][8].getType() == Attributes.types.rook && board[1][8].getCol() == Attributes.colors.black|
+                        board[8][8].getType() == Attributes.types.rook && board[8][8].getCol() == Attributes.colors.black){
+                    return true;
+                }
         }
-        //rook moved already??
 
         //if (i.getType() != Attributes.types.king) return false;
-        if (c == Attributes.colors.white && !whiteCastlePossible ||
-            c == Attributes.colors.black && !blackCastlePossible) return false;
+        if (c == Attributes.colors.white && !whiteCastlePossible || c == Attributes.colors.black && !blackCastlePossible) return false;
 
         return false;
+     }
+        return false;
     }
+
 
     private void addGrave(Figure a) {
         int i = 0;

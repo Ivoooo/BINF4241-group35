@@ -15,8 +15,9 @@ public class Game {
   //todo change color , abort when game is over
 
     public boolean GameOver(Player currentPlayer){
-        if(ourChessBoard.isGameOver(currentPlayer.getCol())) return true;
-        else{return false;}
+        if(ourChessBoard.isGameOver(currentPlayer.getCol())){ return true;}
+
+        return false;
     }
 
     public boolean nextRound(String move, Player currentPlayer){
