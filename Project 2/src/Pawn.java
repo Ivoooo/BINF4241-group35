@@ -1,3 +1,5 @@
+import static java.lang.Math.abs;
+
 public class Pawn extends Figure {
     public Pawn(Attributes.colors color) {
         super(color, Attributes.types.pawn);
@@ -15,7 +17,15 @@ public class Pawn extends Figure {
             }
         }
 
-        //todo check killing someone (going left / right)
+        //todo test if killing with pawn, diagonal move possible
+        if(abs(new_x - current_x) == 1 && abs(new_y - current_y) == 1){
+            if(board[current_x+1][current_y+1] == null) return false;
+            if(board[current_x+1][current_y-1] == null)return false;
+            if(board[current_x-1][current_y+1] == null) return false;
+            if(board[current_x-1][current_y-1] == null) return false;
+            return true;
+        }
+
 
         //general movement
         return new_x - current_x == 0 && new_y - current_y == step;
