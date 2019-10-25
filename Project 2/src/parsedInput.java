@@ -18,8 +18,8 @@ public class parsedInput {
         qscasteling = returnQueensidecasteling(i);
         isCheck = returnCheck(i);
         isCheckmate = returnCheckmate(i);
-       oldposition = Disambiguation(i);
-       oldposition = Disambiguation(i);
+  //     oldposition = Disambiguation(i);
+    //   oldposition = Disambiguation(i);
         pawnPromo = returnPawnPromo(i);
 
         x = returnX(i);
@@ -75,10 +75,17 @@ public class parsedInput {
             newString.insert(0, "P");
             return newString.toString();
         }
+        if(input.length()==5) {
+            String checkedInput = stripSpecialCases(input);
+            String[] characters = checkedInput.split("");
+            input = "P" +characters[0]+characters[1];
+
+            return input;
+        }
         else return input;
     }
 
-    private static int Disambiguation(String input) {
+  /*  private static int Disambiguation(String input) {
         String[] characters = input.split("");
         if (input.length() == 4 | input.length() == 5) {
             if (input.length() == 4) {
@@ -98,16 +105,17 @@ public class parsedInput {
             }
         }
         return 0;
-    }
+    }*/
+
 
     private static String stripSpecialCases(String input) {
         String checkedInput = checkPawn(input);
 
-        if (returnCheck(input)) input = input.replace("+", "");
-        if(returnCheckmate(input)) input = input.replace("#", "");
-        if(input.length() == 4) input = input.substring(0,0) + input.substring(2,3);
-        if(input.length() == 4) input = input.substring(0,0) + input.substring(3,4);
-        if(returnCapture(input)) input = input.replace("x", "");
+        if (returnCheck(input)) checkedInput = input.replace("+", "");
+        if(returnCheckmate(input)) checkedInput = input.replace("#", "");
+        if(input.length() == 4) checkedInput = input.substring(0,0) + input.substring(2,3);
+        if(input.length() == 4) checkedInput = input.substring(0,0) + input.substring(3,4);
+        if(returnCapture(input)) checkedInput = input.replace(":", "") ;
         return checkedInput;
     }
 
@@ -174,7 +182,7 @@ public class parsedInput {
     }
 
     private static boolean returnCapture(String input){
-        return (input.contains("x") || input.contains("X") || input.contains(":"));
+        return (input.contains(":"));
     }
     private static boolean returnKingsidecasteling(String input){
         if (input == ("0-0")) {

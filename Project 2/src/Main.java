@@ -30,4 +30,3 @@ public class Main {
     }
 }
 
-//TODO Nc3 works as first move for Black Knight but shoudn't...
