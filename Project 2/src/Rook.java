@@ -5,32 +5,21 @@ public class Rook extends Figure {
     public boolean checkmove(int current_x, int current_y, int new_x, int new_y, Figure[][] board){
         if(new_y - current_y == 0 && new_x- current_x == 0) return false;
         if(new_x - current_x == 0){
-            if(new_y - current_y > 0){
-                for(++current_y;current_y < new_y; ++current_y){
-                    if(board[current_x][current_y] != null) return false;
-                }
+            int step = -1;
+            if(new_y - current_y > 0) step = 1;
+            for(current_y += step;current_y < new_y; current_y += step){
+                if(board[current_x][current_y] != null) return false;
             }
-            else{
-                for(--current_y;current_y > new_y; --current_y){
-                    if(board[current_x][current_y] != null) return false;
-                }
-
-            }
+            return true;
         }
-        if(new_y-current_y == 0){
-            if(new_x - current_x > 0){
-                for (++current_x;current_x < new_x; ++current_x){
-                    if(board[current_x][current_y] != null) return false;
-                }
+        else if(new_y-current_y == 0){
+            int step = -1;
+            if(new_x - current_x > 0) step = 1;
+            for(current_x += step;current_x < new_x; current_x += step){
+                if(board[current_x][current_y] != null) return false;
             }
-            else{
-                for(--current_x;current_x > new_x; --current_x){
-                    if(board[current_x][current_y] != null) return false;
-                }
-            }
-
+            return true;
         }
-        return true;
-
+        return false;
     }
 }

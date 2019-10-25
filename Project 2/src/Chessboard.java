@@ -72,6 +72,7 @@ public class Chessboard {
         Coordinates c = getKing(col);
         if (!isCheck(c, col)) return false;
 
+         System.out.println("asdfasdfassss");
         //iterate through possibles moves for the King:
         for(int i = -1; i <= 1; ++i) {
             for(int j= -1; j <= 1; ++j) {
@@ -86,11 +87,11 @@ public class Chessboard {
 
                     //if possible tryMove is not check:
                     Coordinates tmp = new Coordinates(c.getX()+i, c.getY()+j);
-                    if(!isCheck(tmp, col)) return false;
+                    if(!isCheck(tmp, col)) return true;
                 }
             }
         }
-        return true;
+        return false;
     }
 
     private boolean isCheck(Coordinates coord, Attributes.colors col) {
@@ -134,7 +135,6 @@ public class Chessboard {
 
     private boolean checkCastle(parsedInput i, Attributes.colors c) {
         //todo castle properly
-        //todo complete for both colors and both sides (king and queen side)
         if(c == Attributes.colors.white){
             if (i.getKscasteling() == true | i.getQscasteling() == true) whiteCastlePossible = true;
             if(board[5][1].getType() == Attributes.types.king && board[5][1].getCol() == Attributes.colors.white )
@@ -172,10 +172,6 @@ public class Chessboard {
 
     //todo when moving possibly disable Castle Booleans
     private void move(parsedInput input, Coordinates coords, Attributes.colors col) {
-        /*if (col == Attributes.colors.white && whiteCastlePossible) {
-            if(input.getType() == Attributes.types.king) return;
-        }*/
-
         if (input.getCapture()) {
             addGrave(board[input.getX()][input.getY()]);
         }
@@ -194,10 +190,6 @@ public class Chessboard {
     }
 
     boolean tryMove(parsedInput input, Attributes.colors col) {
-        //todo test if rook can't pass other figures
-        //todo en passant
-        //todo check if game over
-
         //check if getCapture was done properly.
         if(board[input.getX()][input.getY()] != null) {
             if (!input.getCapture() || board[input.getX()][input.getY()].getCol() == col) return false;
@@ -212,6 +204,8 @@ public class Chessboard {
 
         Figure[][] copy = board.clone();
         for(int i = 0; i < coords.length && coords[i] != null; ++i) {
+            if(input.getX() == coords[i].getX() && input.getY() == coords[i].getY()) continue;
+
             if (board[coords[i].getX()][coords[i].getY()].checkmove(coords[i].getX(), coords[i].getY(), input.getX(), input.getY(), copy)) {
                 setEnPassant(board[coords[i].getX()][coords[i].getY()], coords[i].getY(), input.getY(), input.getX());
                 if (input.getCapture()) addGrave(board[input.getX()][input.getY()]);

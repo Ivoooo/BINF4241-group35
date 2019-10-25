@@ -26,16 +26,17 @@ public class Game {
         else currentPlayer = p1;
     }
 
-
-  //todo change color , abort when game is over
-
+    //returns true if game is over
     public boolean isGameOver(){
-        if(ourChessBoard.isGameOver(currentPlayer.getCol())){ return true;}
-
-        return false;
+        return(ourChessBoard.isGameOver(currentPlayer.getCol()));
     }
 
     public boolean nextRound(String move){
+        if (isGameOver()) {
+            System.out.println("Sorry the game is over");
+            return false;
+        }
+
         if(!validInput(move)) return false;
         parsedInput input = new parsedInput(move);
         if (!input.possibleInput()) return false;

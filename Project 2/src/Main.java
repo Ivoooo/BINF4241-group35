@@ -18,7 +18,7 @@ public class Main {
         String command;
         boolean success;
 
-        while(ourGame.isGameOver()) {
+        while(!ourGame.isGameOver()) {
             System.out.println("Next command please: (0 to stop)");
             command = keyboard.next();
             if (command.equals("0")) break;
