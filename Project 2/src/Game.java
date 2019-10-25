@@ -74,6 +74,18 @@ public class Game {
                }
             if (state1 == true && state2 == true) return true;
             }
+        if(input.length() == 5){
+           if( input.contains(":")==true){
+               for (int j = 0; j < input.length(); j++) {
+                   ch = input.charAt(j);
+                   if (Character.isLowerCase(ch)) {
+                       state2 = true;
+                   }
+               }
+             }
+            if (state1 == true && state2 == true) return true;
+        }
+
         else {
             for (int i = 0; i < input.length(); i++) {
                 ch = input.charAt(i);

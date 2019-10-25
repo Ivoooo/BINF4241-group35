@@ -11,6 +11,8 @@ public class parsedInput {
     private boolean isCheck;
     private int oldposition;
     private String pawnPromo;
+    private boolean pawnCapture;
+    private String pCaptureEnd;
 
     public parsedInput(String i) {
         capture = returnCapture(i);
@@ -18,18 +20,21 @@ public class parsedInput {
         qscasteling = returnQueensidecasteling(i);
         isCheck = returnCheck(i);
         isCheckmate = returnCheckmate(i);
-  //     oldposition = Disambiguation(i);
-    //   oldposition = Disambiguation(i);
+  //    oldposition = Disambiguation(i);
+    //  oldposition = Disambiguation(i);
         pawnPromo = returnPawnPromo(i);
-
+        pawnCapture = PawnCapture(i);
         x = returnX(i);
         y = returnY(i);
         type = returnType(i);
+        pCaptureEnd = pawnCaptureEnd(i);
     }
 
     public String getPawnPromo() {
         return pawnPromo;
     }
+    public String getPawnCaptureEnd(){return pCaptureEnd;}
+    public boolean getPawnCapture(){return pawnCapture;}
 
     public boolean getQscasteling(){return qscasteling;}
 
@@ -76,13 +81,24 @@ public class parsedInput {
             return newString.toString();
         }
         if(input.length()==5) {
-            String checkedInput = stripSpecialCases(input);
-            String[] characters = checkedInput.split("");
+            String[] characters = input.split("");
             input = "P" +characters[0]+characters[1];
-
             return input;
         }
         else return input;
+    }
+    private static boolean PawnCapture(String input){
+        if (input.length()==5 && input.contains(":")) {
+            return true;
+        }
+        return false;
+    }
+    private static String pawnCaptureEnd(String input){
+       if(PawnCapture(input)){
+        String[] characters = input.split("");
+        String newinput = "P" +characters[3]+characters[4];
+        return newinput;}
+       return input;
     }
 
   /*  private static int Disambiguation(String input) {
@@ -109,13 +125,14 @@ public class parsedInput {
 
 
     private static String stripSpecialCases(String input) {
-        String checkedInput = checkPawn(input);
-
+        input = checkPawn(input);
+        String checkedInput = input;
         if (returnCheck(input)) checkedInput = input.replace("+", "");
         if(returnCheckmate(input)) checkedInput = input.replace("#", "");
         if(input.length() == 4) checkedInput = input.substring(0,0) + input.substring(2,3);
         if(input.length() == 4) checkedInput = input.substring(0,0) + input.substring(3,4);
         if(returnCapture(input)) checkedInput = input.replace(":", "") ;
+
         return checkedInput;
     }
 

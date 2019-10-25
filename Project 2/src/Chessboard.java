@@ -172,7 +172,14 @@ public class Chessboard {
         if(input.getKscasteling() || input.getQscasteling()) {
             return checkCastle(input, col);
         }
+        if(input.getPawnCapture()){
+           if(board[input.getX()][input.getY()].getType() == Attributes.types.pawn) {
+               String stringCoords = input.getPawnCaptureEnd();
+               parsedInput newCoord = new parsedInput(stringCoords);
+               addGrave(board[newCoord.getX()][newCoord.getY()]);
+           }
 
+        }
         //find all figures that are still in the game
         Coordinates[] coords = findFigure(input.getType(), col);
         if (coords[0] == null) return false;

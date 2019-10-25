@@ -14,6 +14,7 @@ For our Chessgame we used the following annotation rules:
 
 Standard Moves e.g Be5
 Capture: B:e5
+    with Pawns: a4:b5 (start and end positions of pawn.)
 Pawn promotion: e8Q
 Castling: 0-0 , 0-0-0
 Check: Be5+
