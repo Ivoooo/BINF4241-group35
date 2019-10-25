@@ -172,10 +172,6 @@ public class Chessboard {
 
     //todo when moving possibly disable Castle Booleans
     private void move(parsedInput input, Coordinates coords, Attributes.colors col) {
-        if (input.getCapture()) {
-            addGrave(board[input.getX()][input.getY()]);
-        }
-
         board[input.getX()][input.getY()] = board[coords.getX()][coords.getY()];
         board[coords.getX()][coords.getY()] = null;
         Coordinates tmp = new Coordinates(input.getX(), input.getY());
