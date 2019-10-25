@@ -25,7 +25,7 @@ public class Pawn extends Figure {
     }
 
     public boolean enPassant(int current_x, int current_y, int new_x, int new_y, Figure[][] board, Coordinates enemy) {
-        if (board[new_x][new_y] != null || board[current_x][current_y] == null) return false;
+        if (board[new_x][new_y] != null) return false;
 
         //check (on copy) if we could move there
         if(super.getCol() == Attributes.colors.white) board[new_x][new_y] = new Pawn(Attributes.colors.black);

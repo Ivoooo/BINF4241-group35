@@ -166,7 +166,30 @@ public class Chessboard {
             if (!input.getCapture() || board[input.getX()][input.getY()].getCol() == col) return false;
         }
         else {
-            if(input.getCapture()) return false;
+            if (input.getCapture()) {
+                //check for en passant
+                if (input.getType() == Attributes.types.pawn && enPassant != null) {
+                    Coordinates[] coords = findFigure(input.getType(), col);
+                    if (coords[0] == null) return false;
+
+                    Figure[][] copy = board.clone();
+                    for (int i = 0; i < coords.length && coords[i] != null; ++i) {
+                        if (input.getX() == coords[i].getX() && input.getY() == coords[i].getY()) continue;
+
+                            if (board[coords[i].getX()][coords[i].getY()].enPassant(coords[i].getX(), coords[i].getY(), input.getX(), input.getY(), copy, enPassant)) {
+                                addGrave(board[enPassant.getX()][enPassant.getY()]);
+                                board[enPassant.getX()][enPassant.getY()] = null;
+                                enPassant = null;
+                                move(input, coords[i], col);
+                                return true;
+                            }
+
+                    }
+                }
+
+                //base case
+                return false;
+            }
         }
 
         if(input.getKscasteling() || input.getQscasteling()) {
@@ -193,16 +216,6 @@ public class Chessboard {
                 if (input.getCapture()) addGrave(board[input.getX()][input.getY()]);
                 move(input, coords[i], col);
                 return true;
-            }
-            //check en passant for pawn:
-            else if(board[coords[i].getX()][coords[i].getY()].getType() == Attributes.types.pawn && enPassant != null) {
-                if (input.getCapture() &&
-                        board[coords[i].getX()][coords[i].getY()].enPassant(coords[i].getX(), coords[i].getY(), input.getX(), input.getY(), copy, enPassant)) {
-                    addGrave(board[enPassant.getX()][enPassant.getY()]);
-                    enPassant = null;
-                    move(input, coords[i], col);
-                    return true;
-                }
             }
         }
         //return checkCastle(input, col);
