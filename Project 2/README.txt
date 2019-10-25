@@ -20,4 +20,5 @@ Checkmate: X , x
 In case of a incorrect input (not using the algebraic notation or impossible move) you will 
 	be asked to give a new Command.
 Check and Checkmate will get ignored if they are not true.
-You will be asked for the Pawn promotion in case you forget declare it.
+You will be asked for the Pawn promotion in case you forget to declare it.
+enPassant, Casteling and Promotion work; draws and ambiguity is not accounted for.
