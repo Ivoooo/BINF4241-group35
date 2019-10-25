@@ -107,19 +107,20 @@ public class Chessboard {
         return false;
     }
 
-    private void checkPromotion(Coordinates c, Attributes.colors col) {
+    private void checkPromotion(parsedInput input, Coordinates c, Attributes.colors col) {
         if(board[c.getX()][c.getY()].getType() == Attributes.types.pawn) {
             if (c.getY() == 7 && col == Attributes.colors.white ||
                 c.getY() == 0 && col == Attributes.colors.black) {
-                promotion(c, col);
+                promotion(input, c, col);
             }
         }
     }
 
-    private void promotion(Coordinates c, Attributes.colors col) {
+    private void promotion(parsedInput input, Coordinates c, Attributes.colors col) {
         Scanner keyboard = new Scanner(System.in);
 
         String a = "";
+        if (input.getPawnPromo().length() != 0) a = input.getPawnPromo();
         while(! (a.equals("R") || a.equals("N") || a.equals("B") || a.equals("Q"))) {
             System.out.println("You managed to get a Pawn to the other side! What role do you want him to be? R / N / B / Q");
             a = keyboard.next();
@@ -150,7 +151,7 @@ public class Chessboard {
         board[input.getX()][input.getY()] = board[coords.getX()][coords.getY()];
         board[coords.getX()][coords.getY()] = null;
         Coordinates tmp = new Coordinates(input.getX(), input.getY());
-        checkPromotion(tmp, col);
+        checkPromotion(input, tmp, col);
     }
 
     private void setEnPassant(Figure a, int currY, int newY, int newX) {
