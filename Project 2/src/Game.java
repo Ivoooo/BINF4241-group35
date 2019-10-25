@@ -36,7 +36,6 @@ public class Game {
             System.out.println("Sorry the game is over");
             return false;
         }
-
         if(!validInput(move)) return false;
         parsedInput input = new parsedInput(move);
         if (!input.possibleInput()) return false;
@@ -56,8 +55,8 @@ public class Game {
         boolean state3 = false;
 
 
-        if (input.length() < 1 | input.length() > 5 ) return false;
-        if (input == "x" | input == "X" | input == "0-0" | input == "0-0-0") { return true;}
+        if (input.length() < 1 || input.length() > 5 ) return false;
+        if (input.equals("x") || input.equals("X") || input.equals("0-0") || input.equals("0-0-0")) {return true;}
         char ch;
         for (int i = 0; i < input.length(); i++) {
             ch = input.charAt(i);

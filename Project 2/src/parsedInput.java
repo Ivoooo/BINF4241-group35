@@ -67,9 +67,10 @@ public class parsedInput {
     }
 
     public boolean possibleInput() {
+        if (kscasteling == qscasteling && kscasteling) return false;
+        if (kscasteling) return true;
         if ( x < 0 || x > 7 || y < 0 || y > 7) return false;
         if ( pawnPromo.length() != 0 && x != 0 && x != 7) return false;
-        if (kscasteling == qscasteling && kscasteling) return false;
 
         return true;
     }
@@ -191,6 +192,7 @@ public class parsedInput {
     }
 
     private static int returnY(String input){
+        if (input.equals("0-0-0")) return -1;
         String checkedInput = stripSpecialCases(input);
         String[] characters = checkedInput.split("");
         if (Integer.parseInt(characters[2]) < 1 | Integer.parseInt(characters[2]) > 8) return -1;

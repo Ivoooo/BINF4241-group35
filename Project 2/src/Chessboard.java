@@ -4,8 +4,10 @@ import static java.lang.Math.abs;
 public class Chessboard {
     private Figure[][] board = new Figure[8][8];
     private Figure[] grave = new Figure[32];
-    private boolean blackCastlePossible = true;
-    private boolean whiteCastlePossible = false;
+    private boolean blackQsCastlePossible = true;
+    private boolean whiteQsCastlePossible = true;
+    private boolean blackKsCastlePossible = true;
+    private boolean whiteKsCastlePossible = true;
     private Coordinates enPassant = null;
 
     public Chessboard() {
@@ -72,7 +74,6 @@ public class Chessboard {
         Coordinates c = getKing(col);
         if (!isCheck(c, col)) return false;
 
-         System.out.println("asdfasdfassss");
         //iterate through possibles moves for the King:
         for(int i = -1; i <= 1; ++i) {
             for(int j= -1; j <= 1; ++j) {
@@ -134,11 +135,74 @@ public class Chessboard {
         }
     }
 
-    //todo castling
     private boolean checkCastle(parsedInput i, Attributes.colors c) {
-        return false;
+        //check if still doable
+        if(c == Attributes.colors.white) {
+            if(i.getKscasteling() && !whiteKsCastlePossible) return false;
+            if(i.getQscasteling() && !whiteQsCastlePossible) return false;
+        }
+        else {
+            if(i.getKscasteling() && !blackKsCastlePossible) return false;
+            if(i.getQscasteling() && !blackQsCastlePossible) return false;
+        }
+
+        //check if possible
+        int x = 0;
+        if (c != Attributes.colors.white) x = 7;
+
+        if(isCheck(getKing(c), c)) return false;
+        Coordinates coords;
+        if(i.getKscasteling()) {
+            if(board[x][7].getType() != Attributes.types.rook) return false;
+            for(int y=5; y<7; ++y) {
+                if(board[x][y] != null) return false;
+                coords = new Coordinates(x, y);
+                if(isCheck(coords, c)) return false;
+            }
+        }
+        else {
+            if(board[x][0].getType() != Attributes.types.rook) return false;
+            for(int y=3; y>1; --y) {
+                if(board[x][y] != null) return false;
+                coords = new Coordinates(x, y);
+                if(isCheck(coords, c)) return false;
+            }
+            if(board[x][1] != null) return false;
+        }
+
+        if(c == Attributes.colors.white) {
+            whiteKsCastlePossible = false;
+            whiteQsCastlePossible = false;
+        }
+        else {
+            blackKsCastlePossible = false;
+            blackQsCastlePossible = false;
+        }
+        return true;
     }
 
+    private void disableCastle(parsedInput input, Coordinates coords, Attributes.colors col) {
+        if(col == Attributes.colors.white) {
+            if (input.getType() == Attributes.types.king) {
+                whiteKsCastlePossible = false;
+                whiteQsCastlePossible = false;
+            }
+            else if(input.getType() == Attributes.types.rook) {
+                if(coords.getX() == 0 && coords.getY() == 0) whiteQsCastlePossible = false;
+                else if(coords.getX() == 0 && coords.getY() == 7) whiteKsCastlePossible = false;
+            }
+        }
+        else {
+            if (input.getType() == Attributes.types.king) {
+                blackKsCastlePossible = false;
+                blackQsCastlePossible = false;
+            }
+            else if(input.getType() == Attributes.types.rook) {
+                if(coords.getX() == 7 && coords.getY() == 0) blackQsCastlePossible = false;
+                else if(coords.getX() == 7 && coords.getY() == 7) blackKsCastlePossible = false;
+            }
+        }
+    }
 
     private void addGrave(Figure a) {
         int i = 0;
@@ -146,8 +210,8 @@ public class Chessboard {
         grave[i] = a;
     }
 
-    //todo when moving possibly disable Castle Booleans
     private void move(parsedInput input, Coordinates coords, Attributes.colors col) {
+        disableCastle(input, coords, col);
         board[input.getX()][input.getY()] = board[coords.getX()][coords.getY()];
         board[coords.getX()][coords.getY()] = null;
         Coordinates tmp = new Coordinates(input.getX(), input.getY());
@@ -162,6 +226,10 @@ public class Chessboard {
     }
 
     boolean tryMove(parsedInput input, Attributes.colors col) {
+        if(input.getQscasteling() || input.getKscasteling()) {
+            return checkCastle(input, col);
+        }
+
         //check if getCapture was done properly.
         if(board[input.getX()][input.getY()] != null) {
             if (!input.getCapture() || board[input.getX()][input.getY()].getCol() == col) return false;
