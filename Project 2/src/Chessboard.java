@@ -214,12 +214,15 @@ public class Chessboard {
         for(int i = 0; i < coords.length && coords[i] != null; ++i) {
             if (board[coords[i].getX()][coords[i].getY()].checkmove(coords[i].getX(), coords[i].getY(), input.getX(), input.getY(), copy)) {
                 setEnPassant(board[coords[i].getX()][coords[i].getY()], coords[i].getY(), input.getY(), input.getX());
+                if (input.getCapture()) addGrave(board[input.getX()][input.getY()]);
                 move(input, coords[i], col);
                 return true;
             }
             //check en passant for pawn:
             else if(board[coords[i].getX()][coords[i].getY()].getType() == Attributes.types.pawn && enPassant != null) {
-                if (board[coords[i].getX()][coords[i].getY()].enPassant(coords[i].getX(), coords[i].getY(), input.getX(), input.getY(), copy, enPassant)) {
+                if (input.getCapture() &&
+                        board[coords[i].getX()][coords[i].getY()].enPassant(coords[i].getX(), coords[i].getY(), input.getX(), input.getY(), copy, enPassant)) {
+                    addGrave(board[enPassant.getX()][enPassant.getY()]);
                     enPassant = null;
                     move(input, coords[i], col);
                     return true;
