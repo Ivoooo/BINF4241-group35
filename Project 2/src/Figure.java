@@ -34,4 +34,8 @@ public class Figure {
         x += "]";
         return x;
     }
+
+    public boolean enPassant(int current_x, int current_y, int new_x, int new_y, Figure[][] board, Coordinates enemy) {
+        return false;
+    }
 }

@@ -23,4 +23,17 @@ public class Pawn extends Figure {
 
         return false;
     }
+
+    public boolean enPassant(int current_x, int current_y, int new_x, int new_y, Figure[][] board, Coordinates enemy) {
+        if (board[new_x][new_y] != null || board[current_x][current_y] == null) return false;
+
+        //check (on copy) if we could move there
+        if(super.getCol() == Attributes.colors.white) board[new_x][new_y] = new Pawn(Attributes.colors.black);
+        else board[new_x][new_y] = new Pawn(Attributes.colors.white);
+        if(!checkmove(current_x, current_y, new_x, new_y, board)) return false;
+
+        if (abs(current_x - new_x) != 1 && abs(current_y - new_y) != 1) return false;
+
+        return (enemy.getX() == new_x && enemy.getY() == current_y);
+    }
 }

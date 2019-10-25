@@ -1,10 +1,12 @@
 import java.util.Scanner;
+import static java.lang.Math.abs;
 
 public class Chessboard {
     private Figure[][] board = new Figure[8][8];
     private Figure[] grave = new Figure[32];
     private boolean blackCastlePossible = true;
     private boolean whiteCastlePossible = false;
+    private Coordinates enPassant = null;
 
     public Chessboard() {
         for (int i = 0; i < 8; ++i) {
@@ -131,6 +133,7 @@ public class Chessboard {
     }
 
     private boolean checkCastle(parsedInput i, Attributes.colors c) {
+        //todo castle properly
         //todo complete for both colors and both sides (king and queen side)
         if(c == Attributes.colors.white){
             if (i.getKscasteling() == true | i.getQscasteling() == true) whiteCastlePossible = true;
@@ -183,6 +186,13 @@ public class Chessboard {
         checkPromotion(tmp, col);
     }
 
+    private void setEnPassant(Figure a, int currY, int newY, int newX) {
+        enPassant = null;
+        if (a.getType() == Attributes.types.pawn && abs(currY - newY) == 2) {
+            enPassant = new Coordinates(newX, newY);
+        }
+    }
+
     boolean tryMove(parsedInput input, Attributes.colors col) {
         //todo test if rook can't pass other figures
         //todo en passant
@@ -203,11 +213,21 @@ public class Chessboard {
         Figure[][] copy = board.clone();
         for(int i = 0; i < coords.length && coords[i] != null; ++i) {
             if (board[coords[i].getX()][coords[i].getY()].checkmove(coords[i].getX(), coords[i].getY(), input.getX(), input.getY(), copy)) {
+                setEnPassant(board[coords[i].getX()][coords[i].getY()], coords[i].getY(), input.getY(), input.getX());
                 move(input, coords[i], col);
                 return true;
             }
+            //check en passant for pawn:
+            else if(board[coords[i].getX()][coords[i].getY()].getType() == Attributes.types.pawn && enPassant != null) {
+                if (board[coords[i].getX()][coords[i].getY()].enPassant(coords[i].getX(), coords[i].getY(), input.getX(), input.getY(), copy, enPassant)) {
+                    enPassant = null;
+                    move(input, coords[i], col);
+                    return true;
+                }
+            }
         }
-        return checkCastle(input, col);
+        //return checkCastle(input, col);
+        return false;
     }
 
     public void boardOutput(){
