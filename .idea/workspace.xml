@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b6e4d10-b292-4847-a9e9-9f6ece6980bb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/BINF4241-group35.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BINF4241-group35.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project 2/src/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project 2/src/Bishop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project 2/src/Chessboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project 2/src/Chessboard.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,10 +33,11 @@
   </component>
   <component name="ProjectId" id="1RevMiByN42W5PLsDu5jsAGXbvJ" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570024414516" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Project 3" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -48,6 +48,11 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\laraf\OneDrive\05_Dokumente\GitHub\BINF4241-group35" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -95,6 +100,8 @@
       <workItem from="1571140934077" duration="2586000" />
       <workItem from="1571222808423" duration="5912000" />
       <workItem from="1571731471203" duration="6312000" />
+      <workItem from="1572520627215" duration="1203000" />
+      <workItem from="1572521939253" duration="112000" />
     </task>
     <servers />
   </component>
