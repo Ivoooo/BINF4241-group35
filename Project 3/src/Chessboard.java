@@ -205,9 +205,7 @@ public class Chessboard {
         }
     }
 
-    private void addGrave(Figure a) {
-      grave.addGrave(a);
-    }
+
 
     private void move(parsedInput input, Coordinates coords, Attributes.colors col) {
         disableCastle(input, coords, col);
@@ -245,7 +243,7 @@ public class Chessboard {
                         if (input.getX() == coords[i].getX() && input.getY() == coords[i].getY()) continue;
 
                             if (board[coords[i].getX()][coords[i].getY()].enPassant(coords[i].getX(), coords[i].getY(), input.getX(), input.getY(), copy, enPassant)) {
-                                addGrave(board[enPassant.getX()][enPassant.getY()]);
+                                grave.addGrave(board[enPassant.getX()][enPassant.getY()]);
                                 board[enPassant.getX()][enPassant.getY()] = null;
                                 enPassant = null;
                                 move(input, coords[i], col);
@@ -267,7 +265,7 @@ public class Chessboard {
            if(board[input.getX()][input.getY()].getType() == Attributes.types.pawn) {
                String stringCoords = input.getPawnCaptureEnd();
                parsedInput newCoord = new parsedInput(stringCoords);
-               addGrave(board[newCoord.getX()][newCoord.getY()]);
+               grave.addGrave(board[newCoord.getX()][newCoord.getY()]);
            }
 
         }
@@ -281,7 +279,7 @@ public class Chessboard {
 
             if (board[coords[i].getX()][coords[i].getY()].checkmove(coords[i].getX(), coords[i].getY(), input.getX(), input.getY(), copy)) {
                 setEnPassant(board[coords[i].getX()][coords[i].getY()], coords[i].getY(), input.getY(), input.getX());
-                if (input.getCapture()) addGrave(board[input.getX()][input.getY()]);
+                if (input.getCapture()) grave.addGrave(board[input.getX()][input.getY()]);
                 move(input, coords[i], col);
                 return true;
             }
