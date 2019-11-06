@@ -3,7 +3,6 @@ import static java.lang.Math.abs;
 
 public class Chessboard implements Observer {
     private Figure[][] board = new Figure[8][8];
-  //  private Figure[] grave = new Figure[32];
     private boolean blackQsCastlePossible = true;
     private boolean whiteQsCastlePossible = true;
     private boolean blackKsCastlePossible = true;
@@ -43,6 +42,20 @@ public class Chessboard implements Observer {
             board[i % 8][x] = new Pawn(col);
         }
     }
+    public Figure[][] getBoard(){
+        return board;
+    }
+    public ChessPieceIterator createIterator(Figure[][] board){
+        return new ChessPieceIterator(board);
+    }
+    public void printPiecesList(ChessPieceIterator iterator){
+        while(iterator.hasNext()){
+            Figure piece = (Figure)iterator.next();
+            System.out.print(piece.getCol().toString() + piece.getType().toString()  );
+        }
+    }
+
+
 
     private Coordinates[] findFigure(Attributes.types type, Attributes.colors col) {
         Coordinates[] c = new Coordinates[8];

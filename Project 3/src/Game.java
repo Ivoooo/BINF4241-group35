@@ -8,6 +8,8 @@ public class Game {
         observer.boardOutput();
     }
 
+
+
     public void addPlayer(String name){
         if(p1 == null) {
             p1 = new Player(name, "white");
@@ -30,6 +32,7 @@ public class Game {
     public boolean isGameOver(){
         return(observer.isGameOver(currentPlayer.getCol()));
     }
+
 
     public boolean nextRound(String move){
         if (isGameOver()) {
