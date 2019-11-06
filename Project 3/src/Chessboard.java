@@ -3,12 +3,13 @@ import static java.lang.Math.abs;
 
 public class Chessboard {
     private Figure[][] board = new Figure[8][8];
-    private Figure[] grave = new Figure[32];
+  //  private Figure[] grave = new Figure[32];
     private boolean blackQsCastlePossible = true;
     private boolean whiteQsCastlePossible = true;
     private boolean blackKsCastlePossible = true;
     private boolean whiteKsCastlePossible = true;
     private Coordinates enPassant = null;
+    GraveSingleton grave = GraveSingleton.getInstance();
 
     public Chessboard() {
         for (int i = 0; i < 8; ++i) {
@@ -205,9 +206,7 @@ public class Chessboard {
     }
 
     private void addGrave(Figure a) {
-        int i = 0;
-        while(grave[i] != null) ++i;
-        grave[i] = a;
+      grave.addGrave(a);
     }
 
     private void move(parsedInput input, Coordinates coords, Attributes.colors col) {
