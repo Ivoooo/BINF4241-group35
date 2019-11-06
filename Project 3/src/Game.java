@@ -3,6 +3,7 @@ public class Game {
     private Player p1 = null;
     private Player p2 = null;
     private Player currentPlayer;
+    private ScoreboardSingleton scoreboardSingleton = ScoreboardSingleton.getInstance();
 
     public Game() {
         observer.boardOutput();
@@ -43,6 +44,8 @@ public class Game {
         boolean success = observer.tryMove(input, currentPlayer.getCol());
         if (success) {
             observer.boardOutput();
+            scoreboardSingleton.printScore();
+
             swapCurrentPlayer();
         }
 
