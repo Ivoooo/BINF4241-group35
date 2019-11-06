@@ -8,7 +8,8 @@ public class Chessboard implements Observer {
     private boolean blackKsCastlePossible = true;
     private boolean whiteKsCastlePossible = true;
     private Coordinates enPassant = null;
-    GraveSingleton grave = GraveSingleton.getInstance();
+    private GraveSingleton grave = GraveSingleton.getInstance();
+    private ScoreboardSingleton scoreboard = ScoreboardSingleton.getInstance();
 
     public Chessboard() {
         for (int i = 0; i < 8; ++i) {
@@ -120,6 +121,14 @@ public class Chessboard implements Observer {
             }
         }
         return false;
+    }
+
+    private void addGrave(Figure a) {
+        //get color of current player.
+        Attributes.colors col = Attributes.colors.white;
+        if(a.getCol() == Attributes.colors.white) col = Attributes.colors.black;
+        scoreboard.addScore(col, a.getType());
+        grave.addGrave(a);
     }
 
     private void checkPromotion(parsedInput input, Coordinates c, Attributes.colors col) {
@@ -256,7 +265,7 @@ public class Chessboard implements Observer {
                         if (input.getX() == coords[i].getX() && input.getY() == coords[i].getY()) continue;
 
                             if (board[coords[i].getX()][coords[i].getY()].enPassant(coords[i].getX(), coords[i].getY(), input.getX(), input.getY(), copy, enPassant)) {
-                                grave.addGrave(board[enPassant.getX()][enPassant.getY()]);
+                                addGrave(board[enPassant.getX()][enPassant.getY()]);
                                 board[enPassant.getX()][enPassant.getY()] = null;
                                 enPassant = null;
                                 move(input, coords[i], col);
@@ -278,7 +287,7 @@ public class Chessboard implements Observer {
            if(board[input.getX()][input.getY()].getType() == Attributes.types.pawn) {
                String stringCoords = input.getPawnCaptureEnd();
                parsedInput newCoord = new parsedInput(stringCoords);
-               grave.addGrave(board[newCoord.getX()][newCoord.getY()]);
+               addGrave(board[newCoord.getX()][newCoord.getY()]);
            }
 
         }
@@ -292,7 +301,7 @@ public class Chessboard implements Observer {
 
             if (board[coords[i].getX()][coords[i].getY()].checkmove(coords[i].getX(), coords[i].getY(), input.getX(), input.getY(), copy)) {
                 setEnPassant(board[coords[i].getX()][coords[i].getY()], coords[i].getY(), input.getY(), input.getX());
-                if (input.getCapture()) grave.addGrave(board[input.getX()][input.getY()]);
+                if (input.getCapture()) addGrave(board[input.getX()][input.getY()]);
                 move(input, coords[i], col);
                 return true;
             }
