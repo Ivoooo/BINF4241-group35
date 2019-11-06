@@ -1,5 +1,5 @@
-public abstract class Attributes {
-    enum types {
+public class Attributes {
+    public enum types {
         king,
         queen,
         knight,

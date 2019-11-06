@@ -1,11 +1,11 @@
 public class Game {
-    private Chessboard ourChessBoard = new Chessboard();
+    private Observer observer = new Chessboard();
     private Player p1 = null;
     private Player p2 = null;
     private Player currentPlayer;
 
     public Game() {
-        ourChessBoard.boardOutput();
+        observer.boardOutput();
     }
 
     public void addPlayer(String name){
@@ -28,7 +28,7 @@ public class Game {
 
     //returns true if game is over
     public boolean isGameOver(){
-        return(ourChessBoard.isGameOver(currentPlayer.getCol()));
+        return(observer.isGameOver(currentPlayer.getCol()));
     }
 
     public boolean nextRound(String move){
@@ -40,9 +40,9 @@ public class Game {
         parsedInput input = new parsedInput(move);
         if (!input.possibleInput()) return false;
 
-        boolean success = ourChessBoard.tryMove(input, currentPlayer.getCol());
+        boolean success = observer.tryMove(input, currentPlayer.getCol());
         if (success) {
-            ourChessBoard.boardOutput();
+            observer.boardOutput();
             swapCurrentPlayer();
         }
 

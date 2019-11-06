@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import static java.lang.Math.abs;
 
-public class Chessboard {
+public class Chessboard implements Observer {
     private Figure[][] board = new Figure[8][8];
     private Figure[] grave = new Figure[32];
     private boolean blackQsCastlePossible = true;
@@ -69,7 +69,7 @@ public class Chessboard {
     }
 
     //returns true if game over, false if not.
-     boolean isGameOver(Attributes.colors col) {
+     public boolean isGameOver(Attributes.colors col) {
         //if not check
         Coordinates c = getKing(col);
         if (!isCheck(c, col)) return false;
@@ -225,7 +225,7 @@ public class Chessboard {
         }
     }
 
-    boolean tryMove(parsedInput input, Attributes.colors col) {
+    public boolean tryMove(parsedInput input, Attributes.colors col) {
         if(input.getQscasteling() || input.getKscasteling()) {
             return checkCastle(input, col);
         }
