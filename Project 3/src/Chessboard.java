@@ -308,13 +308,26 @@ public class Chessboard implements Observer {
     public Figure[] getBoard() {
         Figure[] newlist = new Figure[40];
 
+
         int x = 0;
 
         for (int i = 7; i >= 0; --i) {
             for (int j = 0; j < 8; ++j) {
                 if (board[j][i] != null) {
                     newlist[x] = board[j][i];
-
+                    String xstring;
+                       if(j==0)  xstring = "a";
+                       else if(j==1)  xstring = "b";
+                       else if(j==2)  xstring = "c";
+                       else if(j==3)  xstring = "d";
+                       else if(j==4)  xstring = "e";
+                       else if(j==5)  xstring = "f";
+                       else if(j==6)  xstring = "g";
+                       else if (j==7)  xstring = "h";
+                       else xstring = " ";
+                       int y = i+1;
+                    String  position = xstring + y;
+                    newlist[x].coords = position ;
                     x++;
 
                 }

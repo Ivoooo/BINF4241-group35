@@ -16,7 +16,7 @@ public class Game {
         while(iterator.hasNext()){
             Figure piece = (Figure)iterator.next();
 
-            System.out.print(piece.getCol().toString() +" "+ piece.getType().toString() + " at "+   "\n");
+            System.out.print(piece.getCol().toString() +" "+ piece.getType().toString() + " at "+ piece.getCoords() +  "\n");
         }
     }
 

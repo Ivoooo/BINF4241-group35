@@ -1,6 +1,8 @@
 public class Figure {
+    public String coords;
     private Attributes.colors col;
     private Attributes.types type;
+
 
 
     public Figure(Attributes.colors c, Attributes.types type) {
@@ -14,6 +16,10 @@ public class Figure {
 
     public Attributes.types getType() {
         return type;
+    }
+
+    public String getCoords() {
+        return coords;
     }
 
     public boolean checkmove(int current_x, int current_y, int new_x, int new_y, Figure[][] board) {
@@ -35,6 +41,7 @@ public class Figure {
         x += "]";
         return x;
     }
+
 
     public boolean enPassant(int current_x, int current_y, int new_x, int new_y, Figure[][] board, Coordinates enemy) {
         return false;
