@@ -24,6 +24,7 @@ public class Main {
             System.out.println("Next command please: (0 to stop)");
             command = keyboard.next();
             if (command.equals("0")) break;
+            if(command.equals("9")) ourGame.printPiecesList();
             else {
                 success = ourGame.nextRound(command);
                 if (!success) System.out.println("Wrong command");

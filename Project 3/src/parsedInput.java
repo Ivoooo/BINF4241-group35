@@ -46,9 +46,7 @@ public class parsedInput {
 
     public boolean getisCheck(){return isCheck;}
 
-  /*  public int getOldposition() {
-        return oldposition;
-    }*/
+
 
     public int getX() {
         return x;
@@ -102,27 +100,7 @@ public class parsedInput {
        return input;
     }
 
-  /*  private static int Disambiguation(String input) {
-        String[] characters = input.split("");
-        if (input.length() == 4 | input.length() == 5) {
-            if (input.length() == 4) {
-                String alt = characters[1];
-                if (alt.matches(".*\\d.*")) {
-                    int yoldposition = Integer.parseInt(alt);
-                    return yoldposition;
-                } else {
-                    int xoldposition = returnX(alt);
-                    return xoldposition;
-                }
-            }
-            if (input.length() == 5) {
-                int yoldposition = Integer.parseInt(characters[2]);
-                int xoldposition = returnX(characters[1]);
-                return xoldposition;
-            }
-        }
-        return 0;
-    }*/
+
 
 
     private static String stripSpecialCases(String input) {
