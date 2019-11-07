@@ -9,6 +9,18 @@ public class Game {
         observer.boardOutput();
     }
 
+    public void printPiecesList(){
+        ChessPieceIterator iterator = new ChessPieceIterator(observer.getBoard());
+        System.out.println("List of all the pieces in the Game: ");
+
+        while(iterator.hasNext()){
+            Figure piece = (Figure)iterator.next();
+
+            System.out.print(piece.getCol().toString() +" "+ piece.getType().toString() + " at "+   "\n");
+        }
+    }
+
+
 
 
     public void addPlayer(String name){

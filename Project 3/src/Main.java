@@ -14,7 +14,8 @@ public class Main {
         System.out.println(" Please enter the name of the black Player: ");
         name = keyboard.next();
         ourGame.addPlayer(name);
-        Chessboard.printList();
+
+        ourGame.printPiecesList();
         //playing the game
         String command;
         boolean success;

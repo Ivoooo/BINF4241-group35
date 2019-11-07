@@ -2,6 +2,7 @@ public class Figure {
     private Attributes.colors col;
     private Attributes.types type;
 
+
     public Figure(Attributes.colors c, Attributes.types type) {
         this.col = c;
         this.type = type;
