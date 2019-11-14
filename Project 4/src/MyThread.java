@@ -18,6 +18,9 @@ public class MyThread implements Runnable{
         time = timeInMillis;
         running = false;
     }
+    public int getThreadtime(){
+        return time;
+    }
 
     /**
      * Default Constructor. It has a default time of 10 seconds.
