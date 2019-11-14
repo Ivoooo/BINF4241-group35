@@ -11,40 +11,64 @@ public class Main {
 
     public static void main(String args[]){
 
-        MyThread mt1 = new Dishwasher();                         // Behaviour of Thread 1
+        MyThread mt1 = new MyThread(20000);                         // Behaviour of Thread 1
         MyThread mt2 = new MyThread(20000);         // Behaviour of Thread 2
-
-        Thread rt1;         // Thread 1
-        Thread rt2;         // Thread 2
+        MyThread mt3 = new MyThread(20000);
+        MyThread mt4 = new MyThread(20000);
+        MyThread mt5 = new MyThread(20000);
+        Thread rt1;
+        Thread rt2;
+        Thread rt3;
+        Thread rt4;
+        Thread rt5;
 
         long elapsed1 = System.currentTimeMillis();     // Pointer to current time for Thread 1
-        long elapsed2 = System.currentTimeMillis();     // Pointer to current time for Thread 2
+        long elapsed2 = System.currentTimeMillis();
+        long elapsed3 = System.currentTimeMillis();
+        long elapsed4 = System.currentTimeMillis();
+        long elapsed5 = System.currentTimeMillis();
 
         while(true){
 
             // Collecting User Input in an infinite loop
-            System.out.println("Which Thread do you wonna start?");
+            System.out.println("Which Device do you wan't to start?");
             Scanner scanner = new Scanner(System.in);
             String command = scanner.nextLine();
 
             // Basic control for command
 
             // command = 1 -> start the Thread 1
-            if (command.equals("1") && !mt1.isRunning()) {
+            if (command.equals("Oven") && !mt1.isRunning()) {
                 rt1 = new Thread(mt1, "FirstThread");           // Creation of the Thread 1 assigning
                 elapsed1 = System.currentTimeMillis();                // update of the pointer to current timestamp
                 rt1.start();
             }
 
             // command = 2 -> start the Thread 2
-            else if (command.equals("2") && !mt2.isRunning()){
+            else if (command.equals("Microwave") && !mt2.isRunning()){
                 rt2 = new Thread(mt2, "SecondThread");          // Creation of the Thread 1 assigning
                 elapsed2 = System.currentTimeMillis();                // update of the pointer to current timestamp
                 rt2.start();
             }
+            else if (command.equals("Dishwasher") && !mt3.isRunning()){
+                rt3 = new Thread(mt3, "thirdThread");
+                elapsed3 = System.currentTimeMillis();
+                rt3.start();
+            }
+            else if (command.equals("Washing Machine") && !mt4.isRunning()){
+                rt4 = new Thread(mt4, "fourthThread");
+                elapsed4 = System.currentTimeMillis();
+                rt4.start();
+            }
+            else if (command.equals("Cleaning robot") && !mt5.isRunning()){
+                rt5 = new Thread(mt5, "fifthThread");
+                elapsed5 = System.currentTimeMillis();
+                rt5.start();
+            }
+
 
             // command = stop 1 -> stop of Thread 1
-            else if (command.equals("stop 1") && mt1.isRunning()) {
+            else if (command.equals("stop Oven") && mt1.isRunning()) {
                 /*
                  * deleting the behaviour to destroy the hidden state of variables. If the thread is stopped before his
                  * natural death, the variable running will be true. You can also create a method stop() in the
@@ -57,12 +81,10 @@ public class Main {
                 System.out.println("Elapsed time 1: " + time);
                 mt1 = new MyThread();                           // recreation of the deleted behaviour objects
                 rt1 = new Thread(mt1, "theThread");      // recreation of deleted thread
-
-
             }
 
             // command = stop 2 -> stop of Thread 2 (same as before but for Thread 2)
-            else if (command.equals("stop 2") && mt2.isRunning()) {
+            else if (command.equals("stop Microwave") && mt2.isRunning()) {
                 mt2 = null;
                 rt2 = null;
                 float time = System.currentTimeMillis() - elapsed2;
@@ -71,7 +93,33 @@ public class Main {
                 rt2 = new Thread(mt1, "theThread");
 
             }
+            else if (command.equals("stop Dishwasher") && mt3.isRunning()) {
+                mt3 = null;
+                rt3 = null;
+                float time = System.currentTimeMillis() - elapsed3;
+                System.out.println("Elapsed time 3: " + time);
+                mt3 = new MyThread();
+                rt3 = new Thread(mt1, "theThread");
 
+            }
+            else if (command.equals("stop Washing Machine") && mt4.isRunning()) {
+                mt4 = null;
+                rt4 = null;
+                float time = System.currentTimeMillis() - elapsed4;
+                System.out.println("Elapsed time 4: " + time);
+                mt4 = new MyThread();
+                rt4 = new Thread(mt1, "theThread");
+
+            }
+            else if (command.equals("stop Cleaning robot") && mt5.isRunning()) {
+                mt5 = null;
+                rt5 = null;
+                float time = System.currentTimeMillis() - elapsed5;
+                System.out.println("Elapsed time 5: " + time);
+                mt5 = new MyThread();
+                rt5 = new Thread(mt1, "theThread");
+
+            }
             // unknown command -> the program check the state of the Threads
             else {
 
@@ -82,6 +130,15 @@ public class Main {
 
                 if (mt2.isRunning()){
                     System.out.println("Thread 2 is running");
+                }
+                if(mt3.isRunning()){
+                    System.out.println("Thread 3 is running");
+                }
+                if(mt4.isRunning()) {
+                    System.out.println("Thread 4 is running");
+                }
+                if(mt5.isRunning()) {
+                    System.out.println("Thread 5 is running");
                 }
             }
         }

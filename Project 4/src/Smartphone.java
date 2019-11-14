@@ -7,10 +7,4 @@ public class Smartphone {
     public void pressonButton(){
         slot.execute();
     }
-    public void pressoffbutton(){
-        slot.execute();
-    }
-    public void pressUndo(){
-        slot.undo();
-    }
 }
