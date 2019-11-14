@@ -1,57 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9b6e4d10-b292-4847-a9e9-9f6ece6980bb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="837aae16-aa48-4e23-b925-c08507f2134c" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CodeStyleSettingsInfer">
-    <option name="done" value="true" />
-  </component>
-  <component name="ErrorTreeViewConfiguration">
-    <option name="hideWarnings" value="true" />
-    <option name="HIDE_WARNINGS" value="true" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectCodeStyleSettingsMigration">
-    <option name="version" value="1" />
-  </component>
-  <component name="ProjectId" id="1RevMiByN42W5PLsDu5jsAGXbvJ" />
+  <component name="ProjectId" id="1TblsjvcWXXOcVUpjr1ZBFnxad6" />
   <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570024414516" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Project 3" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\laraf\OneDrive\05_Dokumente\GitHub\BINF4241-group35" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -65,44 +28,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="BINF4241-group35" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9b6e4d10-b292-4847-a9e9-9f6ece6980bb" name="Default Changelist" comment="" />
-      <created>1570024388709</created>
+      <changelist id="837aae16-aa48-4e23-b925-c08507f2134c" name="Default Changelist" comment="" />
+      <created>1573736884786</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1570024388709</updated>
-      <workItem from="1570024392698" duration="54000" />
-      <workItem from="1570040335606" duration="1263000" />
-      <workItem from="1570104018936" duration="68000" />
-      <workItem from="1570104362559" duration="12611000" />
-      <workItem from="1570263553167" duration="3514000" />
-      <workItem from="1570624119177" duration="5102000" />
-      <workItem from="1570630437636" duration="498000" />
-      <workItem from="1570634600661" duration="1769000" />
-      <workItem from="1571138274677" duration="64000" />
-      <workItem from="1571140934077" duration="2586000" />
-      <workItem from="1571222808423" duration="5912000" />
-      <workItem from="1571731471203" duration="6312000" />
-      <workItem from="1572520627215" duration="1203000" />
-      <workItem from="1572521939253" duration="112000" />
-      <workItem from="1573046253985" duration="34000" />
-      <workItem from="1573046315384" duration="15000" />
+      <updated>1573736884786</updated>
+      <workItem from="1573736890613" duration="142000" />
     </task>
     <servers />
   </component>
@@ -114,9 +50,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
