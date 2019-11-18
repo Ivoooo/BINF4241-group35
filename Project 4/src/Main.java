@@ -28,6 +28,34 @@ public class Main {
         long elapsed4 = System.currentTimeMillis();
         long elapsed5 = System.currentTimeMillis();
 
+
+        Dishwasher a = new Dishwasher();
+        Smartphone phone = new Smartphone();
+
+        DishwasherCheckTimer cmd2 = new DishwasherCheckTimer(a);
+        phone.setCommand(cmd2);
+        phone.pressButton();
+
+        DishwasherSwitchOn cmd = new DishwasherSwitchOn(a);
+        phone.setCommand(cmd);
+        phone.pressButton();
+
+        phone.setCommand(cmd2);
+        phone.pressButton();
+
+        DishwasherChooseProgram cmd1 = new DishwasherChooseProgram(a);
+        phone.setCommand(cmd1);
+        phone.pressButton();
+
+        Thread b = new Thread(a, "Dishwasher");
+        b.start();
+
+        Scanner input = new Scanner(System.in);
+        String i = input.next();
+        phone.setCommand(cmd2);
+        phone.pressButton();
+
+
         while(true){
 
             // Collecting User Input in an infinite loop
