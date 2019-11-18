@@ -7,7 +7,7 @@
 
 public class MyThread implements Runnable{
 
-    private boolean running;    // represent the state of the thread
+    public boolean running;    // represent the state of the thread
     public int time = -1;           // represent the time of life of the thread
 
     /**
@@ -18,9 +18,7 @@ public class MyThread implements Runnable{
         time = timeInMillis;
         running = false;
     }
-    public int getThreadtime(){
-        return time;
-    }
+
 
     /**
      * Default Constructor. It has a default time of 10 seconds.
