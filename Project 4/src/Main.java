@@ -29,25 +29,25 @@ public class Main {
         long elapsed5 = System.currentTimeMillis();
 
 
-        Dishwasher a = new Dishwasher();
+        Microwave a = new Microwave();
         Smartphone phone = new Smartphone();
 
-        DishwasherCheckTimer cmd2 = new DishwasherCheckTimer(a);
+        MicrowavecheckTimer cmd2 = new MicrowavecheckTimer(a);
         phone.setCommand(cmd2);
         phone.pressButton();
 
-        DishwasherSwitchOn cmd = new DishwasherSwitchOn(a);
+        MicrowaveturnOn cmd = new MicrowaveturnOn(a);
         phone.setCommand(cmd);
         phone.pressButton();
 
         phone.setCommand(cmd2);
         phone.pressButton();
 
-        DishwasherChooseProgram cmd1 = new DishwasherChooseProgram(a);
+        MicrowavesetTemperature cmd1 = new MicrowavesetTemperature(a);
         phone.setCommand(cmd1);
         phone.pressButton();
 
-        Thread b = new Thread(a, "Dishwasher");
+        Thread b = new Thread(a,"Microwave");
         b.start();
 
         Scanner input = new Scanner(System.in);

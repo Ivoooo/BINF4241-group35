@@ -15,7 +15,7 @@ public class Microwave  {
    public void setTimer() {
        if (this.isSwitchedOn = true) {
            Scanner scanner = new Scanner(System.in);
-           System.out.println("Enter the desired time to bake:");
+           System.out.println("Enter the desired time to bake in seconds:");
            time = scanner.nextInt();
            System.out.println("Your desired time is"+time);
        }
@@ -29,12 +29,13 @@ public class Microwave  {
         }
    }
    public void startBaking(){
-       if(time != -1 && temperature != -1 ){
-           this.run();
-           System.out.println("The microwave is baking now");
-       }
-       else{
-           System.out.println("Set first the timer and the temperature");
+       if(this.isSwitchedOn) {
+           if (time != -1 && temperature != -1) {
+               this.run();
+               System.out.println("The microwave is baking now");
+           } else {
+               System.out.println("Set first the timer and the temperature");
+           }
        }
    }
    public void checkTimer() {
