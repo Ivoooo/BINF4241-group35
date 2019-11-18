@@ -1,20 +1,35 @@
 import java.util.Scanner;
-public class Microwave extends MyThread implements Command {
-    private String state;
-   public void request(String l){
-        this.state = l;
-    }
-   private MyThread myThread;
+public class Microwave  {
 
-   public void setTimer(){}
-   public int setTemperature(){
-    Scanner scanner = new Scanner(System.in);
-    System.out.println("Enter the value:");
-       return scanner.nextInt();
+   private MyThread myThread;
+   private int temperature = -1;
+
+   public void setTimer() {
+       if (myThread.isRunning()) {
+           Scanner scanner = new Scanner(System.in);
+           System.out.println("Enter the desired time to bake:");
+           myThread.time = scanner.nextInt();
+       }
    }
-   public void startBaking(){}
-   public int checkTimer(){
-       return myThread.getThreadtime();
+   public void setTemperature(){
+    if(myThread.isRunning()) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the value:");
+        temperature = scanner.nextInt();
+        }
+   }
+   public void startBaking(){
+       if(myThread.time != -1 && temperature != -1 ){
+           myThread.run();
+       }
+       else{
+           System.out.println("Set first the timer and the temperature");
+       }
+   }
+   public void checkTimer(){
+       
+
+
    }
    public void stopBaking(){
        //only if startBaking is already executed
@@ -22,9 +37,6 @@ public class Microwave extends MyThread implements Command {
    public void turnoff(){
 
    }
-   public void execute(){
-        //if "state" = settimer -> state.setTimer()
 
-    }
 
 }

@@ -8,7 +8,7 @@
 public class MyThread implements Runnable{
 
     private boolean running;    // represent the state of the thread
-    private int time;           // represent the time of life of the thread
+    public int time = -1;           // represent the time of life of the thread
 
     /**
      * Constructor for MyThread
