@@ -18,6 +18,11 @@ public class Dishwasher implements Runnable{
      * This method check if the thread is running
      * @return the state of the thread
      * */
+
+    public void on() {
+        return;
+    }
+
     public boolean isRunning(){
         return running;
     }
