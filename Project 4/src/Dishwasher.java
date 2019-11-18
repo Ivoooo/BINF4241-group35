@@ -23,6 +23,26 @@ public class Dishwasher implements Runnable{
         return;
     }
 
+    public void start() {
+        return;
+    }
+
+    public void chooseProgram() {
+        return;
+    }
+
+    public void checkTimer() {
+        return;
+    }
+
+    public void stop() {
+        return;
+    }
+
+    public void off() {
+        return;
+    }
+
     public boolean isRunning(){
         return running;
     }
@@ -50,9 +70,5 @@ public class Dishwasher implements Runnable{
         else if(program.equals("pans")) this.time = 8000;
         else if(program.equals("mixed")) this.time = 20000;
         else this.time = 10000;
-    }
-
-    public void checkTimer() {
-       System.out.println("Remaining time: " + time );
     }
 }
