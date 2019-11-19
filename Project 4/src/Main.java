@@ -32,6 +32,10 @@ public class Main {
         Microwave a = new Microwave();
         Smartphone phone = new Smartphone();
 
+        Cleaningrobot robo = new Cleaningrobot(); // Try Robot
+        robo.startClean();
+        robo.returnBase();
+
         MicrowavecheckTimer cmd2 = new MicrowavecheckTimer(a);
         phone.setCommand(cmd2);
         phone.pressButton();
@@ -47,8 +51,8 @@ public class Main {
         phone.setCommand(cmd1);
         phone.pressButton();
 
-        Thread b = new Thread(a,"Microwave");
-        b.start();
+        //Thread b = new Thread(a,"Microwave");
+      //  b.start();
 
         Scanner input = new Scanner(System.in);
         String i = input.next();
