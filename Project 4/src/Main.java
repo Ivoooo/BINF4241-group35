@@ -6,6 +6,7 @@
  * */
 
 import java.util.*;
+enum devices{OVEN, MICROWAVE, DISHWASHER, WASHINGMACHINE, CLEANINGROBOT}
 
 public class Main {
 
@@ -29,7 +30,7 @@ public class Main {
         long elapsed5 = System.currentTimeMillis();
 
 
-        Microwave a = new Microwave();
+       /* Microwave a = new Microwave();
         Smartphone phone = new Smartphone();
         Cleaningrobot robo = new Cleaningrobot();
         phone.menu();
@@ -57,25 +58,26 @@ public class Main {
         phone.setCommand(cmd2);
         phone.pressButton();
         */
-
+        Smartphone phone = new Smartphone();
+        devices startdevice;
         while(true){
 
-            // Collecting User Input in an infinite loop
-            System.out.println("Which Device do you wan't to start?");
-            Scanner scanner = new Scanner(System.in);
-            String command = phone.phoneCommand;
+             startdevice = phone.menu();
+
+
 
             // Basic control for command
 
             // command = 1 -> start the Thread 1
-            if (command.equals("oven") && !mt1.isRunning()) {
+            if (startdevice == devices.OVEN && !mt1.isRunning()) {
                 rt1 = new Thread(mt1, "FirstThread");           // Creation of the Thread 1 assigning
+                System.out.println("start OvenThread");
                 elapsed1 = System.currentTimeMillis();                // update of the pointer to current timestamp
                 rt1.start();
             }
 
             // command = 2 -> start the Thread 2
-            else if (command.equals("Microwave") && !mt2.isRunning()){
+            /*else if (command.equals("Microwave") && !mt2.isRunning()){
                 rt2 = new Thread(mt2, "SecondThread");          // Creation of the Thread 1 assigning
                 elapsed2 = System.currentTimeMillis();                // update of the pointer to current timestamp
                 rt2.start();
@@ -115,7 +117,7 @@ public class Main {
             }
 
             // command = stop 2 -> stop of Thread 2 (same as before but for Thread 2)
-            else if (command.equals("stop Microwave") && mt2.isRunning()) {
+            /*else if (command.equals("stop Microwave") && mt2.isRunning()) {
                 mt2 = null;
                 rt2 = null;
                 float time = System.currentTimeMillis() - elapsed2;
@@ -173,7 +175,7 @@ public class Main {
                     System.out.println("Thread 5 is running");
                 }
             }
-        }
+        }*/
 
     }
 }

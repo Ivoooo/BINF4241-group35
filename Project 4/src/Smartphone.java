@@ -1,16 +1,15 @@
 import java.util.*;
-enum devices{Oven, Microwave, Dishwasher, Washingmachine, Cleaningrobot}
 public class Smartphone {
     public String phoneCommand;
     Command slot;
     Scanner scanner = new Scanner(System.in);
     int menuItem=0;
     int menuItem2=0;
-
+    devices dev ;
 
     public Smartphone(){}
 
-    public void menu() {
+    public devices menu() {
         System.out.println(" Which Device would you like to control:\n " +
                 "1. Oven \n" +
                 "2. Microwave\n" +
@@ -34,7 +33,10 @@ public class Smartphone {
                 System.out.print("Choose menu item: ");
                 menuItem2 = scanner.nextInt();
                 if(menuItem2 == 1 ){
-                    //todo command to start thread
+                    //todo command to start thread?
+                    dev = devices.OVEN;
+                    System.out.println("switch on Oven");
+                    return dev;
                 }
 
         }
@@ -51,7 +53,7 @@ public class Smartphone {
          else if (menuItem == 2) {
                 System.out.println("robo");
         }
-
+    return dev;
     }
 
 
