@@ -31,10 +31,8 @@ public class Main {
 
         Microwave a = new Microwave();
         Smartphone phone = new Smartphone();
-
-        Cleaningrobot robo = new Cleaningrobot(); // Try Robot
-        robo.startClean();
-        robo.returnBase();
+        Cleaningrobot robo = new Cleaningrobot();
+        phone.menu();
 
         MicrowavecheckTimer cmd2 = new MicrowavecheckTimer(a);
         phone.setCommand(cmd2);
@@ -51,26 +49,26 @@ public class Main {
         phone.setCommand(cmd1);
         phone.pressButton();
 
-        //Thread b = new Thread(a,"Microwave");
-      //  b.start();
-
+       /* Thread b = new Thread(a, "Microwave");
+        b.start();*/
+/*
         Scanner input = new Scanner(System.in);
         String i = input.next();
         phone.setCommand(cmd2);
         phone.pressButton();
-
+        */
 
         while(true){
 
             // Collecting User Input in an infinite loop
             System.out.println("Which Device do you wan't to start?");
             Scanner scanner = new Scanner(System.in);
-            String command = scanner.nextLine();
+            String command = phone.phoneCommand;
 
             // Basic control for command
 
             // command = 1 -> start the Thread 1
-            if (command.equals("Oven") && !mt1.isRunning()) {
+            if (command.equals("oven") && !mt1.isRunning()) {
                 rt1 = new Thread(mt1, "FirstThread");           // Creation of the Thread 1 assigning
                 elapsed1 = System.currentTimeMillis();                // update of the pointer to current timestamp
                 rt1.start();
@@ -96,6 +94,7 @@ public class Main {
                 rt5 = new Thread(mt5, "fifthThread");
                 elapsed5 = System.currentTimeMillis();
                 rt5.start();
+
             }
 
 
@@ -146,6 +145,7 @@ public class Main {
             else if (command.equals("stop Cleaning robot") && mt5.isRunning()) {
                 mt5 = null;
                 rt5 = null;
+
                 float time = System.currentTimeMillis() - elapsed5;
                 System.out.println("Elapsed time 5: " + time);
                 mt5 = new MyThread();
