@@ -32,19 +32,24 @@ public class Main {
         Microwave a = new Microwave();
         Smartphone phone = new Smartphone();
 
-        MicrowavecheckTimer cmd2 = new MicrowavecheckTimer(a);
-        phone.setCommand(cmd2);
-        phone.pressButton();
-
         MicrowaveturnOn cmd = new MicrowaveturnOn(a);
         phone.setCommand(cmd);
         phone.pressButton();
 
+        MicrowavesetTimer cmd2 = new MicrowavesetTimer(a);
         phone.setCommand(cmd2);
         phone.pressButton();
 
-        MicrowavesetTemperature cmd1 = new MicrowavesetTemperature(a);
+        MicrowavesetTemperature cmd3 = new MicrowavesetTemperature(a);
+        phone.setCommand(cmd3);
+        phone.pressButton();
+
+        MicrowavestartBaking cmd1 = new MicrowavestartBaking(a);
         phone.setCommand(cmd1);
+        phone.pressButton();
+
+        MicrowavecheckTimer cmd4 = new MicrowavecheckTimer(a);
+        phone.setCommand(cmd4);
         phone.pressButton();
 
         Thread b = new Thread(a,"Microwave");

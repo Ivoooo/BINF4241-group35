@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Microwave  {
+public class Microwave implements Runnable  {
 
    private int temperature = -1;
    private boolean isSwitchedOn = false;
@@ -17,15 +17,15 @@ public class Microwave  {
            Scanner scanner = new Scanner(System.in);
            System.out.println("Enter the desired time to bake in seconds:");
            time = scanner.nextInt();
-           System.out.println("Your desired time is"+time);
+           System.out.println("Your desired time is " + time);
        }
    }
    public void setTemperature(){
     if(this.isSwitchedOn = true) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the value:");
+        System.out.println("Enter the desired temperature:");
         temperature = scanner.nextInt();
-        System.out.println("The desired temperature is"+temperature);
+        System.out.println("The desired temperature is "+ temperature);
         }
    }
    public void startBaking(){
@@ -39,13 +39,15 @@ public class Microwave  {
        }
    }
    public void checkTimer() {
-       long tmp = timeStarted + time - System.currentTimeMillis();
+
        if (this.isSwitchedOn) {
-
-           if (time != -1 && isRunning) System.out.println("Time remaining: " + tmp);
-
+           // todo check why it doesn't print the remaining time
+           if (this.isRunning && this.time != -1) {
+               long tmp = timeStarted + time - System.currentTimeMillis();
+               System.out.println("Time remaining: " + tmp);
+           }
            else {
-               System.out.println("Your last timer was" + this.time);
+               System.out.println("Your last timer was " + this.time);
            }
        }
    }
@@ -68,16 +70,19 @@ public class Microwave  {
        System.out.println("Microwave is turned off");
 
    }
-
+    @Override
     public void run() {
-        try {
-            isRunning = true;
-            Thread.sleep(time);
-            isRunning = false;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
+       if(this.time > 0 && !isRunning) {
+           try {
+               this.isRunning = true;
+               this.timeStarted = System.currentTimeMillis();
+               System.out.println("Microwave started");
+               Thread.sleep(this.time);
+               this.isRunning = false;
+           } catch (InterruptedException e) {
+               e.printStackTrace();
+           }
+       }
     }
 
 
