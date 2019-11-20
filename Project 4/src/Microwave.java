@@ -53,7 +53,7 @@ public class Microwave implements Runnable  {
        if(this.isSwitchedOn && !this.isRunning) {
            if (time > 0 && temperature > 0) {
                this.timeStarted = System.currentTimeMillis();
-               System.out.println("The microwave is baking now");
+               System.out.println("The microwave is baking now for " + time + " ms and at: " + temperature);
            }
            else {
                if(this.time <= 0) System.out.println("Please set a (positive) time.");
@@ -63,6 +63,7 @@ public class Microwave implements Runnable  {
        else if(this.isRunning) System.out.println("Microwave is running already.");
        else System.out.println("Microwave is not switched on.");
    }
+
    public void checkTimer() {
        isStillRunning();
        if (this.isSwitchedOn) {
@@ -75,7 +76,7 @@ public class Microwave implements Runnable  {
                if(!this.isRunning) System.out.println("Isn't currently running.");
            }
        }
-       else System.out.println("Sorry it's currently not running.");
+       else System.out.println("Sorry it's currently not switched on.");
    }
 
    public void stopBaking(){
@@ -95,6 +96,7 @@ public class Microwave implements Runnable  {
        System.out.println("Microwave is turned off");
 
    }
+
     @Override
     public void run() {
        if(this.time > 0 && !isRunning) {

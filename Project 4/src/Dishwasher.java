@@ -28,7 +28,7 @@ public class Dishwasher implements Runnable{
         if(this.switchedOn && this.time > 0 && !this.running) {
             this.running = true;
             this.timeStarted = System.currentTimeMillis();
-            System.out.println("Dishwasher started.");
+            System.out.println("Dishwasher is now running for " + time + " milliseconds");
         }
         else if(this.switchedOn && this.running) System.out.println("Dishwasher is running already.");
         else if(this.switchedOn) System.out.println("Sorry no program has been set.");
@@ -64,7 +64,7 @@ public class Dishwasher implements Runnable{
                 if(!this.running) System.out.println("Isn't currently running.");
             }
         }
-        else System.out.println("Sorry it's currently not running.");
+        else System.out.println("Sorry it's currently not switched on.");
     }
 
     public void stop() {
