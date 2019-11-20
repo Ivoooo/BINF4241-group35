@@ -72,19 +72,20 @@ public class Main {
         devices startdevice;
         while(true){
 
-             startdevice = phone.menu();
+             phone.menu();
 
 
 
             // Basic control for command
 
             // command = 1 -> start the Thread 1
-            if (startdevice == devices.OVEN && !mt1.isRunning()) {
+
+           /* if (startdevice == devices.OVEN && !mt1.isRunning()) {
                 rt1 = new Thread(mt1, "FirstThread");           // Creation of the Thread 1 assigning
                 System.out.println("start OvenThread");
                 elapsed1 = System.currentTimeMillis();                // update of the pointer to current timestamp
                 rt1.start();
-            }
+            }*/
 
             // command = 2 -> start the Thread 2
             /*else if (command.equals("Microwave") && !mt2.isRunning()){

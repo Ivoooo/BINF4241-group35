@@ -10,3 +10,4 @@ public class DishwasherCheckTimer implements Command {
         this.dishwasher.checkTimer();
     }
 }
+
