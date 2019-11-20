@@ -56,13 +56,13 @@ public class Cleaningrobot extends Thread {
                 }
                 if (clean == 100){
                     System.out.println("The robot is done cleaning");
-                    this.returnBase();
+                    returnBase();
                     clean = 0;
                     return;
                 }
                 if(batteryStatus == 0){
-                    System.out.println("The robot has run out of battery, it will return to the base.");
-                    this.returnBase();
+                    System.out.println("The robot has run out of battery, it will return to the base." );
+                    returnBase();
                     ready = false;
 
                 }
@@ -95,15 +95,14 @@ public class Cleaningrobot extends Thread {
         }
     }
 
-    public boolean onBase(){
-        return base;
-    }
 
     public int checkBatteryStatus(){
+        System.out.print("The batterystatus is: "+ batteryStatus);
         return batteryStatus;
     }
 
     public int checkCleaning(){
+        System.out.println("The Cleaning is done "+ clean +" %");
         return clean;
     }
 
