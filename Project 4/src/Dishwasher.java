@@ -1,12 +1,5 @@
 import java.util.Scanner;
 
-/**
- * This class implements Runnable. That means that you need to
- * implement the run() method to describe the Thread behaviour.
- * Remember: runnable objects are not Threads, so using the
- * run() method on main process will not create a separate process.
- * */
-
 public class Dishwasher implements Runnable{
     private boolean switchedOn = false;
     private int time = -1;
@@ -14,16 +7,12 @@ public class Dishwasher implements Runnable{
     private boolean running = false;
 
     public void on() {
-        if(isSwitchedOn()) {
+        if(this.switchedOn) {
             System.out.println("Dishwasher is already switched on");
             return;
         }
         this.switchedOn = true;
         System.out.println("Dishwasher is now switched on.");
-    }
-
-    private boolean isSwitchedOn() {
-        return switchedOn;
     }
 
     private void isStillRunning() {
@@ -48,7 +37,7 @@ public class Dishwasher implements Runnable{
 
     public void chooseProgram() {
         isStillRunning();
-        if(isSwitchedOn() && this.running) {
+        if(switchedOn && this.running) {
             System.out.println("Please choose a program: (f.e. glasses, plates, pans or mixed)");
             Scanner input = new Scanner(System.in);
             String program = input.next();
@@ -59,7 +48,7 @@ public class Dishwasher implements Runnable{
             else this.time = 10000;
             System.out.println(program + ", set it will take: " + time + " milliseconds if started.");
         }
-        else if(isSwitchedOn()) System.out.println("Dishwasher is currently running.");
+        else if(switchedOn) System.out.println("Dishwasher is currently running.");
         else System.out.println("Dishwasher is not switched on.");
     }
 
