@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Oven {
+public class Oven implements Runnable {
     private int temperature = -1;
     private boolean isSwitchedOn = false;
     private long timeStarted = -1;
@@ -46,23 +46,15 @@ public class Oven {
             }
         }
     }
-    public void run() {
-        try {
-            isRunning = true;
-            Thread.sleep(time);
-            isRunning = false;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
+
     public void checkTimer() {
-        long tmp = timeStarted + time - System.currentTimeMillis();
         if (this.isSwitchedOn) {
-
-            if (time != -1 && isRunning) System.out.println("Time remaining: " + tmp);
-
+            if (this.time != -1 && this.isRunning && this.program != null) {
+                long tmp = timeStarted + time - System.currentTimeMillis();
+                System.out.println("Time remaining: " + tmp);
+            }
             else {
-                System.out.println("Your last timer was" + this.time);
+                System.out.println("Your last timer was " + this.time);
             }
         }
     }
@@ -78,6 +70,19 @@ public class Oven {
         isSwitchedOn = false;
         System.out.println("Oven is turned off");
     }
-
+    @Override
+    public void run() {
+        if(this.time > 0 && !isRunning) {
+            try {
+                this.isRunning = true;
+                this.timeStarted = System.currentTimeMillis();
+                System.out.println("Oven started");
+                Thread.sleep(this.time);
+                this.isRunning = false;
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 }
