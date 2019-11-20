@@ -25,19 +25,19 @@ public class Dishwasher implements Runnable{
 
     public void start() {
         isStillRunning();
-        if(this.time > 0 && !this.running) {
+        if(this.switchedOn && this.time > 0 && !this.running) {
             this.running = true;
             this.timeStarted = System.currentTimeMillis();
             System.out.println("Dishwasher started.");
         }
-        else {
-            System.out.println("Sorry no program has been set.");
-        }
+        else if(this.switchedOn && this.running) System.out.println("Dishwasher is running already.");
+        else if(this.switchedOn) System.out.println("Sorry no program has been set.");
+        else System.out.println("Dishwasher is not switched on.");
     }
 
     public void chooseProgram() {
         isStillRunning();
-        if(switchedOn && this.running) {
+        if(switchedOn && !this.running) {
             System.out.println("Please choose a program: (f.e. glasses, plates, pans or mixed)");
             Scanner input = new Scanner(System.in);
             String program = input.next();
@@ -55,14 +55,14 @@ public class Dishwasher implements Runnable{
     public void checkTimer() {
         isStillRunning();
         if(this.switchedOn) {
-            if (this.running && time != -1) {
+            if (this.running && time > 0) {
                 long tmp = timeStarted + time - System.currentTimeMillis();
                 System.out.println("Time remaining: " + tmp);
             }
-            else if(this.time != -1) {
-                System.out.println("Time set but not running: " + this.time);
+            else {
+                if(this.time <= 0) System.out.println("Time hasn't been set");
+                if(!this.running) System.out.println("Isn't currently running.");
             }
-            else System.out.println("No time has been set and not running.");
         }
         else System.out.println("Sorry it's currently not running.");
     }
@@ -74,6 +74,7 @@ public class Dishwasher implements Runnable{
             this.timeStarted = -1;
             System.out.println("Dishwasher reset.");
         }
+        else System.out.println("Currently not switched on.");
     }
 
     public void off() {

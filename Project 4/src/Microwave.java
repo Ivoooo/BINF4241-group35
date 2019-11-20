@@ -1,72 +1,97 @@
 import java.util.Scanner;
-public class Microwave implements Runnable  {
 
+public class Microwave implements Runnable  {
    private int temperature = -1;
    private boolean isSwitchedOn = false;
    private long timeStarted = -1;
    private int time = -1;
    private boolean isRunning = false;
 
-   public void turnon(){
-       isSwitchedOn = true;
-       System.out.println("Microwave is turned on");
+   public void turnOn(){
+       if(this.isSwitchedOn) {
+           System.out.println("Microwave is already switched on");
+           return;
+       }
+       this.isSwitchedOn = true;
+       System.out.println("Microwave is now switched on.");
    }
+
+    private void isStillRunning() {
+        if(!this.isRunning) return;
+        if(System.currentTimeMillis() > timeStarted + time) {
+            this.isRunning = false;
+            this.timeStarted = -1;
+        }
+    }
 
    public void setTimer() {
-       if (this.isSwitchedOn = true) {
+       isStillRunning();
+       if (this.isSwitchedOn && !this.isRunning) {
            Scanner scanner = new Scanner(System.in);
            System.out.println("Enter the desired time to bake in seconds:");
-           time = scanner.nextInt();
+           this.time = scanner.nextInt() * 1000;
            System.out.println("Your desired time is " + time);
        }
+       else if(isSwitchedOn) System.out.println("Microwave is currently running.");
+       else System.out.println("Microwave is not switched on.");
    }
+
    public void setTemperature(){
-    if(this.isSwitchedOn = true) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the desired temperature:");
-        temperature = scanner.nextInt();
-        System.out.println("The desired temperature is "+ temperature);
-        }
+       isStillRunning();
+       if(this.isSwitchedOn && !this.isRunning) {
+           Scanner scanner = new Scanner(System.in);
+           System.out.println("Enter the desired temperature:");
+           this.temperature = scanner.nextInt();
+           System.out.println("The desired temperature is "+ this.temperature);
+       }
+       else if(isSwitchedOn) System.out.println("Microwave is currently running.");
+       else System.out.println("Microwave is not switched on.");
    }
+
    public void startBaking(){
-       if(this.isSwitchedOn) {
-           if (time != -1 && temperature != -1) {
-               this.run();
+       isStillRunning();
+       if(this.isSwitchedOn && !this.isRunning) {
+           if (time > 0 && temperature > 0) {
+               this.timeStarted = System.currentTimeMillis();
                System.out.println("The microwave is baking now");
-           } else {
-               System.out.println("Set first the timer and the temperature");
+           }
+           else {
+               if(this.time <= 0) System.out.println("Please set a (positive) time.");
+               if(this.temperature <= 0) System.out.println("Please set a (positive) temperature.");
            }
        }
+       else if(this.isRunning) System.out.println("Microwave is running already.");
+       else System.out.println("Microwave is not switched on.");
    }
    public void checkTimer() {
-
+       isStillRunning();
        if (this.isSwitchedOn) {
-           // todo check why it doesn't print the remaining time
-           if (this.isRunning && this.time != -1) {
+           if (this.isRunning && this.time > 0) {
                long tmp = timeStarted + time - System.currentTimeMillis();
                System.out.println("Time remaining: " + tmp);
            }
            else {
-               System.out.println("Your last timer was " + this.time);
+               if(this.time <= 0) System.out.println("Time hasn't been set");
+               if(!this.isRunning) System.out.println("Isn't currently running.");
            }
        }
+       else System.out.println("Sorry it's currently not running.");
    }
 
    public void stopBaking(){
        if(this.isSwitchedOn){
-           if(this.isRunning = true){
-               this.isRunning = false;
-               System.out.println("You stopped baking");
-           }
-
+           this.isRunning = false;
+           this.time = -1;
+           this.timeStarted = -1;
+           System.out.println("Microwave reset.");
        }
-
-
+       else System.out.println("Currently not switched on.");
    }
 
 
    public void turnoff(){
-       isSwitchedOn = false;
+       stopBaking();
+       this.isSwitchedOn = false;
        System.out.println("Microwave is turned off");
 
    }
