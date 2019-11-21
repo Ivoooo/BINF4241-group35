@@ -1,5 +1,5 @@
 public class OvensetTemperature implements Command {
-    Oven oven;
+    private Oven oven;
 
     public OvensetTemperature(Oven l){
         this.oven = l;

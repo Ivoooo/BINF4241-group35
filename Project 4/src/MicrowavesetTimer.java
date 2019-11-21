@@ -1,5 +1,5 @@
 public class MicrowavesetTimer implements Command {
-    Microwave microwave;
+    private Microwave microwave;
 
     public MicrowavesetTimer(Microwave l){
         this.microwave = l;
