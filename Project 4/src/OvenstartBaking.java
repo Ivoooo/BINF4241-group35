@@ -1,5 +1,5 @@
 public class OvenstartBaking implements Command {
-    Oven oven;
+    private Oven oven;
 
     public OvenstartBaking(Oven l){
         this.oven = l;

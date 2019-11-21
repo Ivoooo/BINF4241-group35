@@ -1,5 +1,5 @@
 public class OvensetTimer implements Command {
-    Oven oven;
+    private Oven oven;
 
     public OvensetTimer(Oven l){
         this.oven= l;

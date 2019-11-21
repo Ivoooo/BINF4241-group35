@@ -1,14 +1,16 @@
 import java.util.*;
 public class Smartphone {
 
-    Command slot;
-    Scanner scanner = new Scanner(System.in);
-    int menuItem=0;
-    int menuItem2=0;
-    devices dev ;
-    boolean ovenON = false;
-    boolean microON = false;
-    boolean dishON  = false;
+    public String phoneCommand;
+    private Command slot;
+
+    private Scanner scanner = new Scanner(System.in);
+    private int menuItem=0;
+    private int menuItem2=0;
+    private devices dev ;
+    private boolean ovenON = false;
+    private boolean microON = false;
+    private boolean dishON  = false;
 
     Oven oven = new Oven();
     Cleaningrobot robot = new Cleaningrobot();

@@ -1,5 +1,5 @@
 public class MicrowavestartBaking implements Command {
-    Microwave microwave;
+    private Microwave microwave;
 
     public MicrowavestartBaking(Microwave l){
         this.microwave = l;

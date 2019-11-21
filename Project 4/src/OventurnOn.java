@@ -1,5 +1,5 @@
 public class OventurnOn implements Command {
-    Oven oven;
+    private Oven oven;
 
     public OventurnOn(Oven l){
         this.oven = l;

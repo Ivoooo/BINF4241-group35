@@ -1,5 +1,5 @@
 public class MicrowavesetTemperature implements Command {
-    Microwave microwave;
+    private Microwave microwave;
     public MicrowavesetTemperature(Microwave l){
         this.microwave = l;
     }
