@@ -13,13 +13,28 @@ public class Cleaningrobot extends Thread {
     private boolean ready;
 
     public void setTimer() {
-        if (this.isOn = true) {
+        isStillRunning();
+        if (this.isOn = true && !this.isRunning) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("How long should the robot clean? ");
-            time = scanner.nextInt();
-            System.out.println("The robot will clean for "+time+" seconds");
+            this.time = scanner.nextInt() * 1000;
+            System.out.println("The robot will clean for " + time + " seconds");
+        }
+        else if(isOn) System.out.println("The robot is cleaning");
+        else System.out.println("the robot is not cleaning");
+      }
+
+
+
+    private void isStillRunning() {
+        if(!this.isRunning) return;
+        if(System.currentTimeMillis() > timeStarted + time) {
+            this.isRunning = false;
+            this.timeStarted = -1;
         }
     }
+
+
     public void turnOn(){
         this.isOn = true;
         timeStarted = System.currentTimeMillis();
@@ -30,30 +45,34 @@ public class Cleaningrobot extends Thread {
     }
 
     public void checkTimer() {
-        long tmp = timeStarted + time - System.currentTimeMillis();
+        isStillRunning();
         if (this.isOn) {
-
-            if (time != -1 && isRunning) System.out.println("Time remaining: " + tmp);
-
+            if(this.isRunning && this.time>0 ) {
+                long tmp = timeStarted + time - System.currentTimeMillis();
+                System.out.println("Time remaining: " + tmp);
+            }
             else {
-                System.out.println("Your last timer was" + this.time);
+                if(this.time <= 0) System.out.println("Time hasn't been set");
+                if(!this.isRunning) System.out.println("Isn't currently running.");
+
             }
         }
+        else System.out.println("Your last timer was" + this.time);
     }
 
 
     public void startClean(){
-        if (this.batteryStatus == 100 && this.base == true){
+        isStillRunning();
+        if (this.batteryStatus == 100 && this.base == true && this.isRunning){
             System.out.println("start clean");
             base = false;
             while(batteryStatus >= 0 && clean <= 100) {
-                try {
-                    sleep(100);
-                    batteryStatus = batteryStatus - 5;
-                    clean = clean + 5;
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                this.timeStarted = System.currentTimeMillis();
+                while(System.currentTimeMillis() < this.timeStarted+this.time ){
+                    batteryStatus = batteryStatus -5;
+                    clean = clean + 2 ;
                 }
+
                 if (clean == 100){
                     System.out.println("The robot is done cleaning");
                     returnBase();
@@ -81,17 +100,16 @@ public class Cleaningrobot extends Thread {
             System.out.println("Back on Base");
             base = true;
             while(batteryStatus<100) {
-                try {
-                    sleep(100);
-                    batteryStatus = batteryStatus + 1;
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                this.timeStarted = System.currentTimeMillis();
+                while (System.currentTimeMillis() < this.timeStarted + 100) {
+                    batteryStatus = batteryStatus + 2;
+
                 }
+
+
+                ready = true;
+                System.out.println("The robot is ready to clean again.");
             }
-
-            ready = true;
-            System.out.println("The robot is ready to clean again.");
-
         }
     }
 

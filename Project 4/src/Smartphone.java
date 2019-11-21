@@ -198,7 +198,6 @@ public class Smartphone {
 
     public void subMenuRobot() {
        while(true){
-        System.out.println("robo");
         System.out.println(" What would you like to do:\n " +
                 "1. Set a timer\n" +
                 "2. Start Cleaning\n" +
