@@ -1,7 +1,7 @@
 import java.util.*;
 public class Smartphone {
     public String phoneCommand;
-    Command slot;
+    private Command slot;
     Scanner scanner = new Scanner(System.in);
     int menuItem=0;
     int menuItem2=0;
