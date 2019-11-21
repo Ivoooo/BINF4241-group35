@@ -11,11 +11,13 @@ public class Smartphone {
     private boolean ovenON = false;
     private boolean microON = false;
     private boolean dishON  = false;
+    private boolean wamaON = false;
 
     Oven oven = new Oven();
     Cleaningrobot robot = new Cleaningrobot();
     Microwave microwave = new Microwave();
     Dishwasher dish = new Dishwasher();
+    WashingMachine wama = new WashingMachine();
 
     public Smartphone(){}
 
@@ -40,8 +42,7 @@ public class Smartphone {
                 subMenuDish();
         }
         else if (menuItem == 4) {
-                //subMenuWama();
-            System.out.println("Here should be the Washingmachine");
+                subMenuWama();
         }
          else if (menuItem == 5) {
              subMenuRobot();
@@ -194,6 +195,48 @@ public class Smartphone {
                 dishON = false;
 
             } else if (menuItem2 == 7) {
+                menu();
+                break;
+            }
+        }
+    }
+
+    public void subMenuWama(){
+        while(true) {
+            System.out.println(" What would you like to do:\n " +
+                    "1. Switch on \n" +
+                    "2. Select Degrees\n" +
+                    "3. Choose Program\n" +
+                    "4. Turn off\n" +
+                    "5. Switch off\n" +
+                    "6. Return to Main Menu\n");
+
+            System.out.print("Choose menu item: ");
+            menuItem2 = scanner.nextInt();
+            if (menuItem2 == 1) {
+                WashingMachineOn cmd = new WashingMachineOn(wama);
+                setCommand(cmd);
+                pressButton();
+                wamaON = true;
+
+            } else if (menuItem2 == 2 && wamaON == true) {
+                WashingMachineSetTemperature cmd = new WashingMachineSetTemperature(wama);
+                setCommand(cmd);
+                pressButton();
+            } else if (menuItem2 == 3 && wamaON == true) {
+                WashingMachineChooseProgram cmd = new WashingMachineChooseProgram(wama);
+                setCommand(cmd);
+                pressButton();
+            } else if (menuItem2 == 4 && wamaON == true) {
+                WashingMachineStop cmd = new WashingMachineStop(wama);
+                setCommand(cmd);
+                pressButton();
+            } else if (menuItem2 == 5 && wamaON == true) {
+                WashingMachineOff cmd = new WashingMachineOff(wama);
+                setCommand(cmd);
+                pressButton();
+
+            } else if (menuItem2 == 6) {
                 menu();
                 break;
             }
