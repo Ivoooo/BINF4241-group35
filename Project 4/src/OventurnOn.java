@@ -7,6 +7,6 @@ public class OventurnOn implements Command {
 
     @Override
     public void execute() {
-        oven.turnon();
+        oven.turnOn();
     }
 }
