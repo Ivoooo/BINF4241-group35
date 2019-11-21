@@ -7,6 +7,6 @@ public class MicrowaveturnOn implements Command {
 
     @Override
     public void execute() {
-        microwave.turnon();
+        microwave.turnOn();
     }
 }

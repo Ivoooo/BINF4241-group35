@@ -1,31 +1,45 @@
 import java.util.Scanner;
 
-/**
- * This class implements Runnable. That means that you need to
- * implement the run() method to describe the Thread behaviour.
- * Remember: runnable objects are not Threads, so using the
- * run() method on main process will not create a separate process.
- * */
-
 public class Dishwasher implements Runnable{
-    private boolean isSwitchedOn = false;
+    private boolean switchedOn = false;
     private int time = -1;
     private long timeStarted = -1;
     private boolean running = false;
-    private Scanner input = new Scanner(System.in);
 
     public void on() {
-        this.isSwitchedOn = true;
-        System.out.println("Dishwasher is now running.");
+        if(this.switchedOn) {
+            System.out.println("Dishwasher is already switched on");
+            return;
+        }
+        this.switchedOn = true;
+        System.out.println("Dishwasher is now switched on.");
+    }
+
+    private void isStillRunning() {
+        if(!this.running) return;
+        if(System.currentTimeMillis() > timeStarted + time) {
+            this.running = false;
+            this.timeStarted = -1;
+        }
     }
 
     public void start() {
-        this.run();
+        isStillRunning();
+        if(this.switchedOn && this.time > 0 && !this.running) {
+            this.running = true;
+            this.timeStarted = System.currentTimeMillis();
+            System.out.println("Dishwasher is now running for " + time + " milliseconds");
+        }
+        else if(this.switchedOn && this.running) System.out.println("Dishwasher is running already.");
+        else if(this.switchedOn) System.out.println("Sorry no program has been set.");
+        else System.out.println("Dishwasher is not switched on.");
     }
 
     public void chooseProgram() {
-        if(this.isSwitchedOn) {
+        isStillRunning();
+        if(switchedOn && !this.running) {
             System.out.println("Please choose a program: (f.e. glasses, plates, pans or mixed)");
+            Scanner input = new Scanner(System.in);
             String program = input.next();
             if(program.equals("glasses")) this.time = 12000;
             else if(program.equals("plates")) this.time = 15000;
@@ -34,34 +48,38 @@ public class Dishwasher implements Runnable{
             else this.time = 10000;
             System.out.println(program + ", set it will take: " + time + " milliseconds if started.");
         }
+        else if(switchedOn) System.out.println("Dishwasher is currently running.");
+        else System.out.println("Dishwasher is not switched on.");
     }
 
     public void checkTimer() {
-        if(this.isSwitchedOn) {
-            if (this.running && time != -1) {
+        isStillRunning();
+        if(this.switchedOn) {
+            if (this.running && time > 0) {
                 long tmp = timeStarted + time - System.currentTimeMillis();
                 System.out.println("Time remaining: " + tmp);
             }
-            else if(this.time != -1) {
-                System.out.println("Time set but not running: " + this.time);
+            else {
+                if(this.time <= 0) System.out.println("Time hasn't been set");
+                if(!this.running) System.out.println("Isn't currently running.");
             }
-            else System.out.println("No time has been set.");
         }
-        else System.out.println("Sorry it's currently not running.");
+        else System.out.println("Sorry it's currently not switched on.");
     }
 
     public void stop() {
-        if(this.isSwitchedOn) {
+        if(this.switchedOn) {
             this.running = false;
             this.time = -1;
             this.timeStarted = -1;
             System.out.println("Dishwasher reset.");
         }
+        else System.out.println("Currently not switched on.");
     }
 
     public void off() {
-        //todo check if possible
-        this.isSwitchedOn = false;
+        stop();
+        this.switchedOn = false;
         System.out.println("Dishwasher is now off");
     }
 
