@@ -11,14 +11,18 @@ public class Cleaningrobot extends Thread {
     private boolean base = true;
     private int clean = 0;
     private boolean ready;
+    int second;
 
     public void setTimer() {
         isStillRunning();
         if (this.isOn = true && !this.isRunning) {
-            Scanner scanner = new Scanner(System.in);
             System.out.println("How long should the robot clean? ");
-            this.time = scanner.nextInt() * 1000;
-            System.out.println("The robot will clean for " + time + " seconds");
+            Scanner scanner = new Scanner(System.in);
+            second = scanner.nextInt();
+            this.time = second * 1000;
+            System.out.println("The robot will clean for " + second + " seconds");
+
+            this.isRunning = true;
         }
         else if(isOn) System.out.println("The robot is cleaning");
         else System.out.println("the robot is not cleaning");
@@ -47,7 +51,7 @@ public class Cleaningrobot extends Thread {
     public void checkTimer() {
         isStillRunning();
         if (this.isOn) {
-            if(this.isRunning && this.time>0 ) {
+            if( this.isRunning && this.time > 0  ) {
                 long tmp = timeStarted + time - System.currentTimeMillis();
                 System.out.println("Time remaining: " + tmp);
             }
@@ -62,7 +66,7 @@ public class Cleaningrobot extends Thread {
 
 
     public void startClean(){
-        isStillRunning();
+       // isStillRunning();
         if (this.batteryStatus == 100 && this.base == true && this.isRunning){
             System.out.println("start clean");
             base = false;
@@ -88,6 +92,9 @@ public class Cleaningrobot extends Thread {
             }
 
         }
+        else if(this.batteryStatus < 100) System.out.println("Battery not full yet");
+        else if(this.base == false) System.out.println("Robot is already cleaning");
+        else if(!this.isRunning) System.out.println("Set Timer first. ");
     }
 
 

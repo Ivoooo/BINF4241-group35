@@ -164,10 +164,13 @@ public class Smartphone {
             System.out.print("Choose menu item: ");
             menuItem2 = scanner.nextInt();
             if (menuItem2 == 1) {
-                System.out.println("switch on Dishwasher");
-                dishON = true;
-            } else if (menuItem2 == 2 && dishON == true) {
                 DishwasherSwitchOn cmd = new DishwasherSwitchOn(dish);
+                setCommand(cmd);
+                pressButton();
+                dishON = true;
+
+            } else if (menuItem2 == 2 && dishON == true) {
+                DishwasherStart cmd = new DishwasherStart(dish);
                 setCommand(cmd);
                 pressButton();
             } else if (menuItem2 == 3 && dishON == true) {
