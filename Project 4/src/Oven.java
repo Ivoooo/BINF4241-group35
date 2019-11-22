@@ -6,6 +6,8 @@ public class Oven implements Runnable {
     private int time = -1;
     private boolean isRunning = false;
     private String program = null;
+    int timesec;
+    long tmpsec;
 
     public void turnOn(){
         if(this.isSwitchedOn) {
@@ -29,8 +31,9 @@ public class Oven implements Runnable {
         if (this.isSwitchedOn && !this.isRunning) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Enter the desired time to cook in seconds:");
-            this.time = scanner.nextInt() * 1000;
-            System.out.println("Your desired time is " + time);
+            timesec = scanner.nextInt();
+            this.time = timesec * 1000;
+            System.out.println("Your desired time is " + timesec);
         }
         else if(isSwitchedOn) System.out.println("Oven is currently running.");
         else System.out.println("Oven is not switched on.");
@@ -62,6 +65,7 @@ public class Oven implements Runnable {
         if(this.isSwitchedOn && !this.isRunning) {
             if (time > 0 && temperature > 0 && this.program != null) {
                 this.timeStarted = System.currentTimeMillis();
+                this.isRunning= true;
                 System.out.println("The Oven is cooking now using the " + program + " and is set at: " + temperature);
             }
             else {
@@ -79,7 +83,8 @@ public class Oven implements Runnable {
         if (this.isSwitchedOn) {
             if (this.isRunning && this.time > 0) {
                 long tmp = timeStarted + time - System.currentTimeMillis();
-                System.out.println("Remaining time: " + tmp);
+                tmpsec = tmp/1000;
+                System.out.println("Remaining time: " + tmpsec);
             }
             else {
                 if(this.time <= 0) System.out.println("Time hasn't been set");
@@ -88,6 +93,7 @@ public class Oven implements Runnable {
         }
         else System.out.println("Sorry, it's currently not switched on.");
     }
+
 
     public void stopBaking(){
         if(this.isSwitchedOn){

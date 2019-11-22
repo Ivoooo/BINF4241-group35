@@ -22,7 +22,7 @@ public class Smartphone {
     public Smartphone(){}
 
     public void menu() {
-        System.out.println(" Which Device would you like to control:\n " +
+        System.out.println(" \nWhich Device would you like to control:\n " +
                 "1. Oven \n" +
                 "2. Microwave\n" +
                 "3. Dishwasher\n" +
@@ -51,8 +51,7 @@ public class Smartphone {
 
     public void subMenuOven(){
         while(true) {
-            System.out.println("oven");
-            System.out.println(" What would you like to do:\n " +
+            System.out.println(" \nWhat would you like to do:\n " +
                     "1. Switch on \n" +
                     "2. Set a timer\n" +
                     "3. Set a temperature\n" +
@@ -61,11 +60,13 @@ public class Smartphone {
                     "6. check Timer\n" +
                     "7. interrupt program\n" +
                     "8. Switch off\n" +
-                    "9. Return to Main Menu");
+                    "9. Return to Main Menu\n");
             System.out.print("Choose menu item: ");
             menuItem2 = scanner.nextInt();
             if (menuItem2 == 1) {
-                System.out.println("switch on Oven");
+                OventurnOn cmd = new OventurnOn(oven);
+                setCommand(cmd);
+                pressButton();
                 ovenON = true;
             } else if (menuItem2 == 2 && ovenON == true) {
                 OvensetTimer cmd = new OvensetTimer(oven);
@@ -84,7 +85,7 @@ public class Smartphone {
             setCommand(cmd);
             pressButton();
             } else if(menuItem2 == 6 && ovenON == true){
-                OvenstartBaking cmd = new OvenstartBaking(oven);
+                OvencheckTimer cmd = new OvencheckTimer(oven);
                 setCommand(cmd);
                 pressButton();
             } else if(menuItem2 == 7 && ovenON == true){
@@ -105,8 +106,8 @@ public class Smartphone {
 
     public void subMenuMicrowave(){
         while(true) {
-            System.out.println("Microwave");
-            System.out.println(" What would you like to do:\n " +
+
+            System.out.println("\n What would you like to do:\n " +
                     "1. Switch on \n" +
                     "2. Set a timer\n" +
                     "3. Set a temperature\n" +
@@ -114,12 +115,13 @@ public class Smartphone {
                     "5. check Timer\n" +
                     "6. interrupt program\n" +
                     "7. Switch off\n" +
-                    "8. Return to Main Menu");
+                    "8. Return to Main Menu\n");
             System.out.print("Choose menu item: ");
             menuItem2 = scanner.nextInt();
             if (menuItem2 == 1) {
-                dev = devices.OVEN;
-                System.out.println("switch on Microwave");
+                MicrowaveturnOn cmd = new MicrowaveturnOn(microwave);
+                setCommand(cmd);
+                pressButton();
                 microON = true;
             } else if (menuItem2 == 2 && microON == true) {
                 MicrowavesetTimer cmd = new MicrowavesetTimer(microwave);
@@ -155,15 +157,14 @@ public class Smartphone {
 
     public void subMenuDish(){
         while(true) {
-            System.out.println("Dishwasher");
-            System.out.println(" What would you like to do:\n " +
+            System.out.println(" \nWhat would you like to do:\n " +
                     "1. Switch on \n" +
                     "2. Start Dishwasher\n" +
                     "3. Choose Program\n" +
                     "4. Check Timer\n" +
                     "5. Stop Dishwasher\n" +
                     "6. Switch off\n" +
-                    "7. Return to Main Menu");
+                    "7. Return to Main Menu\n");
             System.out.print("Choose menu item: ");
             menuItem2 = scanner.nextInt();
             if (menuItem2 == 1) {
@@ -203,7 +204,7 @@ public class Smartphone {
 
     public void subMenuWama(){
         while(true) {
-            System.out.println(" What would you like to do:\n " +
+            System.out.println("\n What would you like to do:\n " +
                     "1. Switch on \n" +
                     "2. Select Degrees\n" +
                     "3. Choose Program\n" +
@@ -246,14 +247,14 @@ public class Smartphone {
 
     public void subMenuRobot() {
        while(true){
-        System.out.println(" What would you like to do:\n " +
+        System.out.println(" \nWhat would you like to do:\n " +
                 "1. Set a timer\n" +
                 "2. Start Cleaning\n" +
                 "3. Check Timer \n" +
                 "4. Check Battery Status\n" +
                 "5. Check Cleaning Progress\n" +
                 "6. Return to Base\n"+
-                "7. Return to Main Menu");
+                "7. Return to Main Menu\n");
 
         System.out.print("Choose menu item: ");
         menuItem2 = scanner.nextInt();
