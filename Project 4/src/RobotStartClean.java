@@ -1,6 +1,6 @@
-public class RoboStartClean implements Command {
+public class RobotStartClean implements Command {
     private Cleaningrobot cleaningrobot;
-    public RoboStartClean(Cleaningrobot r) {
+    public RobotStartClean(Cleaningrobot r) {
          this.cleaningrobot = r;
     }
 

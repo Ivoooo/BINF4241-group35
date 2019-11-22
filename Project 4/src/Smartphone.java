@@ -266,7 +266,7 @@ public class Smartphone {
             setCommand(cmd);
             pressButton();
         } else if (menuItem2 == 2) {
-            RoboStartClean cmd = new RoboStartClean(robot);
+            RobotStartClean cmd = new RobotStartClean(robot);
             setCommand(cmd);
             pressButton();
         } else if (menuItem2 == 3) {
