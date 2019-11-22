@@ -257,6 +257,7 @@ public class Smartphone {
                 "3. Check Timer \n" +
                 "4. Check Battery Status\n" +
                 "5. Check Cleaning Progress\n" +
+                "6. Stop Cleaning \n" +
                 "6. Return to Main Menu\n");
 
         System.out.print("Choose menu item: ");
@@ -281,7 +282,11 @@ public class Smartphone {
             RobotCheckCleaningProgress cmd = new RobotCheckCleaningProgress(robot);
             setCommand(cmd);
             pressButton();
-        } else if (menuItem2 == 6) {
+        } else if(menuItem2 == 6) {
+            RobotStopCleaning cmd = new RobotStopCleaning(robot);
+            setCommand(cmd);
+            pressButton();
+        } else if (menuItem2 == 7) {
             menu();
             break;
         }
