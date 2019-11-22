@@ -1,5 +1,5 @@
 public class RobotSetTimer implements Command{
-    Cleaningrobot cleaningrobot;
+    private Cleaningrobot cleaningrobot;
 
     public RobotSetTimer(Cleaningrobot r) {
         this.cleaningrobot = r;

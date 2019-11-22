@@ -1,5 +1,5 @@
 public class RobotCheckTimer implements Command {
-    Cleaningrobot cleaningrobot;
+    private Cleaningrobot cleaningrobot;
     public RobotCheckTimer(Cleaningrobot r) {
             this.cleaningrobot = r;
         }

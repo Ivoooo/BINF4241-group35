@@ -253,8 +253,7 @@ public class Smartphone {
                 "3. Check Timer \n" +
                 "4. Check Battery Status\n" +
                 "5. Check Cleaning Progress\n" +
-                "6. Return to Base\n"+
-                "7. Return to Main Menu\n");
+                "6. Return to Main Menu\n");
 
         System.out.print("Choose menu item: ");
         menuItem2 = scanner.nextInt();
@@ -279,10 +278,6 @@ public class Smartphone {
             setCommand(cmd);
             pressButton();
         } else if (menuItem2 == 6) {
-            CleaningrobotReturnBase cmd = new CleaningrobotReturnBase(robot);
-            setCommand(cmd);
-            pressButton();
-        } else if (menuItem2 == 7) {
             menu();
             break;
         }

@@ -1,5 +1,5 @@
 public class RobotCheckCleaningProgress implements Command {
-    Cleaningrobot cleaningrobot;
+    private Cleaningrobot cleaningrobot;
     public RobotCheckCleaningProgress(Cleaningrobot r) {
             this.cleaningrobot = r;
         }

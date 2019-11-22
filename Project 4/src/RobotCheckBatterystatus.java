@@ -1,5 +1,5 @@
 public class RobotCheckBatterystatus implements Command {
-    Cleaningrobot cleaningrobot;
+    private Cleaningrobot cleaningrobot;
     public RobotCheckBatterystatus(Cleaningrobot r) {
             this.cleaningrobot = r;
         }
