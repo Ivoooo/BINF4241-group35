@@ -6,3 +6,5 @@ The robot uses 3% battery and cleans 2% every 0.25 second. Recharges 5% per 0.25
 If it's empty it will go back to base and recharge and once recharged continue cleaning automatically.
 The timer only measures time SPENT CLEANING. It was unclear so we though this would make more sense.
 If you try to clean a completely clean room it will tell you and set the room to dirty.
+
+Marko made all class diagramms.
