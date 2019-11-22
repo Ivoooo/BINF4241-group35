@@ -210,7 +210,8 @@ public class Smartphone {
                     "3. Choose Program\n" +
                     "4. Turn off\n" +
                     "5. Switch off\n" +
-                    "6. Return to Main Menu\n");
+                    "6. Check Time\n" +
+                    "7. Return to Main Menu\n");
 
             System.out.print("Choose menu item: ");
             menuItem2 = scanner.nextInt();
@@ -236,8 +237,11 @@ public class Smartphone {
                 WashingMachineOff cmd = new WashingMachineOff(wama);
                 setCommand(cmd);
                 pressButton();
-
-            } else if (menuItem2 == 6) {
+            } else if(menuItem2 == 6 && wamaON == true) {
+                WashingMachineCheckTimer cmd = new WashingMachineCheckTimer(wama);
+                setCommand(cmd);
+                pressButton();
+            } else if (menuItem2 == 7) {
                 menu();
                 break;
             }
