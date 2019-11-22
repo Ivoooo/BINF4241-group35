@@ -63,14 +63,14 @@ public class Cleaningrobot extends Thread {
                     System.out.println("The robot is now cleaning the rest.");
                 }
 
-                this.batteryStatus -= 2;
+                this.batteryStatus -= 3;
                 if(this.batteryStatus <= 0) {
                     this.batteryStatus = 0;
                     this.base = true;
                     System.out.println("The robot has gone back to the charging base.");
                 }
                 else {
-                    this.toClean -= 3;
+                    this.toClean -= 2;
                     this.time -= increments;
                     this.timeStarted += increments;
                 }
