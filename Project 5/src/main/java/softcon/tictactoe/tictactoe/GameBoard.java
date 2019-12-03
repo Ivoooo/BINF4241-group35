@@ -68,10 +68,10 @@ public class GameBoard {
       throw new IllegalArgumentException("cannot mark null player");
     }
     if (board[row][col] != null) {
-      return true;
+      return false;
     } else {
       board[row][col] = player;
-      return false;
+      return true;
     }
   }
 

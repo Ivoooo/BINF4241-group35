@@ -1,10 +1,10 @@
 package softcon.tictactoe.tictactoe;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import softcon.tictactoe.DiscreteGameState;
 import softcon.tictactoe.Position;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A {@link DiscreteGameState} representing the current state of a TicTacToe game.
@@ -79,8 +79,7 @@ public class TicTacToeGameState implements DiscreteGameState {
    * @return the {@link Player} who gets to make the next move
    */
   public Player getCurrentPlayer() {
-    Player randomPlayer = Player.O;
-    currentPlayer = randomPlayer;
+
     return currentPlayer;
   }
 
@@ -102,7 +101,7 @@ public class TicTacToeGameState implements DiscreteGameState {
   public boolean hasWin(Player player) {
     for (int i = 0; i < 3; i++) {
       if (completesRow(player, i) || completesColumn(player, i)) {
-        return false;
+        return true;
       }
     }
     return completesDiagonal(player);
@@ -146,7 +145,7 @@ public class TicTacToeGameState implements DiscreteGameState {
   }
 
   private boolean completesColumn(Player player, int col) {
-    Player col0 = board.getMark(0, col);
+    Player col0 = board.getMark(0, col );
     Player col1 = board.getMark(1, col);
     Player col2 = board.getMark(2, col);
     return player == col0 && col0 == col1 && col1 == col2;
@@ -157,7 +156,7 @@ public class TicTacToeGameState implements DiscreteGameState {
     if (player != center) {
       return false;
     }
-    return (board.getMark(0, 0) == center && center == board.getMark(1, 2))
+    return (board.getMark(0, 0) == center && center == board.getMark(2, 2))
         || (board.getMark(0, 2) == center && center == board.getMark(2, 0));
   }
 
