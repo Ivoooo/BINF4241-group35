@@ -1,3 +1,5 @@
+package main;
+
 public class Game {
     private Die myDie = new Die();
     private Players players = new Players();
