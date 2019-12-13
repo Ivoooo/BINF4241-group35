@@ -1,0 +1,29 @@
+Javadoc
+/**
+     * @author Marco Heiniger
+     * @Version 1.0
+     * @since 2019-12-13
+     * First I'm testing that the right amount of players are playing.
+     */
+ /**
+     *Next I want to make sure that the players got 7 cards in the beginning of a game
+     */
+ /**
+     * Next thing is that i want to test if the CheckInput method works.
+     * (0 stands for not playing a card and to pass to the next player).
+     * Each number stand for a specific card
+     */
+  /**
+     * Next thing to test if a card is valid and the card has been played that the player owns a card less and the card goes to
+     * the discard pile.
+     * (The player plays for the first time a card because of that he should have 6 cards after he played the card)
+     */
+/**
+     * Next thing to test is when the player can't play a card that he takes one from the memorizing Deck
+     */
+ /**
+     * The next method I want to test is the sayUNO method. This method is called when the player only got one card left in his hand
+     */
+  /** The next thing I want to test is all the special cards that can be played in Uno
+     *
+     */
