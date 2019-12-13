@@ -17,7 +17,7 @@ public class Square {
 
     public void leave(String name){
         int i = occupants.indexOf(name);
-        occupants.remove(i);
+        if(i >= 0) occupants.remove(i);
     }
 
     public Boolean tryMove (String name){
@@ -29,6 +29,7 @@ public class Square {
     }
 
     public void makeShortcut(int destination, String type) {
+        if(destination < 0) return;
         this.destination = destination;
         if (type.equals("SNAKE")) {
             this.type = SquareTypes.SNAKE;
@@ -55,6 +56,7 @@ public class Square {
     }
 
     public String repr(int position) {
+        if(position < 0) return null;
         position++; //because in real life it starts at 1
         int dest = destination + 1;
         String str = "[" + position;

@@ -22,7 +22,7 @@ public class TestRandomizer {
             int b = Randomizer.generate(-10, -2);
             Assert.assertFalse(b < -10 || b > -2);
 
-            int c = Randomizer.generate(-10, -2);
+            int c = Randomizer.generate(-2, -10);
             Assert.assertFalse(c < -10 || c > -2);
         }
     }
@@ -33,7 +33,7 @@ public class TestRandomizer {
             int b = Randomizer.generate(-10, 10);
             Assert.assertFalse(b < -10 || b > 10);
 
-            int c = Randomizer.generate(-10, 10);
+            int c = Randomizer.generate(10, -10);
             Assert.assertFalse(c < -10 || c > 10);
         }
     }
