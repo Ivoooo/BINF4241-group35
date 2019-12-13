@@ -23,8 +23,9 @@ public class Game {
         player.playCard(i);
 
     }
-    public void takeCard(){
-        player.takeCard();
+    public boolean takeCard(int i){
+
+        return player.takeCard(i);
 
     }
     public boolean sayUNO(){

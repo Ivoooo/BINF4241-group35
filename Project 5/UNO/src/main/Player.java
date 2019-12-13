@@ -6,8 +6,8 @@ public class Player {
     public void playCard(int i){
         b = i;
     }
-    public void takeCard(){
-
+    public boolean takeCard(int i){
+            return true;
     }
     public boolean sayUNO(){
         return true;

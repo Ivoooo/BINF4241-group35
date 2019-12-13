@@ -9,6 +9,7 @@ public class UnoTests {
     /**
      * @author Marco Heiniger
      * @Version 1.0
+     * @since 2019-12-13
      * First I'm testing that the right amount of players are playing.
      */
     @Test
@@ -77,7 +78,7 @@ public class UnoTests {
         game.playNewGame();
         int b = game.CardsInHand.length;
         game.CheckInput(0);
-        game.takeCard();
+        game.takeCard(1);
         Assert.assertTrue(game.CardsInHand.length > b);
     }
 
@@ -95,7 +96,20 @@ public class UnoTests {
         Assert.assertFalse(game.sayUNO(),"You have more than one card take 2 new cards");
 
     }
+    /** The next thing I want to test is all the special cards that can be played in Uno
+     *
+     */
 
+    @Test
+    public void checkspecialcards(){
+        Game game = new Game();
+        //draw two card
+        Assert.assertTrue(game.takeCard(2),"The current player has taken 2 new cards");
+        // wild draw four card
+        Assert.assertTrue(game.takeCard(4),"The current player has taken 4 new cards");
+
+
+    }
 
 
 
