@@ -4,6 +4,8 @@ public class GameBoard {
     private Square[] gameBoard;
 
     public GameBoard (int size) {
+        if(size < 5) size = 5;
+
         this.gameBoard = new Square[size];
         for (int i = 0; i < size; ++i) {
             this.gameBoard[i] = new Square();
@@ -46,6 +48,8 @@ public class GameBoard {
     }
 
     public Player move(Player current, int step){
+        if(step <= 0) return null;
+
         //leave position
         gameBoard[current.getPosition()].leave(current.getName());
 

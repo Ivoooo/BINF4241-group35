@@ -6,6 +6,7 @@ public class Game {
     private GameBoard gameboard;
 
     public Game(int size) {
+        if(size < 5) size = 5;
         this.gameboard = new GameBoard(size);
     }
 

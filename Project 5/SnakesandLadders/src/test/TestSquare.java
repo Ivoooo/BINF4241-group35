@@ -45,7 +45,7 @@ public class TestSquare {
         Assert.assertEquals(a.getDestination(), 7);
 
         a.makeShortcut(-5, "SNAKE");
-        Assert.assertEquals(a.getDestination(), 0);
+        Assert.assertEquals(a.getDestination(), 7);
 
     }
 

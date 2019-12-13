@@ -29,10 +29,7 @@ public class Square {
     }
 
     public void makeShortcut(int destination, String type) {
-        if(destination < 0) {
-            this.destination = 0;
-            return;
-        }
+        if(destination < 0) return;
         this.destination = destination;
         if (type.equals("SNAKE")) {
             this.type = SquareTypes.SNAKE;
