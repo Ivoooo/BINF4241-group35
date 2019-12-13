@@ -4,7 +4,13 @@ import org.junit.Assert;
 import org.junit.Test;
 import main.Randomizer;
 
+/**
+ * Tests the Randomizer Class.
+ */
 public class TestRandomizer {
+    /**
+     * Tests the generate function trying positive Numbers.
+     */
     @Test
     public void generatePositiveNumber() {
         for(int i = 0; i < 100; ++i) {
@@ -16,6 +22,9 @@ public class TestRandomizer {
         }
     }
 
+    /**
+     * Tests the generate function trying negative Numbers.
+     */
     @Test
     public void generateNegativeNumber() {
         for(int i = 0; i < 100; ++i) {
@@ -27,6 +36,9 @@ public class TestRandomizer {
         }
     }
 
+    /**
+     * Tests the generate function trying negative to positive Numbers.
+     */
     @Test
     public void generateFullRange() {
         for(int i = 0; i < 100; ++i) {

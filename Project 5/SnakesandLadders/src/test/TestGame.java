@@ -5,6 +5,12 @@ import main.Player;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * Tests the Game class.
+ * <p>
+ * Tests the Game class by doing a integration test.
+ * </p>
+ */
 public class TestGame {
     @Test
     public void IntegrationTest() {

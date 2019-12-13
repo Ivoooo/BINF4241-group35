@@ -5,7 +5,19 @@ import main.Player;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * Tests the Player Class.
+ */
 public class TestPlayers {
+    /**
+     * Tests the add and the remove function.
+     * <p>
+     * Tests it by
+     * - removing on an empty Players list
+     * - adding and removing a Player
+     * - removing on a Players list that used to have someone
+     * </p>
+     */
     @Test
     public void addAndRemovePlayer() {
         Players players = new Players();
@@ -26,6 +38,16 @@ public class TestPlayers {
         Assert.assertNull(b);
     }
 
+    /**
+     * Tests the tryMove function.
+     * <p>
+     * Tests it by
+     * - adding multiple player
+     * - removing them
+     * - adding some again
+     * - removing some again
+     * </p>
+     */
     @Test
     public void multiplePlayer() {
         Players players = new Players();
