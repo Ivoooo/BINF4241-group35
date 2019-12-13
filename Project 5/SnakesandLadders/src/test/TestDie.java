@@ -8,8 +8,9 @@ public class TestDie {
     @Test
     public void rollInRange() {
         Die a = new Die();
-        int b = a.rollDie();
+        int b;
         for(int i = 0; i < 100; ++i) {
+            b = a.rollDie();
             Assert.assertFalse(b < 1 || b > 6);
         }
     }
