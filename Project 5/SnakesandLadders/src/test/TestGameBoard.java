@@ -5,8 +5,18 @@ import main.GameBoard;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * Tests the GameBoard Class.
+ */
 public class TestGameBoard {
-
+    /**
+     * Tests the isGameOver function.
+     * <p>
+     * Tests it by
+     * - case true
+     * - case false
+     * </p>
+     */
     @Test
     public void isGameOver() {
         GameBoard a = new GameBoard(15);
@@ -19,6 +29,11 @@ public class TestGameBoard {
         Assert.assertTrue(a.isGameOver());
     }
 
+    /**
+     * Tests the place function.
+     * <p>
+     * Tests it by placing multiple players
+     */
     @Test
     public void place() {
         GameBoard a = new GameBoard(15);
@@ -27,6 +42,12 @@ public class TestGameBoard {
         a.place("Peter");
     }
 
+    /**
+     * Tests the move function.
+     * <p>
+     * Tests it by moving 3 players, 1 for sure won't hit a ladder or snake.
+     * </p>
+     */
     @Test
     public void move() {
         GameBoard a = new GameBoard(15);

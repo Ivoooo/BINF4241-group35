@@ -4,7 +4,11 @@ import org.junit.Assert;
 import org.junit.Test;
 import main.Die;
 
+/**
+ * Tests the Die Class.
+ */
 public class TestDie {
+
     @Test
     public void rollInRange() {
         Die a = new Die();

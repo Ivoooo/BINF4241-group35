@@ -4,7 +4,19 @@ import main.Square;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * Tests the Square Class.
+ */
 public class TestSquare {
+    /**
+     * Tests the tryMove function.
+     * <p>
+     * Tests it by
+     * - Moving normally
+     * - Moving normally with a different Player
+     * - Moving on a Shortcut.
+     * </p>
+     */
     @Test
     public void tryMove() {
         Square a = new Square();
@@ -20,6 +32,14 @@ public class TestSquare {
         Assert.assertFalse(res);
     }
 
+    /**
+     * Tests the isOccupied function.
+     * <p>
+     * Tests it by
+     * - Checking when it's true
+     * - Checking when it should be false
+     * </p>
+     */
     @Test
     public void isOccupied() {
         Square a = new Square();
@@ -29,6 +49,17 @@ public class TestSquare {
         Assert.assertTrue(a.isOccupied());
     }
 
+    /**
+     * Tests the makeShortcut function.
+     * <p>
+     * Tests it by
+     * - Creating a normal Snake
+     * - Creating a normal Ladder
+     * - Creating a shortcut to the Start
+     * - Creating an undefinded shortcut
+     * - Creating a shortcut to a wrong position
+     * </p>
+     */
     @Test
     public void makeShortcut() {
         Square a = new Square();
@@ -49,6 +80,15 @@ public class TestSquare {
 
     }
 
+    /**
+     * Tests the leave function.
+     * <p>
+     * Tests it by
+     * - Moving and leaving 1 Person
+     * - Moving and leaving with multiple People
+     * - Moving and leaving with people with the same name
+     * </p>
+     */
     @Test
     public void leave() {
         Square a = new Square();
@@ -70,6 +110,18 @@ public class TestSquare {
         Assert.assertFalse(x);
     }
 
+    /**
+     * Tests the repr function.
+     * <p>
+     * Tests it by
+     * - Checking on a normal Tile
+     * - The Start Tile
+     * - On a Ladder
+     * - On a Snake
+     * - On a Tile with 1 Person
+     * - On a Tile with multiple People
+     * </p>
+     */
     @Test
     public void repr() {
         //proper standard inputs
@@ -87,8 +139,8 @@ public class TestSquare {
         a.makeShortcut(11, "LADDER");
         Assert.assertEquals(a.repr(5), "[6->12]");
 
-        a.makeShortcut(4, "LADDER");
-        Assert.assertEquals(a.repr(10), "[11->5]");
+        a.makeShortcut(4, "SNAKE");
+        Assert.assertEquals(a.repr(10), "[5<-11]");
 
         //with players
         a = new Square();
